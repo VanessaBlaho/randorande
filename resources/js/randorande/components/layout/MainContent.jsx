@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Homepage from "./Homepage";
+import Homepage from "../homepage/Homepage";
 
 export default function MainContent() {
     return (
