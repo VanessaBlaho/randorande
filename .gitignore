@@ -18,3 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/images
+/public/images/randes
+/public/images/cursors
+/public/images/scratchOff
