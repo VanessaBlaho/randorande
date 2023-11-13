@@ -1,4 +1,14 @@
+import {BrowserRouter as Router} from 'react-router-dom'
+import Header from "./components/homepage/Header";
+
+
 export default function App() {
-    return <>
-    <h1>RandoRande</h1></>
+    return (
+        <Router>
+       
+           
+           <Header />
+        
+        </Router>
+    );
 }
