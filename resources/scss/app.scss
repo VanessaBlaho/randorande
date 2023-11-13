@@ -1,2 +1,13 @@
-@import './layout/footer';
-@import '.layout/header'; 
+@import "./layout/homepage";
+@import "./layout/header";
+@import "./layout/footer";
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
