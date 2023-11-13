@@ -1,4 +1,12 @@
+import { BrowserRouter } from "react-router-dom";
+import MainContent from "./components/homepage/MainContent";
+
 export default function App() {
-    return <>
-    <h1>RandoRande</h1></>
+    return (
+        <BrowserRouter>
+            <>
+                <MainContent />
+            </>
+        </BrowserRouter>
+    );
 }

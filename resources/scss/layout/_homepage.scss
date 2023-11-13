@@ -1,0 +1,91 @@
+@mixin flexCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.homepage {
+    @include flexCol;
+    width: 100vw;
+
+    &__logo {
+        img {
+            height: 20rem; // Reduced height for smaller screens
+        }
+    }
+
+    &__instructions {
+        @include flexCol;
+        //color: grey; will be raplaced with main style color
+        margin: 1rem;
+        text-align: justify;
+        width: 100%;
+        padding: 0;
+
+        &-title {
+            font-size: 7rem; // Smaller font for mobile
+            font-weight: 400;
+        }
+
+        &-list {
+            align-items: stretch;
+            list-style: none;
+            line-height: 1.8;
+            margin-left: 2rem;
+            margin-left: 2rem;
+            width: 85%;
+            padding: 0;
+        }
+
+        &-item {
+            align-content: stretch;
+            width: 100%;
+            font-size: 1.2rem;
+
+        }
+    }
+
+    &__btn-trigger {
+        height: 4rem;
+        width: 16rem;
+        margin: 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    //desktop design
+    @media (min-width: 768px) {
+
+        &__logo {
+            margin-bottom: -5rem;
+
+            img {
+                height: 20rem; // Increase height for larger screens
+            }
+        }
+
+        &__instructions {
+            &-title {
+                font-size: 3rem; // Larger font for desktop
+            }
+
+            &-list {
+                width: 50%;
+                text-align: center;
+
+            }
+
+            &-item {
+                font-size: 1.5rem; // Adjust font size for desktop
+            }
+        }
+
+        &__btn-trigger {
+            height: 3rem; // Adjust button size for desktop
+            width: 12rem;
+            font-size: 1.5rem; // Adjust font size for desktop
+        }
+    }
+}

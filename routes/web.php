@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+//wild route for all routes in react app
+Route::view('/{path?}', 'home')->where('path', '.*');
