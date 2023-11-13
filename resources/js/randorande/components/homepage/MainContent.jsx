@@ -12,7 +12,7 @@ export default function MainContent() {
                     {/* <Route path="/date-search" element={} />
                     <Route path="/my-journal" element={} />
                     <Route path="/about-us" element={} />
-                    <Route path="/questions" element={} />
+                    <Route path="/faq" element={} />
                     <Route path="/login" element={} />
                     <Route path="/register" element={} /> */}
                 </Routes>
