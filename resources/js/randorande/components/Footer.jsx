@@ -3,8 +3,8 @@ import { Link  } from "react-router-dom";
 
 export default function Footer (){ 
 return (
-    <div class="footer">
-        <div class="footer-col">
+    <div className="footer">
+        <div className="footer-col">
         <ul>
         
             <li><Link to="/">Home</Link></li>
@@ -16,17 +16,19 @@ return (
         </ul>
         </div>
   
-    <div class="footer-col-contactUs">
-      <ul>
-        <li><Link to="/contact-us">Contact Us</Link></li>
-        <li>Follow Us</li>
-        <li><a href="#">#</a></li>
-        <li><a href="#">#</a></li>
-        <li><a href="#">#</a></li>
-      </ul>
-    </div>
+        <div className="footer-col-contactUs">
+        <ul>
+            
+            <li>Follow Us</li>
+            <li><a href="#">#</a></li>
+            <li><a href="#">#</a></li>
+            <li><a href="#">#</a></li>
+        </ul>
+        </div>
   
-    <div class="copyright">&copy; 2023</div>
+        <div className="copyright">
+            &copy; 2023
+        </div>
   </div>
   
 )

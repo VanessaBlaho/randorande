@@ -51,9 +51,13 @@ html body {
         text-align: center; /* Center the copyright text */
         font-size: 12px;
         margin-right: 2rem;
+        margin-top: 90%;
+      
       }
     }
-  
+  .copyright{
+    align-self: flex-end;
+  }
     .footer-col-contactUs {
       flex: 1;
      
@@ -80,15 +84,17 @@ html body {
   
     // Media query for responsiveness
     @media (max-width: 600px) {
-      .footer-col,
-      .copyright {
-        display: none;
+    //   .footer-col,
+    //   .copyright {
+    //     display: none;
         
-      }
+    //   }
   
       .footer-col-contactUs {
         margin-top: 0;
-       
+        ul{
+            flex-direction: row;
+        }
       }
     }
   }
