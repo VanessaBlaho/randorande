@@ -1,4 +1,4 @@
-import '../../../scss/_footer.scss'
+// import '../../../scss/app.scss'
 import { Link  } from "react-router-dom";
 
 export default function Footer (){ 
