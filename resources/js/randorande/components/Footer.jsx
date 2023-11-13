@@ -8,10 +8,10 @@ return (
         <ul>
         
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/dates">Dates</Link></li>
+            <li><Link to="/date-search">Date Search</Link></li>
             <li><Link to="/profile">Profile</Link></li>
-            <li><Link to="/about-Us">About Us</Link></li>
-            <li><Link to="/faq">Faq</Link></li>
+            <li><Link to="/about-us">About Us</Link></li>
+            <li><Link to="/faq">FAQ</Link></li>
         
         </ul>
         </div>
@@ -27,7 +27,7 @@ return (
         </div>
   
         <div className="copyright">
-            &copy; 2023
+            &copy; RandoRande 2023
         </div>
   </div>
   
