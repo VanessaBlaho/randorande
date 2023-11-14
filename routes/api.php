@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SearchController as ApiSearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//search results endpoint
+Route::get('/date-search/results', [ApiSearchController::class, 'search']);
+//rande detail endpoint
+Route::get('/randes/{rande_id}', [ApiSearchController::class, 'show']);
