@@ -1,6 +1,9 @@
 @import "./layout/homepage";
 @import "./layout/header";
 @import "./layout/footer";
+@import "./search/datesearch";
+@import "./search/scratchOff.scss";
+@import "./search/revealed_date_detail";
 
 html {
     box-sizing: border-box;

@@ -1,0 +1,70 @@
+@mixin flexRowScratch {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flexColScratch {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin scratchCardContentPosition {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+// below div contains all 3 scratch-offs
+.scratchOff_container__parent {
+    @include flexColScratch; // mobile friendly, switch to row in bigger screen
+    background: lightgray;
+    width: fit-content; // maybe we won't need this
+}
+
+// below div contains 1 scratch-off
+.scratchOff_container__child {
+    @include flexColScratch;
+}
+
+// below div contains just the scratch card with scratch area and reveal image
+.scratchOff_container__child_scratch-card {
+    position: relative;
+    display: inline-block; /* ensure the scratch card only takes as much space as needed */
+    width: 12rem; /* fixed width for the scratch card */
+    height: 12rem; /* fixed height for the scratch card */
+    margin: 0.625rem; /* margin to separate the cards */
+}
+
+.scratch_card__mask {
+    @include scratchCardContentPosition;
+    z-index: 1;
+    width: 100%; /* make the canvas cover the entire scratch card */
+    height: 100%;
+    &:hover {
+        cursor: url('/images/cursors/coin-in-hand.png') 10 10, crosshair;
+    }
+}
+
+.scratch_card__reveal-rande-img {
+    @include scratchCardContentPosition;
+    width: inherit; /* make the image cover the entire scratch card */
+    height: auto;
+}
+
+.scratchOff_container__child-hint-container {
+    background: black;
+}
+
+.scratchOff_container__child-hint {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap; // might not need this
+}
+
+.save_rande_btn {
+    width: fit-content;
+    white-space: nowrap;
+    border-radius: 12px;
+    padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+}
