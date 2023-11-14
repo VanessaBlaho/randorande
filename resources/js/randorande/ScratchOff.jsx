@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import DateSearch from "../search-scratch/DateSearch";
 
-export default function ScratchOff({results, setResults}) {
+export default function ScratchOff({ results, setResults }) {
     // useState hook variables
-    
+
+    const [hint, setHint] = useState(null);
+
+    const [buttonVisible, setButtonVisible] = useState(false);
+
     // image object for canvas texture
     const [textureImage, setTextureImage] = useState(new Image());
 
@@ -28,7 +32,7 @@ export default function ScratchOff({results, setResults}) {
     // function to start scratching (mousedown or touchstart event)
     const startScratching = (index) => (e) => {
         e.preventDefault();
-        // update the selectedRandes state to indicate scratching has started
+        // update the results state to indicate scratching has started
         setResults((prev) => [
             ...prev.slice(0, index),
             { ...prev[index], isScratching: true },
@@ -38,7 +42,7 @@ export default function ScratchOff({results, setResults}) {
 
     // function to stop scratching (mouseup or touchend event)
     const stopScratching = (index) => () => {
-        // updated selectedRandes state to indicate scratching has stopped
+        // updated results state to indicate scratching has stopped
         setResults((prev) => [
             ...prev.slice(0, index),
             { ...prev[index], isScratching: false },
@@ -52,15 +56,13 @@ export default function ScratchOff({results, setResults}) {
         if (results[index] && results[index].isScratching) {
             // extract coordinates and calculate offset
             const { clientX, clientY } = e.touches ? e.touches[0] : e;
-            const { left, top } =
-                results[index].canvas.getBoundingClientRect();
+            const { left, top } = results[index].canvas.getBoundingClientRect();
             const offsetX = clientX - left;
             const offsetY = clientY - top;
             const radius = 30; // adjust the brush size of the scratch
 
             // clear a circular area to reveal the underlying content
-            results[index].ctx.globalCompositeOperation =
-                "destination-out";
+            results[index].ctx.globalCompositeOperation = "destination-out";
             results[index].ctx.beginPath();
 
             // draw the textured image onto the canvas
@@ -84,7 +86,7 @@ export default function ScratchOff({results, setResults}) {
             results[index].ctx.globalCompositeOperation = "source-over";
 
             // check if the scratch is at 90%
-            const imageData = selectedRandes[index].ctx.getImageData(
+            const imageData = results[index].ctx.getImageData(
                 0,
                 0,
                 results[index].canvas.width,
@@ -100,19 +102,24 @@ export default function ScratchOff({results, setResults}) {
 
             // if the scratch is at 90%, update hint and show "Let's rande!" button
             if (transparentPercentage >= 90) {
+                setHint({
+                    resultIndex: index,
+                    text: results[index].rande.name,
+                });
                 // Update hint and show "Let's rande!" button
-                document.querySelector(
-                    ".scratchOff_container__child-hint"
-                ).innerText = selectedRandes[index].rande.name;
-                document.querySelector(".save_rande_btn").style.display =
-                    "block";
+                // document.querySelector(
+                //     ".scratchOff_container__child-hint"
+                // ).innerText = results[index].rande.name;
+                // document.querySelector(".save_rande_btn").style.display =
+                //     "block";
+                setButtonVisible(true);
             }
         }
     };
 
     // function to handle rande selection
     const handleRandeSelect = (index, rande) => {
-        // update the selectedRandes state with the selected rande
+        // update the results state with the selected rande
         setResults((prev) => [
             ...prev.slice(0, index),
             { ...prev[index], rande, isScratching: false },
@@ -122,16 +129,20 @@ export default function ScratchOff({results, setResults}) {
 
     // render component
     return (
-        <div>
-            {/* display from randes search */}
+        <>
+            {/* DISPLAY FROM RANDES SEARCH */}
+            {/* below div contains all 3 scratch-offs */}
             <div className="scratchOff_container__parent">
                 {results.map((rande, index) => (
+                    // below div contains 1 scratch-off
                     <div
                         key={rande.id}
                         id={rande.id}
                         className="scratchOff_container__child"
                     >
+                        {/* below div contains just the scratch card with scratch area and reveal image */}
                         <div className="scratchOff_container__child_scratch-card">
+                            {/* below canvas is actual scratch area */}
                             <canvas
                                 className="scratch_card__mask"
                                 onMouseDown={startScratching(index)}
@@ -141,31 +152,40 @@ export default function ScratchOff({results, setResults}) {
                                 onMouseMove={scratch(index)}
                                 onTouchMove={scratch(index)}
                                 style={{
-                                    cursor: selectedRandes[index]?.isScratching
+                                    cursor: results[index]?.isScratching
                                         ? "url(/images/cursors/coin-in-hand.png) 0 0, auto"
                                         : "url(/images/cursors/coin-scratch.png) 0 0, auto",
                                 }}
                             ></canvas>
+                            {/* below img is revealed under mask */}
                             <img
                                 className="scratch_card__reveal-rande-img"
                                 src={rande.image_path}
                                 alt={rande.name}
                             />
                         </div>
+                        {/* below div contains hint / hint will be h1 text for now but later an icon image */}
                         <div className="scratchOff_container__child-hint-container">
                             <h1 className="scratchOff_container__child-hint">
-                                {rande.hint_path}
+                                {hint && hint.resultIndex == index
+                                    ? hint.text
+                                    : rande.hint_path}
                             </h1>
                         </div>
-                        <button
-                            className="save_rande_btn"
-                            onClick={() => handleRandeSelect(index, rande)}
-                        >
-                            Let's rande!
-                        </button>
+                        {/* below button saves the rande but only appears after a percentage of scratch */}
+                        {buttonVisible ? (
+                            <button
+                                className="save_rande_btn"
+                                onClick={() => handleRandeSelect(index, rande)}
+                            >
+                                Let's rande!
+                            </button>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     );
 }
