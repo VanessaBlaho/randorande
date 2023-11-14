@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
-import SearchTest from "../search/SearchTest";
 
 export default function MainContent() {
     return (
@@ -11,10 +10,10 @@ export default function MainContent() {
                     <Route path="/" element={<Homepage />} />
                     <Route path="*" element="404: page not found 💔" />
                     <Route path="/date-search" element="Search page" />
-                    <Route
+                    {/* <Route
                         path="/date-search/results"
                         element={<SearchTest />}
-                    />
+                    /> */}
                     {/*<Route path="/my-journal" element={} />
                     <Route path="/about-us" element={} />
                     <Route path="/faq" element={} />
