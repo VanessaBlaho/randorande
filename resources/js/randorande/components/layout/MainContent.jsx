@@ -1,10 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
-import DateSearch from "../DateSearch";
-import ScratchOff from "../../ScratchOff";
-import SearchTest from "../search/SearchTest";
-import { RevealedDateDetail } from "../RevealedDateDetail";
+import DateSearch from "../search/DateSearch";
+import ScratchOff from "../search/ScratchOff";
+import { RevealedDateDetail } from "../search/RevealedDateDetail";
 
 export default function MainContent() {
     return (
@@ -16,7 +15,7 @@ export default function MainContent() {
                     <Route path="/date-search" element={<DateSearch />} />
                     <Route
                         path="/date-search/results"
-                        element={<SearchTest />}
+                        element={<ScratchOff />}
                     />
                     <Route
                         path="/randes/:id"

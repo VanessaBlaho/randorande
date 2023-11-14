@@ -1,11 +1,9 @@
 @import "./layout/homepage";
 @import "./layout/header";
 @import "./layout/footer";
-<<<<<<< HEAD
-@import "datesearch";
-=======
-@import "./layout/revealed_date_detail";
->>>>>>> origin/feat/scratchOff
+@import "./search/datesearch";
+@import "./search/scratchOff.scss";
+@import "./search/revealed_date_detail";
 
 html {
     box-sizing: border-box;

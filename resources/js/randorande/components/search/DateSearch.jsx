@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
-//import ephram's component
-
-import axios from "axios";
+import ScratchOff from "./ScratchOff";
+import ResultsContext from "../../ResultsContext";
 
 const DateSearch = () => {
     // State for filters and results
     const [budgetFilter, setBudgetFilter] = useState("");
     const [seasonFilter, setSeasonFilter] = useState("");
     const [localityFilter, setLocalityFilter] = useState("");
-    const [results, setResults] = useState([]);
+
+    const { setResults } = useContext(ResultsContext);
 
     // Fetch data from the backend based on filters
     const fetchRande = async () => {
@@ -27,9 +26,7 @@ const DateSearch = () => {
 
     //handling search and redirect on button click
     const handleSearch = () => {
-        console.log();
         fetchRande();
-        setSearchNotEmpty(true);
     };
 
     return (
