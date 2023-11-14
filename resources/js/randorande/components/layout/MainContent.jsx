@@ -9,6 +9,7 @@ export default function MainContent() {
                 <Routes>
                     <Route path="/" element={<Homepage />} />
                     <Route path="*" element="404: page not found 💔" />
+                    
                     {/* <Route path="/date-search" element={} />
                     <Route path="/my-journal" element={} />
                     <Route path="/about-us" element={} />
