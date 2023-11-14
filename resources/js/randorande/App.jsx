@@ -9,10 +9,8 @@ export default function App() {
         <BrowserRouter>
             <>
                 <Header />
-                {/* <Header />
                 <MainContent />
-                <Footer /> */}
-                <DateSearch />
+                {/* <Footer /> */}
             </>
         </BrowserRouter>
     );

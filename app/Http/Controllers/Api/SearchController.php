@@ -9,22 +9,16 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function search()
+    public function search(Request $request)
     {
         //taking search query parameters from GET
         $budget_id = request('budget');
-        $winter = request('winter');
-        $spring = request('spring');
-        $summer = request('summer');
-        $fall = request('fall');
-        $indoors = request('indoors');
+        $season = request('season');
+        $indoors = request('locality');
 
         $results = Rande::inRandomOrder()
             ->where('budget_id', $budget_id)
-            ->orWhere('winter', $winter)
-            ->orWhere('spring', $spring)
-            ->orWhere('summer', $summer)
-            ->orWhere('fall', $fall)
+            ->where($season, true)
             ->where('indoors', $indoors)
             ->limit(3)
             ->get();
