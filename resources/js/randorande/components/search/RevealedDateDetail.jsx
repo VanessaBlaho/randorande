@@ -29,10 +29,11 @@ export function RevealedDateDetail () {
             ?(
                 <>
                 <div className="date-detail-image">
-                    <h1>Date name:  {rande.name}</h1>
-                    <img src={rande.image_path} alt={rande.name} />
+                    <h3>Date name: {rande.name}</h3>
+                    
+                    <img src={rande.image_path + '.png'} alt={rande.name} />
                 </div>  
-                <br/>
+                
                 <div className="date-detail-description">
                 <p> {rande.description}
                 </p>
@@ -53,4 +54,12 @@ export function RevealedDateDetail () {
                 </p> */}
 
 
-            
+            //     <div className="date-detail-image">
+            //     <h1>Date name:  {rande.name}</h1>
+            //     <img src={rande.image_path + '.png'} alt={rande.name} />
+            // </div>  
+            // <br/>
+            // <div className="date-detail-description">
+            // <p> {rande.description}
+            // </p>
+            // </div>

@@ -8,8 +8,18 @@
         align-items: center;
         margin: 5%;
     }
+    .date-detail-image{
+        display:flex;
+        flex-direction: column;
+        width: 30%;
+        h3{
+            text-align: center;
+        }
+
+    }
+
 }
-@media (min-width: 768px) {
+@media (min-width: 767px) {
     .date-detail{
         display:flex;
         flex-direction: row-reverse;
@@ -19,6 +29,10 @@
     .date-detail-image{
         display:flex;
         flex-direction: column;
+        width: 20%;
+        h3{
+            text-align: center;
+        }
     }
 
     .date-detail-description{
@@ -26,5 +40,6 @@
         flex-direction: row;
         width: 40%;
         margin-left: 5%;
+        align-items: center;
     }
 }

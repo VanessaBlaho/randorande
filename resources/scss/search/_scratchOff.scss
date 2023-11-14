@@ -68,3 +68,9 @@
     border-radius: 12px;
     padding: 0.5rem 0.25rem 0.5rem 0.25rem;
 }
+
+@media (min-width: 768px) {
+    .scratchOff_container__parent {
+        @include flexRowScratch;
+    }
+}
