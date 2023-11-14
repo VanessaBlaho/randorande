@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import DateSearch from "../search-scratch/DateSearch";
 
-export default function ScratchOff() {
+export default function ScratchOff({results, setResults}) {
     // useState hook variables
-    // array of selected randes from search
-    const [selectedRandes, setSelectedRandes] = useState([]);
+    
     // image object for canvas texture
     const [textureImage, setTextureImage] = useState(new Image());
 
@@ -30,7 +29,7 @@ export default function ScratchOff() {
     const startScratching = (index) => (e) => {
         e.preventDefault();
         // update the selectedRandes state to indicate scratching has started
-        setSelectedRandes((prev) => [
+        setResults((prev) => [
             ...prev.slice(0, index),
             { ...prev[index], isScratching: true },
             ...prev.slice(index + 1),
@@ -40,7 +39,7 @@ export default function ScratchOff() {
     // function to stop scratching (mouseup or touchend event)
     const stopScratching = (index) => () => {
         // updated selectedRandes state to indicate scratching has stopped
-        setSelectedRandes((prev) => [
+        setResults((prev) => [
             ...prev.slice(0, index),
             { ...prev[index], isScratching: false },
             ...prev.slice(index + 1),
@@ -50,22 +49,22 @@ export default function ScratchOff() {
     // function to handle scratching (mousemove or touchmove event)
     const scratch = (index) => (e) => {
         // check if scratching is in progress
-        if (selectedRandes[index] && selectedRandes[index].isScratching) {
+        if (results[index] && results[index].isScratching) {
             // extract coordinates and calculate offset
             const { clientX, clientY } = e.touches ? e.touches[0] : e;
             const { left, top } =
-                selectedRandes[index].canvas.getBoundingClientRect();
+                results[index].canvas.getBoundingClientRect();
             const offsetX = clientX - left;
             const offsetY = clientY - top;
             const radius = 30; // adjust the brush size of the scratch
 
             // clear a circular area to reveal the underlying content
-            selectedRandes[index].ctx.globalCompositeOperation =
+            results[index].ctx.globalCompositeOperation =
                 "destination-out";
-            selectedRandes[index].ctx.beginPath();
+            results[index].ctx.beginPath();
 
             // draw the textured image onto the canvas
-            selectedRandes[index].ctx.drawImage(
+            results[index].ctx.drawImage(
                 textureImage,
                 offsetX - radius,
                 offsetY - radius,
@@ -78,18 +77,18 @@ export default function ScratchOff() {
                 const angle = Math.random() * 2 * Math.PI;
                 const x = offsetX + Math.cos(angle) * radius * Math.random();
                 const y = offsetY + Math.sin(angle) * radius * Math.random();
-                selectedRandes[index].ctx.lineTo(x, y);
+                results[index].ctx.lineTo(x, y);
             }
 
-            selectedRandes[index].ctx.fill();
-            selectedRandes[index].ctx.globalCompositeOperation = "source-over";
+            results[index].ctx.fill();
+            results[index].ctx.globalCompositeOperation = "source-over";
 
             // check if the scratch is at 90%
             const imageData = selectedRandes[index].ctx.getImageData(
                 0,
                 0,
-                selectedRandes[index].canvas.width,
-                selectedRandes[index].canvas.height
+                results[index].canvas.width,
+                results[index].canvas.height
             );
             const pixels = imageData.data;
             const totalPixels = pixels.length / 4; // Each pixel has 4 values (R, G, B, A)
@@ -114,7 +113,7 @@ export default function ScratchOff() {
     // function to handle rande selection
     const handleRandeSelect = (index, rande) => {
         // update the selectedRandes state with the selected rande
-        setSelectedRandes((prev) => [
+        setResults((prev) => [
             ...prev.slice(0, index),
             { ...prev[index], rande, isScratching: false },
             ...prev.slice(index + 1),
@@ -126,7 +125,7 @@ export default function ScratchOff() {
         <div>
             {/* display from randes search */}
             <div className="scratchOff_container__parent">
-                {selectedRandes.map((rande, index) => (
+                {results.map((rande, index) => (
                     <div
                         key={rande.id}
                         id={rande.id}

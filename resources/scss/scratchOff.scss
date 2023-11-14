@@ -1,0 +1,83 @@
+.celebrity_scratch-off {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.scratchOff-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    /* aspect-ratio: 1;
+    --_m: radial-gradient(#000 69%,#0000 70%) 84.5%/50%;
+    -webkit-mask-box-image: var(--_m);
+    mask-border: var(--_m);
+    clip-path: polygon(-42% 0,50% 91%, 142% 0); */
+    
+}  
+
+
+.scratch-card {
+    position: relative;
+    display: inline-block; /* Ensure the container only takes as much space as needed */
+    width: 12rem; /* Set a fixed width for the container */
+    height: 12rem; /* Set a fixed height for the container */
+    margin: 0.625rem; /* Add margin to separate the cards */
+    /* box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent; */
+    
+    /* cursor? */
+    /*  below could be deleted */
+     /* aspect-ratio: 1;
+    --_m: radial-gradient(#000 69%,#0000 70%) 84.5%/50%;
+    -webkit-mask-box-image: var(--_m);
+    mask-border: var(--_m);
+    clip-path: polygon(-42% 0,50% 91%, 142% 0); */
+}
+
+.scratch-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%; /* Make the canvas cover the entire container */
+    /* border: black solid 1px; */
+    height: 100%;
+    /* box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent; */
+    /* below possibly deleted */
+    /* aspect-ratio: 1;
+    --_m: radial-gradient(#000 69%,#0000 70%) 84.5%/50%;
+    -webkit-mask-box-image: var(--_m);
+    mask-border: var(--_m);
+    clip-path: polygon(-42% 0,50% 91%, 142% 0); */
+}
+
+.scratch-mask:hover {
+    cursor: url('/coin-in-hand.png') 10 10, crosshair;
+}
+
+.scratch-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: inherit; /* Make the image cover the entire container */
+    height: auto;
+     /* width: 250px; */
+    aspect-ratio: 1;
+    --_m: radial-gradient(#000 69%,#0000 70%) 84.5%/50%;
+    -webkit-mask-box-image: var(--_m);
+    mask-border: var(--_m);
+    clip-path: polygon(-42% 0,50% 91%, 142% 0);
+    /* box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent; */
+}
+
+.celebrity-info {
+    text-align: center;
+    color: #02455e; ;
+    font-weight: bold;
+}
