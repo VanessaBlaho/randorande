@@ -6,7 +6,7 @@ export function RevealedDateDetail () {
 
         const fetchRandeDetail = async () => {
             try {
-                const response = await fetch('http://www.randorande.test/api/randes/${rande_id}');
+                const response = await fetch('http://www.randorande.test/api/randes/{rande_id}');
                 const data = await response.json();
                 console.log('Data:', data);
                 setRande(data);
