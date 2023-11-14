@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 // import DateSearch from "../search-scratch/DateSearch";
 
 export default function ScratchOff({ results, setResults }) {
-    // useState hook variables
+    // BELOW: useState hook variables
 
+    // for setting the hint as either a hint or the date name upon 90% scratch
     const [hint, setHint] = useState(null);
-
+    // for setting the button as visible upon 90% scratch
     const [buttonVisible, setButtonVisible] = useState(false);
-
     // image object for canvas texture
     const [textureImage, setTextureImage] = useState(new Image());
 
@@ -24,7 +24,6 @@ export default function ScratchOff({ results, setResults }) {
             img.onerror = (error) =>
                 console.error("Error loading texture image:", error);
         };
-
         // call function
         loadImage();
     }, []);
@@ -102,16 +101,12 @@ export default function ScratchOff({ results, setResults }) {
 
             // if the scratch is at 90%, update hint and show "Let's rande!" button
             if (transparentPercentage >= 90) {
+                // update hint content
                 setHint({
                     resultIndex: index,
                     text: results[index].rande.name,
                 });
-                // Update hint and show "Let's rande!" button
-                // document.querySelector(
-                //     ".scratchOff_container__child-hint"
-                // ).innerText = results[index].rande.name;
-                // document.querySelector(".save_rande_btn").style.display =
-                //     "block";
+                // show "Let's rande!" button
                 setButtonVisible(true);
             }
         }
@@ -174,14 +169,19 @@ export default function ScratchOff({ results, setResults }) {
                         </div>
                         {/* below button saves the rande but only appears after a percentage of scratch */}
                         {buttonVisible ? (
-                            <button
-                                className="save_rande_btn"
-                                onClick={() => handleRandeSelect(index, rande)}
-                            >
-                                Let's rande!
-                            </button>
+                            // display button...
+                            <Link to={`/randes/${rande.id}`}>
+                                <button
+                                    className="save_rande_btn"
+                                    onClick={() =>
+                                        handleRandeSelect(index, rande)
+                                    }
+                                >
+                                    Let's rande!
+                                </button>
+                            </Link>
                         ) : (
-                            ""
+                            "" // ...or show empty string
                         )}
                     </div>
                 ))}
