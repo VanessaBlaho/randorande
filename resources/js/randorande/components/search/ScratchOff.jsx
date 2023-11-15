@@ -6,15 +6,17 @@ import ResultsContext from "../../ResultsContext";
 export default function ScratchOff() {
     // BELOW: useState hook variables
     const { results, setResults } = useContext(ResultsContext);
-
     const canvasRefs = useRef([]);
-
     // for setting the hint as either a hint or the date name upon 90% scratch
     const [hint, setHint] = useState(null);
     // for setting the button as visible upon 90% scratch
     const [buttonVisible, setButtonVisible] = useState([]); //false earlier
     // THIS Track the index of the canvas being scratched
     const [scratchedCanvasIndex, setScratchedCanvasIndex] = useState(null);
+    // Track scratch percentage for each canvas
+    const [scratchPercentage, setScratchPercentage] = useState(
+        Array(results.length).fill(0)
+    );
 
     const loadImage = () => {
         const img = new Image();
@@ -120,6 +122,13 @@ export default function ScratchOff() {
             const transparentPercentage =
                 (transparentPixels.length / totalPixels) * 100;
 
+            // Update scratch percentage
+            setScratchPercentage((prev) => {
+                const newPercentages = [...prev];
+                newPercentages[index] = transparentPercentage;
+                return newPercentages;
+            });
+
             // if the scratch is at 90%, update hint and show "Let's rande!" button
             if (transparentPercentage >= 90) {
                 // update hint content
@@ -197,7 +206,7 @@ export default function ScratchOff() {
                         </div>
                         <div class="button_div">
                             {/* below button saves the rande but only appears after a percentage of scratch */}
-                            {buttonVisible[index] ? (
+                            {scratchPercentage[index] >= 90 ? (
                                 // display button...
                                 <Link to={`/randes/${rande.id}`}>
                                     <button
@@ -211,7 +220,6 @@ export default function ScratchOff() {
                                 </Link>
                             ) : (
                                 "" // ...or show empty string
-                            
                             )}
                         </div>
                     </div>
