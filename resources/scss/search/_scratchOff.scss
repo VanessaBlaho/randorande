@@ -1,9 +1,8 @@
 //color palette testing 1
 $CPT1: #ffe1e1;
-$CPT2: #90A17D;
+$CPT2: #90a17d;
 $CPT3: #829460;
-$CPT4: #EEEEEE;
-
+$CPT4: #eeeeee;
 
 @mixin flexRowScratch {
     display: flex;
@@ -22,7 +21,7 @@ $CPT4: #EEEEEE;
 }
 
 @mixin shadow {
-    box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent;
+    box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
 }
 
 @mixin curvedBorder {
@@ -90,7 +89,7 @@ body {
     -webkit-user-select: none;
     user-select: none;
     &:hover {
-        cursor: url('/images/cursors/coin-in-hand.png') 10 10, crosshair;
+        cursor: url("/images/cursors/coin-in-hand.png") 10 10, crosshair;
     }
 }
 

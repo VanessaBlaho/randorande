@@ -247,7 +247,9 @@ export default function ScratchOff() {
     return (
         <>
             <h1 className="results_h1">Your Date Idea Results</h1>
-            <p className="scratch_instructions">Check the hints and select 1 date to scratch</p>
+            <p className="scratch_instructions">
+                Check the hints and select 1 date to scratch
+            </p>
             {canvasesReady && (
                 /* DISPLAY FROM RANDES SEARCH */
                 /* below div contains all 3 scratch-offs */
