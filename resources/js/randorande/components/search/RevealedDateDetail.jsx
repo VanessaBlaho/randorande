@@ -28,10 +28,8 @@ export function RevealedDateDetail () {
             rande
             ?(
                 <>
-                <div className="date-detail-name"><h3>Rande name: {rande.name}</h3>
-                </div>
                 <div className="date-detail-image">
-                    
+                    <h3>Date name: {rande.name}</h3>
                     
                     <img src={rande.image_path + '.png'} alt={rande.name} />
                 </div>  

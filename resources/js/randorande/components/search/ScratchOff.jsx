@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import ResultsContext from "../../ResultsContext";
 // import DateSearch from "../search-scratch/DateSearch";
 
-export default function ScratchOff({ results, setResults }) {
+export default function ScratchOff() {
     // BELOW: useState hook variables
+    const { results, setResults } = useContext(ResultsContext);
 
     // for setting the hint as either a hint or the date name upon 90% scratch
     const [hint, setHint] = useState(null);
