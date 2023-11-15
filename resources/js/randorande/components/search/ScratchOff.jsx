@@ -6,6 +6,7 @@ import ResultsContext from "../../ResultsContext";
 export default function ScratchOff() {
     // BELOW: useState hook variables
     const { results, setResults } = useContext(ResultsContext);
+
     const canvasRefs = useRef(Array(results.length).fill(null));
     // for setting the hint as either a hint or the date name upon 75% scratch
     const [hint, setHint] = useState(null);
@@ -17,7 +18,56 @@ export default function ScratchOff() {
     const [scratchPercentage, setScratchPercentage] = useState(
         Array(results.length).fill(0)
     );
+
+    const [scratchableImage, setScratchableImage] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
+    const [canvasesReady, setCanvasesReady] = useState(false);
+    console.log(results);
+    console.log(canvasRefs.current.length);
+
+    // canvases are loaded when there is the same number of them
+    // as is the number of results and they all have their references
+    const allCanvasesLoaded =
+        canvasRefs.current.length === results.length &&
+        undefined === canvasRefs.current.find((item) => item === null);
+
+    useEffect(() => {
+        console.log("allCanvasesLoaded", allCanvasesLoaded);
+        if (imageLoaded && allCanvasesLoaded) {
+            console.log("ALL READY, initializeCanvases");
+            initializeCanvases();
+        }
+    }, [imageLoaded, allCanvasesLoaded]);
+
+    const initializeCanvases = () => {
+        console.log(scratchableImage);
+        console.log(canvasRefs.current.length);
+        canvasRefs.current.forEach((canvas, index) => {
+            if (canvas) {
+                const ctx = canvas.getContext("2d");
+                const parentWidth = canvas.parentNode.clientWidth;
+                const parentHeight = canvas.parentNode.clientHeight;
+
+                // Set canvas width and height
+                canvas.width = parentWidth;
+                canvas.height = parentHeight;
+
+                // Assuming 'img' is an image element you want to draw
+                console.log("Drawing image", parentWidth, parentHeight);
+                ctx.drawImage(
+                    scratchableImage,
+                    0,
+                    0,
+                    parentWidth,
+                    parentHeight
+                );
+            } else {
+                console.error("Canvas is not defined at index", index);
+            }
+        });
+
+        setCanvasesReady(true);
+    };
 
     const loadImage = () => {
         const img = new Image();
@@ -25,45 +75,34 @@ export default function ScratchOff() {
         // below sets the texture image when it's loaded
         // img.onload = () => setTextureImage(img);
         img.onload = function () {
-            canvasRefs.current.forEach((canvas, index) => {
-                if (canvas) {
-                    const ctx = canvas.getContext("2d");
-                    const parentWidth = canvas.parentNode.clientWidth;
-                    const parentHeight = canvas.parentNode.clientHeight;
-
-                    // Set canvas width and height
-                    canvas.width = parentWidth;
-                    canvas.height = parentHeight;
-
-                    // Assuming 'img' is an image element you want to draw
-                    ctx.drawImage(img, 0, 0, parentWidth, parentHeight);
-                } else {
-                    console.error("Canvas is not defined at index", index);
-                }
-            });
-            // EXPERIMENT:
+            console.log("Setting image loaded");
             setImageLoaded(true);
             // setTextureImage(img);
         };
         // log an error if image doesn't load
         img.onerror = (error) =>
             console.error("Error loading texture image:", error);
+
+        setScratchableImage(img);
     };
 
     // useEffect hook will load the textureImage onto the canvas surface when the component mounts
     useEffect(() => {
         //THIS // Initialize buttonVisible array with false values for each result
         setButtonVisible(Array(results.length).fill(false));
-        // below functions loads the texture image
-
-        // call function
-        loadImage();
     }, [results]);
+
+    // pre-load the scratchabe image just once
+    useEffect(() => {
+        console.log("Loading one image");
+        // below functions loads the texture image
+        loadImage();
+    }, []);
 
     // function to start scratching (mousedown or touchstart event)
     const startScratching = (index) => (e) => {
         e.preventDefault();
-        if (imageLoaded) {
+        if (canvasesReady) {
             setResults((prev) => [
                 ...prev.slice(0, index),
                 { ...prev[index], isScratching: true },
@@ -74,7 +113,7 @@ export default function ScratchOff() {
 
     // function to stop scratching (mouseup or touchend event)
     const stopScratching = (index) => () => {
-        if (imageLoaded) {
+        if (canvasesReady) {
             // updated results state to indicate scratching has stopped
             setResults((prev) => [
                 ...prev.slice(0, index),
@@ -104,7 +143,7 @@ export default function ScratchOff() {
     // function to handle scratching (mousemove or touchmove event)
     const scratch = (index) => (e) => {
         // EXPERIMENT:
-        if (imageLoaded) {
+        if (canvasesReady) {
             // THIS
             const canvas = canvasRefs.current[index];
             if (!canvas) {
@@ -217,7 +256,7 @@ export default function ScratchOff() {
     // render component
     return (
         <>
-            {imageLoaded && (
+            {canvasesReady && (
                 /* DISPLAY FROM RANDES SEARCH */
                 /* below div contains all 3 scratch-offs */
                 <div className="scratchOff_container__parent">
