@@ -32,17 +32,16 @@ export function RevealedDateDetail () {
             rande
             ?(
                 <>
-                <div className="date-detail-name"><h3>Rande name: {rande.name}</h3>
+                <div className="date-detail-name">
+                    <h3>Rande name: {rande.name}</h3>
                 </div>
-                <div className="date-detail-image">
-                    
-                    
-                    <img src={rande.image_path + '.png'} alt={rande.name} />
+                <div className="date-detail-image"> 
+                    <img src={rande.image_path + '.png'} alt={rande.name}/>
                 </div>  
                 
                 <div className="date-detail-description">
-                <p> {rande.description}
-                </p>
+                    <p> {rande.description}
+                    </p>
                 </div>
                 </>
             )
