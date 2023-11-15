@@ -75,6 +75,11 @@ export default function ScratchOff() {
             { ...prev[index], isScratching: false },
             ...prev.slice(index + 1),
         ]);
+        // Call persistScratch to keep the scratch state
+        // Add a delay before calling persistScratch to allow the canvas to update
+        setTimeout(() => {
+            persistScratch(index)();
+        }, 100); // You can adjust the delay duration as needed
     };
 
     // function to handle scratching (mousemove or touchmove event)
@@ -158,6 +163,20 @@ export default function ScratchOff() {
         ]);
     };
 
+        // function to persist the scratch when mouse leaves
+    const persistScratch = (index) => () => {
+        // Set the index of the scratched canvas
+        setScratchedCanvasIndex(index);
+        // show "Let's rande!" button for the current canvas
+        setButtonVisible((prev) => {
+            const newVisibility = [...prev];
+            newVisibility[index] = true;
+            return newVisibility;
+        });
+
+
+    };
+
     // render component
     return (
         <>
@@ -183,6 +202,10 @@ export default function ScratchOff() {
                                 onTouchEnd={stopScratching(index)}
                                 onMouseMove={scratch(index)}
                                 onTouchMove={scratch(index)}
+                                // onMouseLeave={persistScratch(index)}
+                                onMouseLeave={() => persistScratch(index)}
+                                // onTouchCancel={persistScratch(index)}
+                                onTouchCancel={() => persistScratch(index)}
                                 style={{
                                     cursor: results[index]?.isScratching
                                         ? "url(/images/cursors/coin-scratch.png) 0 0, auto"
