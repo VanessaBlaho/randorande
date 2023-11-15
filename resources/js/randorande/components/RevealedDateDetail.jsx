@@ -1,15 +1,19 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 export function RevealedDateDetail () {
+    const { rande_id } = useParams();
     const [rande,setRande] = useState(null)
 
         const fetchRandeDetail = async () => {
             try {
-                let rande_id = 1
+                
                 const response = await fetch(`/api/randes/${rande_id}`);
                 const data = await response.json();
                 console.log('Data:', data);
+                console.log('Setting Rande:', data);
+
                 setRande(data);
             } catch (error) {
                 console.log(error)
@@ -18,7 +22,7 @@ export function RevealedDateDetail () {
     
         useEffect(() => {
             fetchRandeDetail()
-        }, [])
+        }, [rande_id])
 
     return(
         
