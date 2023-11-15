@@ -28,6 +28,20 @@ $CPT4: #eeeeee;
     border-radius: 12px;
 }
 
+@mixin curvedBorderTop {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+@mixin curvedBorderBottom {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 body {
     background: beige;
 }
@@ -46,7 +60,7 @@ body {
 // below div contains all 3 scratch-offs
 .scratchOff_container__parent {
     @include flexColScratch; // mobile friendly, switch to row in bigger screen
-    background: lightgray;
+    background: $CPT1;
     width: fit-content; // maybe we won't need this
     align-items: center;
     justify-content: space-around; // Adjust this value to control the spacing
@@ -54,14 +68,15 @@ body {
     margin-bottom: 5rem;
     @include shadow;
     @include curvedBorder;
+    border: black solid 3px;
 }
 
 // below div contains 1 scratch-off
 .scratchOff_container__child {
     @include flexColScratch;
-    border: $CPT3 solid 3px;
+    border: black solid 3px;
     margin: 0.625rem;
-    background: $CPT1;
+    background: $CPT2;
     @include shadow;
     @include curvedBorder;
 }
@@ -73,8 +88,8 @@ body {
     width: 12rem; /* fixed width for the scratch card */
     height: 12rem; /* fixed height for the scratch card */
     margin: 0.625rem; /* margin to separate the cards */
-    border: 3px black dotted;
-    @include curvedBorder;
+    border: black dotted 3px;
+    @include curvedBorderTop;
     margin-bottom: 0;
 }
 
@@ -83,7 +98,7 @@ body {
     z-index: 1;
     width: 100%; /* make the canvas cover the entire scratch card */
     height: 100%;
-    @include curvedBorder;
+    @include curvedBorderTop;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -101,10 +116,10 @@ body {
 }
 
 .scratchOff_container__child-hint-container {
-    background: $CPT3;
-    margin: 0.6rem;
+    background: black;
+    margin: 0.63rem;
     margin-top: 0;
-    @include curvedBorder;
+    @include curvedBorderBottom;
     height: fit-content;
     h5 {
         padding: 0;
@@ -114,7 +129,7 @@ body {
 
 .scratchOff_container__child-hint {
     text-align: center;
-    color: white;
+    color: $CPT4;
     font-weight: bold;
     white-space: nowrap; // might not need this
 }
@@ -128,7 +143,7 @@ body {
 
 .save_rande_btn {
     margin: 0 auto;
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.56rem;
     width: fit-content;
     white-space: nowrap;
     @include curvedBorder;
