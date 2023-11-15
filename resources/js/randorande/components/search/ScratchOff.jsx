@@ -7,9 +7,9 @@ export default function ScratchOff() {
     // BELOW: useState hook variables
     const { results, setResults } = useContext(ResultsContext);
     const canvasRefs = useRef([]);
-    // for setting the hint as either a hint or the date name upon 90% scratch
+    // for setting the hint as either a hint or the date name upon 75% scratch
     const [hint, setHint] = useState(null);
-    // for setting the button as visible upon 90% scratch
+    // for setting the button as visible upon 75% scratch
     const [buttonVisible, setButtonVisible] = useState([]); //false earlier
     // THIS Track the index of the canvas being scratched
     const [scratchedCanvasIndex, setScratchedCanvasIndex] = useState(null);
@@ -17,6 +17,7 @@ export default function ScratchOff() {
     const [scratchPercentage, setScratchPercentage] = useState(
         Array(results.length).fill(0)
     );
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const loadImage = () => {
         const img = new Image();
@@ -36,14 +37,15 @@ export default function ScratchOff() {
                 // Assuming 'img' is an image element you want to draw
                 ctx.drawImage(img, 0, 0, parentWidth, parentHeight);
             });
-
+            // EXPERIMENT:
+            setImageLoaded(true);
             // setTextureImage(img);
         };
         // log an error if image doesn't load
         img.onerror = (error) =>
             console.error("Error loading texture image:", error);
 
-        console.log(img);
+        // console.log(img);
     };
 
     // useEffect hook will load the textureImage onto the canvas surface when the component mounts
@@ -59,96 +61,117 @@ export default function ScratchOff() {
     // function to start scratching (mousedown or touchstart event)
     const startScratching = (index) => (e) => {
         e.preventDefault();
-        // update the results state to indicate scratching has started
-        setResults((prev) => [
-            ...prev.slice(0, index),
-            { ...prev[index], isScratching: true },
-            ...prev.slice(index + 1),
-        ]);
+        if (imageLoaded) {
+            setResults((prev) => [
+                ...prev.slice(0, index),
+                { ...prev[index], isScratching: true },
+                ...prev.slice(index + 1),
+            ]);
+        }
     };
 
     // function to stop scratching (mouseup or touchend event)
     const stopScratching = (index) => () => {
-        // updated results state to indicate scratching has stopped
-        setResults((prev) => [
-            ...prev.slice(0, index),
-            { ...prev[index], isScratching: false },
-            ...prev.slice(index + 1),
-        ]);
-        // Call persistScratch to keep the scratch state
-        // Add a delay before calling persistScratch to allow the canvas to update
-        setTimeout(() => {
-            persistScratch(index)();
-        }, 100); // You can adjust the delay duration as needed
+        if (imageLoaded) {
+            // updated results state to indicate scratching has stopped
+            setResults((prev) => [
+                ...prev.slice(0, index),
+                { ...prev[index], isScratching: false },
+                ...prev.slice(index + 1),
+            ]);
+            // Call persistScratch to keep the scratch state
+            // Add a delay before calling persistScratch to allow the canvas to update
+            // setTimeout(() => {
+            //     persistScratch(index)();
+            // }, 1000); // adjust the delay duration as needed
+        }
     };
+
+    // New useEffect for handling scratchPercentage updates
+    useEffect(() => {
+        if (scratchPercentage[scratchedCanvasIndex] >= 75) {
+            const timeoutId = setTimeout(() => {
+                persistScratch(scratchedCanvasIndex)();
+            }, 1000); // Adjust the delay duration as needed
+
+            // Cleanup the timeout on component unmount or when the scratch state changes
+            return () => clearTimeout(timeoutId);
+        }
+    }, [scratchedCanvasIndex, scratchPercentage[scratchedCanvasIndex]]);
 
     // function to handle scratching (mousemove or touchmove event)
     const scratch = (index) => (e) => {
-        // THIS
-        const canvas = canvasRefs.current[index];
-        const ctx = canvas.getContext("2d");
+        // EXPERIMENT:
+        if (imageLoaded) {
+            // THIS
+            const canvas = canvasRefs.current[index];
+            const ctx = canvas.getContext("2d");
 
-        // check if scratching is in progress
-        if (results[index] && results[index].isScratching) {
-            // extract coordinates and calculate offset
-            const { clientX, clientY } = e.touches ? e.touches[0] : e;
-            const { left, top } = canvas.getBoundingClientRect();
-            const offsetX = clientX - left;
-            const offsetY = clientY - top;
-            const radius = 50; // adjust the brush size of the scratch
+            // check if scratching is in progress
+            if (results[index] && results[index].isScratching) {
+                // extract coordinates and calculate offset
+                const { clientX, clientY } = e.touches ? e.touches[0] : e;
+                const { left, top } = canvas.getBoundingClientRect();
+                const offsetX = clientX - left;
+                const offsetY = clientY - top;
+                const radius = 50; // adjust the brush size of the scratch
 
-            // clear a circular area to reveal the underlying content
-            ctx.globalCompositeOperation = "destination-out";
-            ctx.beginPath();
+                // clear a circular area to reveal the underlying content
+                ctx.globalCompositeOperation = "destination-out";
+                ctx.beginPath();
 
-            // code below creates a "jagged" scratch appearance
-            for (let i = 0; i < 20; i++) {
-                const angle = Math.random() * 2 * Math.PI;
-                const x = offsetX + Math.cos(angle) * radius * Math.random();
-                const y = offsetY + Math.sin(angle) * radius * Math.random();
-                ctx.lineTo(x, y);
-            }
+                // code below creates a "jagged" scratch appearance
+                for (let i = 0; i < 20; i++) {
+                    const angle = Math.random() * 2 * Math.PI;
+                    const x =
+                        offsetX + Math.cos(angle) * radius * Math.random();
+                    const y =
+                        offsetY + Math.sin(angle) * radius * Math.random();
+                    ctx.lineTo(x, y);
+                }
 
-            ctx.fill();
-            ctx.globalCompositeOperation = "source-over";
+                ctx.fill();
+                ctx.globalCompositeOperation = "source-over";
 
-            // check if the scratch is at 90%
-            const imageData = ctx.getImageData(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-            const pixels = imageData.data;
-            const totalPixels = pixels.length / 4; // Each pixel has 4 values (R, G, B, A)
-            const transparentPixels = Array.from(pixels).filter(
-                (pixel, i) => i % 4 === 3 && pixel === 0
-            );
-            const transparentPercentage =
-                (transparentPixels.length / totalPixels) * 100;
+                const imageData = ctx.getImageData(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+                ctx.canvas.getContext("2d").willReadFrequently = true;
 
-            // Update scratch percentage
-            setScratchPercentage((prev) => {
-                const newPercentages = [...prev];
-                newPercentages[index] = transparentPercentage;
-                return newPercentages;
-            });
+                const pixels = imageData.data;
+                const totalPixels = pixels.length / 4; // Each pixel has 4 values (R, G, B, A)
+                const transparentPixels = Array.from(pixels).filter(
+                    (pixel, i) => i % 4 === 3 && pixel === 0
+                );
+                const transparentPercentage =
+                    (transparentPixels.length / totalPixels) * 100;
 
-            // if the scratch is at 90%, update hint and show "Let's rande!" button
-            if (transparentPercentage >= 90) {
-                // update hint content
-                setHint({
-                    resultIndex: index,
-                    text: results[index].name,
+                // Update scratch percentage
+                setScratchPercentage((prev) => {
+                    const newPercentages = [...prev];
+                    newPercentages[index] = transparentPercentage;
+                    return newPercentages;
                 });
-                // show "Let's rande!" button for the current canvas
-                setButtonVisible((prev) => {
-                    const newVisibility = [...prev];
-                    newVisibility[index] = true;
-                    return newVisibility;
-                });
-                // Set the index of the scratched canvas
-                setScratchedCanvasIndex(index);
+
+                // if the scratch is at 75%, update hint and show "Let's rande!" button
+                if (transparentPercentage >= 75) {
+                    // update hint content
+                    setHint({
+                        resultIndex: index,
+                        text: results[index].name,
+                    });
+                    // show "Let's rande!" button for the current canvas
+                    setButtonVisible((prev) => {
+                        const newVisibility = [...prev];
+                        newVisibility[index] = true;
+                        return newVisibility;
+                    });
+                    // Set the index of the scratched canvas
+                    setScratchedCanvasIndex(index);
+                }
             }
         }
     };
@@ -163,8 +186,9 @@ export default function ScratchOff() {
         ]);
     };
 
-        // function to persist the scratch when mouse leaves
+    // function to persist the scratch when mouse leaves
     const persistScratch = (index) => () => {
+        console.log("Persisting scratch for index:", index);
         // Set the index of the scratched canvas
         setScratchedCanvasIndex(index);
         // show "Let's rande!" button for the current canvas
@@ -173,8 +197,6 @@ export default function ScratchOff() {
             newVisibility[index] = true;
             return newVisibility;
         });
-
-
     };
 
     // render component
@@ -227,9 +249,9 @@ export default function ScratchOff() {
                                     : rande.hint_path}
                             </h3>
                         </div>
-                        <div class="button_div">
+                        <div className="button_div">
                             {/* below button saves the rande but only appears after a percentage of scratch */}
-                            {scratchPercentage[index] >= 90 ? (
+                            {scratchPercentage[index] >= 75 ? (
                                 // display button...
                                 <Link to={`/randes/${rande.id}`}>
                                     <button
