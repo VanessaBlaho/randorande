@@ -76,6 +76,7 @@ body {
     margin: 0.625rem; /* margin to separate the cards */
     border: 3px black dotted;
     @include curvedBorder;
+    margin-bottom: 0;
 }
 
 .scratch_card__mask {
@@ -84,6 +85,10 @@ body {
     width: 100%; /* make the canvas cover the entire scratch card */
     height: 100%;
     @include curvedBorder;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
     &:hover {
         cursor: url('/images/cursors/coin-in-hand.png') 10 10, crosshair;
     }
@@ -99,8 +104,13 @@ body {
 .scratchOff_container__child-hint-container {
     background: $CPT3;
     margin: 0.6rem;
+    margin-top: 0;
     @include curvedBorder;
     height: fit-content;
+    h5 {
+        padding: 0;
+        margin: 0.6rem 0;
+    }
 }
 
 .scratchOff_container__child-hint {
@@ -138,4 +148,3 @@ body {
         @include flexRowScratch;
     }
 }
-
