@@ -19,6 +19,7 @@
     @include flexColScratch; // mobile friendly, switch to row in bigger screen
     background: lightgray;
     width: fit-content; // maybe we won't need this
+    align-items: center;
 }
 
 // below div contains 1 scratch-off
@@ -62,15 +63,27 @@
     white-space: nowrap; // might not need this
 }
 
+
+.button_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+}
+
 .save_rande_btn {
+    margin: 0 auto;
     width: fit-content;
     white-space: nowrap;
     border-radius: 12px;
     padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+    cursor: pointer;
 }
+
 
 @media (min-width: 768px) {
     .scratchOff_container__parent {
         @include flexRowScratch;
     }
 }
+

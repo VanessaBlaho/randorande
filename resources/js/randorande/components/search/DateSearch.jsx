@@ -19,6 +19,7 @@ const DateSearch = () => {
             );
             const data = await response.json();
             setResults(data);
+            
         } catch (error) {
             console.log(error);
         }
