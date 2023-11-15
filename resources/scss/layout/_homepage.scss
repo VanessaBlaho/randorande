@@ -1,83 +1,104 @@
 .homepage {
     @include flexCol;
-    width: 100vw;
+    width: 100%;
+
 
     &__logo {
-        img {
-            height: 20rem; // Reduced height for smaller screens
-        }
+        background-color: greenyellow;
+        width: 20rem;
+        height: 10rem;
+        text-align: center;
+
+        // img {
+        //     width: 100%;
+        //     height: 100%;
+        // }
     }
 
     &__instructions {
         @include flexCol;
         //color: grey; will be raplaced with main style color
-        margin: 1rem;
         text-align: justify;
         width: 100%;
         padding: 0;
 
+
         &-title {
-            font-size: 3rem; // Smaller font for mobile
+            font-size: 2rem; // Smaller font for mobile
             font-weight: 400;
         }
 
+
         &-list {
-            align-items: stretch;
+            @include flexCol;
+            width: 90%;
+            height: 30%;
             list-style: none;
-            line-height: 1.8;
-            margin-left: 2rem;
-            margin-left: 2rem;
-            width: 85%;
-            padding: 0;
+            line-height: 1.5;
+            padding-left: 0;
         }
 
         &-item {
-            align-content: stretch;
+            text-align: center;
             width: 100%;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+        }
 
+        &-btn-trigger {
+            height: 2rem;
+            width: 8rem;
+            margin: 0.5rem;
+            font-size: 1rem;
+            text-align: center;
         }
     }
 
-    &__btn-trigger {
-        height: 4rem;
-        width: 16rem;
-        margin: 2rem;
-        font-size: 2rem;
-        text-align: center;
-    }
+
 
     //desktop design
     @media (min-width: 768px) {
 
-        &__logo {
-            margin-bottom: -5rem;
 
-            img {
-                height: 20rem; // Increase height for larger screens
-            }
+        &__logo {
+            background-color: greenyellow;
+            width: 30rem;
+            height: 10rem;
+            margin-bottom: 1rem;
+
+
+            // img {
+            //     height: 20rem; // Increase height for larger screens
+            // }
         }
 
         &__instructions {
+            justify-content: space-around;
+            width: 50%;
+
+
             &-title {
                 font-size: 3rem; // Larger font for desktop
+                margin: 0;
+
             }
 
-            &-list {
-                width: 50%;
-                text-align: center;
 
+            &-list {
+                flex: 1;
+                height: 15rem;
+                text-align: center;
             }
 
             &-item {
-                font-size: 1.5rem; // Adjust font size for desktop
+                font-size: 1.3rem;
             }
-        }
 
-        &__btn-trigger {
-            height: 3rem; // Adjust button size for desktop
-            width: 12rem;
-            font-size: 1.5rem; // Adjust font size for desktop
+            &-btn-trigger {
+                height: 2.2rem;
+                width: 10rem;
+                margin-bottom: 0.5rem;
+                font-size: 1.2rem;
+            }
         }
     }
 }
