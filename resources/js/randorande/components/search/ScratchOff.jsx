@@ -6,7 +6,7 @@ import ResultsContext from "../../ResultsContext";
 export default function ScratchOff() {
     // BELOW: useState hook variables
     const { results, setResults } = useContext(ResultsContext);
-    const canvasRefs = useRef([]);
+    const canvasRefs = useRef(Array(results.length).fill(null));
     // for setting the hint as either a hint or the date name upon 75% scratch
     const [hint, setHint] = useState(null);
     // for setting the button as visible upon 75% scratch
@@ -25,17 +25,21 @@ export default function ScratchOff() {
         // below sets the texture image when it's loaded
         // img.onload = () => setTextureImage(img);
         img.onload = function () {
-            canvasRefs.current.forEach((canvas) => {
-                const ctx = canvas.getContext("2d");
-                const parentWidth = canvas.parentNode.clientWidth;
-                const parentHeight = canvas.parentNode.clientHeight;
+            canvasRefs.current.forEach((canvas, index) => {
+                if (canvas) {
+                    const ctx = canvas.getContext("2d");
+                    const parentWidth = canvas.parentNode.clientWidth;
+                    const parentHeight = canvas.parentNode.clientHeight;
 
-                // Set canvas width and height
-                canvas.width = parentWidth;
-                canvas.height = parentHeight;
+                    // Set canvas width and height
+                    canvas.width = parentWidth;
+                    canvas.height = parentHeight;
 
-                // Assuming 'img' is an image element you want to draw
-                ctx.drawImage(img, 0, 0, parentWidth, parentHeight);
+                    // Assuming 'img' is an image element you want to draw
+                    ctx.drawImage(img, 0, 0, parentWidth, parentHeight);
+                } else {
+                    console.error("Canvas is not defined at index", index);
+                }
             });
             // EXPERIMENT:
             setImageLoaded(true);
@@ -44,9 +48,8 @@ export default function ScratchOff() {
         // log an error if image doesn't load
         img.onerror = (error) =>
             console.error("Error loading texture image:", error);
-
-        // console.log(img);
     };
+
 
     // useEffect hook will load the textureImage onto the canvas surface when the component mounts
     useEffect(() => {
@@ -105,6 +108,11 @@ export default function ScratchOff() {
         if (imageLoaded) {
             // THIS
             const canvas = canvasRefs.current[index];
+            if (!canvas) {
+                // Handle the case where canvas is not defined
+                console.error("Canvas is not defined at index", index);
+                return;
+            }
             const ctx = canvas.getContext("2d");
 
             // check if scratching is in progress
@@ -216,6 +224,7 @@ export default function ScratchOff() {
                         <div className="scratchOff_container__child_scratch-card">
                             {/* below canvas is actual scratch area */}
                             <canvas
+                                id={`scratch-${index}`}
                                 ref={(ref) => (canvasRefs.current[index] = ref)}
                                 className="scratch_card__mask"
                                 onMouseDown={startScratching(index)}
