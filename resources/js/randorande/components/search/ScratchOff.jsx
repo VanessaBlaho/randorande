@@ -1,59 +1,60 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
+// below imports search data from DateSearch.jsx component via ResultsContext.js
 import ResultsContext from "../../ResultsContext";
-// import DateSearch from "../search-scratch/DateSearch";
 
 export default function ScratchOff() {
-    // BELOW: useState hook variables
+    // BELOW: main useState hook variables
+    // for retrieving the date idea search results
     const { results, setResults } = useContext(ResultsContext);
-
+    // for referencing canvases
     const canvasRefs = useRef(Array(results.length).fill(null));
-    // for setting the hint as either a hint or the date name upon 75% scratch
+    // for setting the hint as either a hint or the date name upon 60% scratch
     const [hint, setHint] = useState(null);
-    // for setting the button as visible upon 75% scratch
+    // for setting the relevant button as visible upon 60% scratch
     const [buttonVisible, setButtonVisible] = useState([]); //false earlier
-    // THIS Track the index of the canvas being scratched
+    // for tracking the index of the canvas being scratched
     const [scratchedCanvasIndex, setScratchedCanvasIndex] = useState(null);
-    // Track scratch percentage for each canvas
+    // for tracking the scratch percentage for each canvas
     const [scratchPercentage, setScratchPercentage] = useState(
         Array(results.length).fill(0)
     );
-
+    // BELOW: for loading the DOC elements in the correct order
     const [scratchableImage, setScratchableImage] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [canvasesReady, setCanvasesReady] = useState(false);
-    console.log(results);
-    console.log(canvasRefs.current.length);
+    // // console.log(results);
+    // // console.log(canvasRefs.current.length);
 
     // canvases are loaded when there is the same number of them
-    // as is the number of results and they all have their references
+    // as is the number of results, and they all have their own references
     const allCanvasesLoaded =
         canvasRefs.current.length === results.length &&
         undefined === canvasRefs.current.find((item) => item === null);
 
     useEffect(() => {
-        console.log("allCanvasesLoaded", allCanvasesLoaded);
+        // // console.log("allCanvasesLoaded", allCanvasesLoaded);
         if (imageLoaded && allCanvasesLoaded) {
-            console.log("ALL READY, initializeCanvases");
+            // // console.log("ALL READY, initializeCanvases");
             initializeCanvases();
         }
-    }, [imageLoaded, allCanvasesLoaded]);
+    }, [imageLoaded, allCanvasesLoaded]); // mounts when scratch texture img and canvases are loaded
 
     const initializeCanvases = () => {
-        console.log(scratchableImage);
-        console.log(canvasRefs.current.length);
+        // // console.log(scratchableImage);
+        // // console.log(canvasRefs.current.length);
         canvasRefs.current.forEach((canvas, index) => {
             if (canvas) {
                 const ctx = canvas.getContext("2d");
                 const parentWidth = canvas.parentNode.clientWidth;
                 const parentHeight = canvas.parentNode.clientHeight;
 
-                // Set canvas width and height
+                // set canvas width and height to match parent element
                 canvas.width = parentWidth;
                 canvas.height = parentHeight;
 
-                // Assuming 'img' is an image element you want to draw
-                console.log("Drawing image", parentWidth, parentHeight);
+                // assuming 'img' is an image element that is to be drawn
+                // // console.log("Drawing image", parentWidth, parentHeight);
                 ctx.drawImage(
                     scratchableImage,
                     0,
@@ -65,7 +66,6 @@ export default function ScratchOff() {
                 console.error("Canvas is not defined at index", index);
             }
         });
-
         setCanvasesReady(true);
     };
 
@@ -73,11 +73,9 @@ export default function ScratchOff() {
         const img = new Image();
         img.src = "/images/scratchOff/scratchOff_background.png";
         // below sets the texture image when it's loaded
-        // img.onload = () => setTextureImage(img);
         img.onload = function () {
-            console.log("Setting image loaded");
+            // // console.log("Setting image loaded");
             setImageLoaded(true);
-            // setTextureImage(img);
         };
         // log an error if image doesn't load
         img.onerror = (error) =>
@@ -88,14 +86,14 @@ export default function ScratchOff() {
 
     // useEffect hook will load the textureImage onto the canvas surface when the component mounts
     useEffect(() => {
-        //THIS // Initialize buttonVisible array with false values for each result
+        // initialize buttonVisible array with false values for each result
         setButtonVisible(Array(results.length).fill(false));
     }, [results]);
 
-    // pre-load the scratchabe image just once
+    // pre-load the scratchable image just once
+    // this pre-load only once is crucial for saving scratch history
     useEffect(() => {
-        console.log("Loading one image");
-        // below functions loads the texture image
+        // // console.log("Loading one image");
         loadImage();
     }, []);
 
@@ -120,34 +118,27 @@ export default function ScratchOff() {
                 { ...prev[index], isScratching: false },
                 ...prev.slice(index + 1),
             ]);
-            // Call persistScratch to keep the scratch state
-            // Add a delay before calling persistScratch to allow the canvas to update
-            // setTimeout(() => {
-            //     persistScratch(index)();
-            // }, 1000); // adjust the delay duration as needed
         }
     };
 
-    // New useEffect for handling scratchPercentage updates
+    // new useEffect for handling scratchPercentage updates
     useEffect(() => {
-        if (scratchPercentage[scratchedCanvasIndex] >= 75) {
+        if (scratchPercentage[scratchedCanvasIndex] >= 60) {
             const timeoutId = setTimeout(() => {
                 persistScratch(scratchedCanvasIndex)();
-            }, 1000); // Adjust the delay duration as needed
+            }, 500); // adjust the delay duration as needed
 
-            // Cleanup the timeout on component unmount or when the scratch state changes
+            // cleanup the timeout on component unmount or when the scratch state changes
             return () => clearTimeout(timeoutId);
         }
     }, [scratchedCanvasIndex, scratchPercentage[scratchedCanvasIndex]]);
 
     // function to handle scratching (mousemove or touchmove event)
     const scratch = (index) => (e) => {
-        // EXPERIMENT:
         if (canvasesReady) {
-            // THIS
             const canvas = canvasRefs.current[index];
             if (!canvas) {
-                // Handle the case where canvas is not defined
+                // handle the case where canvas is not defined
                 console.error("Canvas is not defined at index", index);
                 return;
             }
@@ -160,7 +151,7 @@ export default function ScratchOff() {
                 const { left, top } = canvas.getBoundingClientRect();
                 const offsetX = clientX - left;
                 const offsetY = clientY - top;
-                const radius = 50; // adjust the brush size of the scratch
+                const radius = 30; // adjust the brush size of the scratch
 
                 // clear a circular area to reveal the underlying content
                 ctx.globalCompositeOperation = "destination-out";
@@ -178,7 +169,6 @@ export default function ScratchOff() {
 
                 ctx.fill();
                 ctx.globalCompositeOperation = "source-over";
-
                 const imageData = ctx.getImageData(
                     0,
                     0,
@@ -195,21 +185,21 @@ export default function ScratchOff() {
                 const transparentPercentage =
                     (transparentPixels.length / totalPixels) * 100;
 
-                // Update scratch percentage
+                // update scratch percentage
                 setScratchPercentage((prev) => {
                     const newPercentages = [...prev];
                     newPercentages[index] = transparentPercentage;
                     return newPercentages;
                 });
 
-                // if the scratch is at 75%, update hint and show "Let's rande!" button
-                if (transparentPercentage >= 75) {
+                // if the scratch is at 60%, update hint and show "Let's rande!" button
+                if (transparentPercentage >= 60) {
                     // update hint content
                     setHint({
                         resultIndex: index,
                         text: results[index].name,
                     });
-                    // Only show the button if it's not already visible
+                    // only show the button if it's not already visible
                     if (!buttonVisible[index]) {
                         // show "Let's rande!" button for the current canvas
                         setButtonVisible((prev) => {
@@ -218,13 +208,13 @@ export default function ScratchOff() {
                             return newVisibility;
                         });
                     }
-                    // Set the index of the scratched canvas
+                    // set the index of the scratched canvas
                     setScratchedCanvasIndex(index);
-                    console.log(
-                        "Transparent Percentage:",
-                        transparentPercentage
-                    );
-                    console.log("Button Visible:", buttonVisible[index]);
+                    // // console.log(
+                    //     "Transparent Percentage:",
+                    //     transparentPercentage
+                    // );
+                    // // console.log("Button Visible:", buttonVisible[index]);
                 }
             }
         }
@@ -242,7 +232,7 @@ export default function ScratchOff() {
 
     // function to persist the scratch when mouse leaves
     const persistScratch = (index) => () => {
-        console.log("Persisting scratch for index:", index);
+        // console.log("Persisting scratch for index:", index);
         // Set the index of the scratched canvas
         setScratchedCanvasIndex(index);
         // show "Let's rande!" button for the current canvas
@@ -256,6 +246,8 @@ export default function ScratchOff() {
     // render component
     return (
         <>
+            <h1 className="results_h1">Your Date Idea Results</h1>
+            <p className="scratch_instructions">Check the hints and select 1 date to scratch</p>
             {canvasesReady && (
                 /* DISPLAY FROM RANDES SEARCH */
                 /* below div contains all 3 scratch-offs */
@@ -282,9 +274,7 @@ export default function ScratchOff() {
                                     onTouchEnd={stopScratching(index)}
                                     onMouseMove={scratch(index)}
                                     onTouchMove={scratch(index)}
-                                    // onMouseLeave={persistScratch(index)}
                                     onMouseLeave={() => persistScratch(index)}
-                                    // onTouchCancel={persistScratch(index)}
                                     onTouchCancel={() => persistScratch(index)}
                                     style={{
                                         cursor: results[index]?.isScratching
@@ -301,15 +291,15 @@ export default function ScratchOff() {
                             </div>
                             {/* below div contains hint / hint will be h1 text for now but later an icon image */}
                             <div className="scratchOff_container__child-hint-container">
-                                <h3 className="scratchOff_container__child-hint">
+                                <h5 className="scratchOff_container__child-hint">
                                     {hint && hint.resultIndex == index
                                         ? hint.text
                                         : rande.hint_path}
-                                </h3>
+                                </h5>
                             </div>
                             <div className="button_div">
                                 {/* below button saves the rande but only appears after a percentage of scratch */}
-                                {scratchPercentage[index] >= 75 ? (
+                                {scratchPercentage[index] >= 60 ? (
                                     // display button...
                                     <Link to={`/randes/${rande.id}`}>
                                         <button
@@ -322,7 +312,7 @@ export default function ScratchOff() {
                                         </button>
                                     </Link>
                                 ) : (
-                                    "" // ...or show an empty string
+                                    "" // ...or show an empty string (don't delete this)
                                 )}
                             </div>
                         </div>
