@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // below imports search data from DateSearch.jsx component via ResultsContext.js
 import ResultsContext from "../../ResultsContext";
 
 export default function ScratchOff() {
+    // below is variable for reroute navigation
+    // user will be rerouted back to the DateSearch page upon refresh
+    const navigate = useNavigate();
     // BELOW: main useState hook variables
     // for retrieving the date idea search results
     const { results, setResults } = useContext(ResultsContext);
@@ -96,6 +99,34 @@ export default function ScratchOff() {
         // // console.log("Loading one image");
         loadImage();
     }, []);
+
+    // NAVIGATE: The following useEffects will redirect the user back to the DateSearch page if they refresh the page
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+            // Set a flag in localStorage to indicate that the page is being refreshed
+            localStorage.setItem("isPageRefreshed", "true");
+        };
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, []);
+
+    useEffect(() => {
+        // Check if the page is refreshed
+        const isPageRefreshed = localStorage.getItem("isPageRefreshed");
+
+        if (isPageRefreshed) {
+            // Clear the flag in localStorage
+            localStorage.removeItem("isPageRefreshed");
+
+            // Redirect to the search component
+            navigate("/date-search");
+        }
+    }, [navigate]);
+    // END OF NAVIGATE CODE
 
     // function to start scratching (mousedown or touchstart event)
     const startScratching = (index) => (e) => {
@@ -299,6 +330,7 @@ export default function ScratchOff() {
                                         : rande.hint_path}
                                 </h5>
                             </div>
+
                             <div className="button_div">
                                 {/* below button saves the rande but only appears after a percentage of scratch */}
                                 {scratchPercentage[index] >= 60 ? (
