@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Homepage() {
     return (
         <>
@@ -36,7 +38,7 @@ export default function Homepage() {
                         </li>
                     </ul>
                     <button className="homepage__instructions-btn-trigger">
-                        Gimme ideas!
+                        <Link to={"/date-search"}>Gimme ideas!</Link>
                     </button>
                 </div>
             </div>
