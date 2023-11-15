@@ -4,6 +4,7 @@ import Homepage from "../homepage/Homepage";
 import DateSearch from "../search/DateSearch";
 import ScratchOff from "../search/ScratchOff";
 import { RevealedDateDetail } from "../search/RevealedDateDetail";
+import NotFound from "../notfound/NotFound";
 
 export default function MainContent() {
     return (
@@ -11,7 +12,7 @@ export default function MainContent() {
             <main>
                 <Routes>
                     <Route path="/" element={<Homepage />} />
-                    <Route path="*" element="404: page not found 💔" />
+                    <Route path="*" element={<NotFound />} />
                     <Route path="/date-search" element={<DateSearch />} />
                     <Route
                         path="/date-search/results"
