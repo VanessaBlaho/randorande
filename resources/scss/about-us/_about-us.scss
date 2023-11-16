@@ -1,4 +1,3 @@
-
 @mixin circle {
     border-radius: 9999px;
 }
@@ -9,9 +8,9 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     .about-us__headline {
-    text-align: center;
-    padding: 0;
-    margin: 0;
+        text-align: center;
+        padding: 0;
+        margin: 0;
     }
 }
 
@@ -32,21 +31,36 @@
     background: lightgray;
     width: 100%;
 }
-
-.team-member_img {
-   width: 100%;
-   @include circle;
-   &:hover {
-    border-radius: 0;
-   }
+.crisafi,
+.kokoreva,
+.blaho {
+    border-top: solid darkblue 5px;
+    border-right: solid darkblue 5px;
+    border-bottom: none;
+    border-left: solid darkblue 5px;
 }
 
-.team-member_name {
+.daniels {
+    border-top: solid darkblue 5px;
+    border-right: solid darkblue 5px;
+    border-bottom: solid darkblue 5px;
+    border-left: solid darkblue 5px;
+}
+
+.team-member__img {
+    width: 100%;
+    @include circle;
+    &:hover {
+        border-radius: 0;
+    }
+}
+
+.team-member__name {
     text-align: center;
     background: pink;
     padding: 0.5rem 0rem 0.5rem 0;
     margin: 0;
-    // white-space: nowrap; 
+    // white-space: nowrap;
     overflow-wrap: break-word;
 }
 
@@ -57,6 +71,11 @@
     width: 60%;
 }
 
+.link_to_search__container {
+    margin: 0 auto;
+    text-align: center;
+}
+
 .link_to_search {
     text-decoration: none;
     color: darkblue;
@@ -65,27 +84,48 @@
     }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 683px) {
+    .crisafi,
+    .kokoreva,
+    .blaho,
+    .daniels {
+        margin: 0; // reset margins
+        padding: 0; //reset padding
+    }
+
     .team__container {
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-evenly; /* Add this line */
+        align-self: center;
+        margin: 0 auto;
+        // margin-bottom: 2rem;
+        background: darkblue;
         width: 60%;
+        border: darkblue solid 1.5px;
     }
 
     .team-member__container {
-        width: 46%;
-        margin: 2%;
-    }
-    .crisafi, .kokoreva {
-        margin-bottom: 0;
-    }
-
-    .about_us__text {
-        width: 60%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        background: lightgray;
+        width: 50%; /* Adjust this width as needed */
+        margin: 0; /* Add margin between items if desired */
+        border: 3px solid darkblue;
     }
 }
 
 @media (min-width: 1044px) {
+    .crisafi,
+    .kokoreva,
+    .blaho,
+    .daniels {
+        margin: 0; // reset margins
+        padding: 0; //reset padding
+    }
+
     .team__container {
         flex-direction: row;
         flex-wrap: none;
@@ -94,11 +134,10 @@
     }
 
     .team-member__container {
-        width: calc(25% - 1rem); /* 50% width with margin on both sides */
-        margin: 0.5rem;
+        width: 25%;
     }
 
     .about_us__text {
-    width: 65%;
-}
+        width: 65%;
+    }
 }

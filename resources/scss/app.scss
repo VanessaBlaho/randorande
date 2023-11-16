@@ -9,9 +9,13 @@
 @import "./about-us/about-us";
 
 html {
-    box-sizing: border-box;
-    //height: 100%;
+box-sizing: border-box;}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
+
 
 body {
     height: 100vh;
