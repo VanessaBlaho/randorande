@@ -18,7 +18,7 @@ export default function MainContent() {
                         element={<ScratchOff />}
                     />
                     <Route
-                        path="/randes/:id"
+                        path="/randes/:rande_id"
                         element={<RevealedDateDetail />}
                     />
                     {/*<Route path="/my-journal" element={} />

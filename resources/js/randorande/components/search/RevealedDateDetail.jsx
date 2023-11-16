@@ -1,15 +1,19 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 export function RevealedDateDetail () {
+    const { rande_id } = useParams();
     const [rande,setRande] = useState(null)
 
         const fetchRandeDetail = async () => {
             try {
-                let rande_id = 1
+                
                 const response = await fetch(`/api/randes/${rande_id}`);
                 const data = await response.json();
                 console.log('Data:', data);
+                console.log('Setting Rande:', data);
+
                 setRande(data);
             } catch (error) {
                 console.log(error)
@@ -18,7 +22,7 @@ export function RevealedDateDetail () {
     
         useEffect(() => {
             fetchRandeDetail()
-        }, [])
+        }, [rande_id])
 
     return(
         
@@ -28,15 +32,16 @@ export function RevealedDateDetail () {
             rande
             ?(
                 <>
-                <div className="date-detail-image">
-                    <h3>Date name: {rande.name}</h3>
-                    
-                    <img src={rande.image_path + '.png'} alt={rande.name} />
+                <div className="date-detail-name">
+                    <h3>Rande name: {rande.name}</h3>
+                </div>
+                <div className="date-detail-image"> 
+                    <img src={rande.image_path + '.png'} alt={rande.name}/>
                 </div>  
                 
                 <div className="date-detail-description">
-                <p> {rande.description}
-                </p>
+                    <p> {rande.description}
+                    </p>
                 </div>
                 </>
             )
@@ -46,20 +51,3 @@ export function RevealedDateDetail () {
        
     )
 }
-
- {/* <h1>Date name:  {rande.name}</h1>
-            <img src={rande.image_path} alt={rande.name} />
-            <br/>
-            <p> {rande.description}
-                </p> */}
-
-
-            //     <div className="date-detail-image">
-            //     <h1>Date name:  {rande.name}</h1>
-            //     <img src={rande.image_path + '.png'} alt={rande.name} />
-            // </div>  
-            // <br/>
-            // <div className="date-detail-description">
-            // <p> {rande.description}
-            // </p>
-            // </div>
