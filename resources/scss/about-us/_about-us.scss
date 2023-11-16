@@ -1,21 +1,104 @@
+
+@mixin circle {
+    border-radius: 9999px;
+}
+
+.about-us__headline__container {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    .about-us__headline {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    }
+}
+
 .team__container {
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    background: darkblue;
+    width: 60%; /* Adjust the width as needed */
 }
 
 .team-member__container {
+    display: flex;
+    flex-direction: column;
+    background: lightgray;
+    width: 100%;
 }
 
-.crisafi {
-}
 .team-member_img {
+   width: 100%;
+   @include circle;
+   &:hover {
+    border-radius: 0;
+   }
 }
 
 .team-member_name {
+    text-align: center;
+    background: pink;
+    padding: 0.5rem 0rem 0.5rem 0;
+    margin: 0;
+    // white-space: nowrap; 
+    overflow-wrap: break-word;
 }
 
-.kokoreva {
+.about_us__text {
+    text-align: 0;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    width: 60%;
 }
-.blaho {
+
+.link_to_search {
+    text-decoration: none;
+    color: darkblue;
+    &:hover {
+        text-decoration: underline;
+    }
 }
-.daniels {
+
+@media (min-width: 600px) {
+    .team__container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 60%;
+    }
+
+    .team-member__container {
+        width: 46%;
+        margin: 2%;
+    }
+    .crisafi, .kokoreva {
+        margin-bottom: 0;
+    }
+
+    .about_us__text {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1044px) {
+    .team__container {
+        flex-direction: row;
+        flex-wrap: none;
+        width: 65%;
+        margin-bottom: 0;
+    }
+
+    .team-member__container {
+        width: calc(25% - 1rem); /* 50% width with margin on both sides */
+        margin: 0.5rem;
+    }
+
+    .about_us__text {
+    width: 65%;
+}
 }
