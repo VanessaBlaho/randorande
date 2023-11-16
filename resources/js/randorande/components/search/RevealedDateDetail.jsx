@@ -46,5 +46,5 @@ export function RevealedDateDetail () {
                     "Loading..."
                 )}
             </div>
-        );
-                }
+          );
+ }
