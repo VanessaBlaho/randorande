@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\JournalController;
 use App\Http\Controllers\Api\SearchController as ApiSearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/date-search/results', [ApiSearchController::class, 'search']);
 //rande detail endpoint
 Route::get('/randes/{rande_id}', [ApiSearchController::class, 'show']);
+
+//find entry endpoint
+Route::get('/entries/{entry_id}', [JournalController::class, 'find']);

@@ -1,0 +1,11 @@
+main {
+    //mobile dimensions
+    flex: 1;
+    width: 100vw;
+    background-color: rgb(227, 255, 196);
+    align-self: center;
+    justify-content: center;
+
+    //desktop
+    @media (min-width: 768px) {}
+}
