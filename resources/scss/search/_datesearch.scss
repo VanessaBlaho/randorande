@@ -3,6 +3,10 @@ $black: #000;
 $white: #fff;
 $grey: #888;
 
+@mixin curvedBorder {
+    border-radius: 12px;
+}
+
 // Style for the entire component
 .datesearch {
   text-align: center;
@@ -47,16 +51,24 @@ $grey: #888;
       }
     }
 
+    .filter__locality-dropdown {
+      margin-bottom: 30px;
+    }
+
     // Style for the button
-    button {
-      background-color: $black;
+    .search_rande_btn {
+      background: $black;
       color: $white;
       padding: 10px 20px;
       border: none;
       cursor: pointer;
-
+      @include curvedBorder;
+      text-decoration: none;
       &:hover {
-        background-color: darken($black, 10%);
+        background: $grey;
+        color: $black;
+        text-decoration: underline;
+        // background-color: darken($black, 10%);
       }
     }
 

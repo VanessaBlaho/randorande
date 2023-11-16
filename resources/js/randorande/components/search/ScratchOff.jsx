@@ -1,17 +1,48 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // below imports search data from DateSearch.jsx component via ResultsContext.js
-import ResultsContext from "../../ResultsContext";
+import  { useFiltersContext } from "../../FiltersContext";
 
 export default function ScratchOff() {
+    const { state, dispatch } = useFiltersContext();
     // below is variable for reroute navigation
     // user will be rerouted back to the DateSearch page upon refresh
     const navigate = useNavigate();
     // BELOW: main useState hook variables
     // for retrieving the date idea search results
-    const { results, setResults } = useContext(ResultsContext);
+    const [ results, setResults ] = useState([]);
+
+    // FETCH CODE BELOW
+    // const { filters } = useContext(FiltersContext)
+    /*
+      // Fetch data from the backend based on filters
+
+    //handling search and redirect on button click
+    const handleSearch = () => {
+        fetchRande();
+    };
+
+    */
+
+    // Fetch data from the backend based on filters
+    const fetchRande = async () => {
+        try {
+            const response = await fetch(
+                `/api/date-search/results?budget=${state.budgetFilter}&season=${state.seasonFilter}&locality=${state.localityFilter}`
+            );
+            const data = await response.json();
+            setResults(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect( () => {
+        fetchRande();
+    }, []) 
+
     // for referencing canvases
-    const canvasRefs = useRef(Array(results.length).fill(null));
+    const canvasRefs = useRef(Array(results?.length).fill(null));
     // for setting the hint as either a hint or the date name upon 60% scratch
     const [hint, setHint] = useState(null);
     // for setting the relevant button as visible upon 60% scratch
@@ -20,7 +51,7 @@ export default function ScratchOff() {
     const [scratchedCanvasIndex, setScratchedCanvasIndex] = useState(null);
     // for tracking the scratch percentage for each canvas
     const [scratchPercentage, setScratchPercentage] = useState(
-        Array(results.length).fill(0)
+        Array(results?.length).fill(0)
     );
     // BELOW: for loading the DOC elements in the correct order
     const [scratchableImage, setScratchableImage] = useState(null);
@@ -32,7 +63,7 @@ export default function ScratchOff() {
     // canvases are loaded when there is the same number of them
     // as is the number of results, and they all have their own references
     const allCanvasesLoaded =
-        canvasRefs.current.length === results.length &&
+        canvasRefs.current.length === results?.length &&
         undefined === canvasRefs.current.find((item) => item === null);
 
     useEffect(() => {
@@ -90,7 +121,7 @@ export default function ScratchOff() {
     // useEffect hook will load the textureImage onto the canvas surface when the component mounts
     useEffect(() => {
         // initialize buttonVisible array with false values for each result
-        setButtonVisible(Array(results.length).fill(false));
+        setButtonVisible(Array(results?.length).fill(false));
     }, [results]);
 
     // pre-load the scratchable image just once
@@ -278,7 +309,7 @@ export default function ScratchOff() {
             // if the id of the area does not contain the index of the 1 card scratched more than 60%
             // we will disable scratching on them
             if (!area.id.includes(String(index))) {
-                console.log('huy');
+                console.log("huy");
                 area.style.pointerEvents = "none";
             }
         });
