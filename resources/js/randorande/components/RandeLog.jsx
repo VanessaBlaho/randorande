@@ -36,7 +36,10 @@ const RandeLog = ({ editedData }) => {
     return (
         <div>
             <div className="journal-container">
-                <h1>My Journal</h1>
+                <Link to="/edit"> 
+                {/* get path for above from Maria */}
+                    <h1>My Journal</h1>
+                </Link>
 
                 <div className="randorande-data">
                     <div className="left-section">
@@ -51,7 +54,7 @@ const RandeLog = ({ editedData }) => {
                         <h5 className="date__rande-location">
                             {entryData ? entryData.location : "Location"}
                         </h5>
-                        
+
                         {entryData && entryData.image_url ? (
                             <img
                                 src={entryData.image_url}
