@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import ScratchOff from "./ScratchOff";
 import ResultsContext from "../../ResultsContext";
 
 const DateSearch = () => {
@@ -8,8 +7,9 @@ const DateSearch = () => {
     const [budgetFilter, setBudgetFilter] = useState("");
     const [seasonFilter, setSeasonFilter] = useState("");
     const [localityFilter, setLocalityFilter] = useState("");
-
     const { setResults } = useContext(ResultsContext);
+
+    const isButtonDisabled = !budgetFilter || !seasonFilter || !localityFilter;
 
     // Fetch data from the backend based on filters
     const fetchRande = async () => {
@@ -29,6 +29,8 @@ const DateSearch = () => {
     const handleSearch = () => {
         fetchRande();
     };
+
+   
 
     return (
         <>
@@ -83,10 +85,13 @@ const DateSearch = () => {
                             <option value="0">Outdoors</option>
                         </select>
                     </div>
-
-                    <button onClick={() => handleSearch()}>
-                        <Link to="/date-search/results">Rendezvous</Link>
-                    </button>
+                    {isButtonDisabled ? (
+                        <p>Please select one option from each search feature.</p>
+                    ) : (
+                        <button onClick={() => handleSearch()}>
+                            <Link to="/date-search/results">Rendezvous</Link>
+                        </button>
+                    )}
                 </div>
             </div>
         </>

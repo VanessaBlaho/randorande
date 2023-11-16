@@ -1,16 +1,24 @@
+@import "./varables";
 @import "./layout/homepage";
 @import "./layout/header";
 @import "./layout/footer";
+@import "./layout/notfound";
 @import "./search/datesearch";
 @import "./search/scratchOff.scss";
 @import "./search/revealed_date_detail";
 
 html {
     box-sizing: border-box;
-    height: 100%;
+    //height: 100%;
 }
 
 body {
-    height: 100%;
+    height: 100vh;
     margin: 0;
+
+    #randorande-app {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
 }

@@ -272,6 +272,16 @@ export default function ScratchOff() {
             newVisibility[index] = true;
             return newVisibility;
         });
+        const scratchAreas = document.querySelectorAll(".scratch_card__mask");
+        console.log(scratchAreas);
+        scratchAreas.forEach((area) => {
+            // if the id of the area does not contain the index of the 1 card scratched more than 60%
+            // we will disable scratching on them
+            if (!area.id.includes(String(index))) {
+                console.log('huy');
+                area.style.pointerEvents = "none";
+            }
+        });
     };
 
     // render component
