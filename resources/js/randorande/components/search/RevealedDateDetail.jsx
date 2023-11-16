@@ -24,19 +24,15 @@ export function RevealedDateDetail () {
             fetchRandeDetail()
         }, [rande_id])
 
-    return(
-        
-        <div className="date-detail"> 
-        {
-           
-            rande
-            ?(
+    return (
+        <div className="date-detail">
+            {rande ? (
                 <>
                 <div className="date-detail-name">
                     <h3>Rande name: {rande.name}</h3>
                 </div>
                 <div className="date-detail-image"> 
-                    <img src={rande.image_path + '.png'} alt={rande.name}/>
+                    <img src={rande.image_path} alt={rande.name}/>
                 </div>  
                 
                 <div className="date-detail-description">
@@ -44,10 +40,9 @@ export function RevealedDateDetail () {
                     </p>
                 </div>
                 </>
-            )
-            :'Loading...'
-        }
+            ) : (
+                "Loading..."
+            )}
         </div>
-       
-    )
+    );
 }
