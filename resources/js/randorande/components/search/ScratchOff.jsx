@@ -182,7 +182,7 @@ export default function ScratchOff() {
                 const { left, top } = canvas.getBoundingClientRect();
                 const offsetX = clientX - left;
                 const offsetY = clientY - top;
-                const radius = 30; // adjust the brush size of the scratch
+                const radius = 40; // adjust the brush size of the scratch
 
                 // clear a circular area to reveal the underlying content
                 ctx.globalCompositeOperation = "destination-out";
