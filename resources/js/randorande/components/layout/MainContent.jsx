@@ -22,8 +22,8 @@ export default function MainContent() {
                         path="/randes/:rande_id"
                         element={<RevealedDateDetail />}
                     />
+                    <Route path="/about-us" element={<AboutUs />} />
                     {/*<Route path="/my-journal" element={} />
-                    <Route path="/about-us" element={} />
                     <Route path="/faq" element={} />
                     <Route path="/login" element={} />
                     <Route path="/register" element={} /> */}
