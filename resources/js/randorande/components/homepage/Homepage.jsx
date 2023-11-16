@@ -3,7 +3,7 @@ export default function Homepage() {
         <>
             <div className="homepage">
                 <div className="homepage__logo">
-                    <img src="./img/Rando-long.svg" alt="randorande logo" />
+                    <img src="./logos/Rando-long.svg" alt="randorande logo" />
                 </div>
 
                 <div className="homepage__instructions">

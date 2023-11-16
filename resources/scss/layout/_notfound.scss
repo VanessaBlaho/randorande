@@ -1,0 +1,77 @@
+.not-found-page {
+    @include flexCol;
+    justify-content: flex-start;
+    // height: 100vh;
+    // width: 100vw;
+
+    &__heading {
+        margin-top: 5rem;
+        font-size: 3rem;
+        font-weight: 200;
+    }
+
+    &__text {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 0 2.2rem;
+    }
+
+    &__button {
+        margin: 2rem;
+
+        button {
+            height: 2rem;
+            width: 8rem;
+
+            .not-found-page__link {
+                text-decoration: none;
+                font-size: 1rem;
+            }
+
+        }
+    }
+
+    &__img {
+        height: 6rem;
+        width: 10rem;
+        font-size: 5rem;
+        text-align: center;
+    }
+
+    //desktop design
+    @media (min-width: 768px) {
+        &__heading {
+            margin-top: 5rem;
+            font-size: 3rem;
+            font-weight: 200;
+        }
+
+        &__text {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        &__button {
+            margin: 2rem;
+
+            button {
+                height: 2rem;
+                width: 8rem;
+
+                .not-found-page__link {
+                    text-decoration: none;
+                    font-size: 1rem;
+                }
+
+            }
+        }
+
+        &__img {
+            height: 6rem;
+            width: 10rem;
+            font-size: 5rem;
+            text-align: center;
+        }
+    }
+
+}
