@@ -12,10 +12,13 @@ export default function Register(props) {
         username: "",
         password: "",
         password_confirmation: "",
-        age_confirmation: false,
     });
 
+    
+
     const [errors, setErrors] = useState({});
+
+    
 
     const { setUser } = useContext(UserContext);
 
@@ -33,16 +36,15 @@ export default function Register(props) {
             // get the (already JSON-parsed) response data
             // const response_data = response.data; // use later for console.log()
             setUser(null);
+            // ADD NAVIGATE TO MY JOURNAL HERE
         } catch (error) {
             // if the response code is not 2xx (success)
-            switch (error.response.status) {
-                case 422:
-                    // handle validation errors here
-                    console.log('VALIDATION FAILED:', error.response.data.errors);
-                    break;
-                case 500:
-                    console.log('UNKNOWN ERROR', error.response.data);
-                    break;
+            console.log("Error Response:", error.response.data.errors);
+            if (error.response.status === 422) {
+                // handle validation errors here
+                setErrors(error.response.data.errors);
+            } else if (error.response.status === 500) {
+                console.log("UNKNOWN ERROR", error.response.data);
             }
         }
     };
@@ -146,7 +148,7 @@ export default function Register(props) {
                     {errors.username ? (
                         <>
                             <div className="errors">
-                                {errors.username_name.map((error, i) => (
+                                {errors.username.map((error, i) => (
                                     <div key={i} className="error">
                                         {error}
                                     </div>
@@ -243,7 +245,7 @@ export default function Register(props) {
                     ) : (
                         ""
                     )}
-                    <div className="input_row">
+                    <div className="input_row over_18_row">
                         <label
                             className="input_row__label"
                             htmlFor="age_confirmation"

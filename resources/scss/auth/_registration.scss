@@ -11,8 +11,14 @@
     padding: 0;
 }
 
-
-
+.labels_and_inputs__container {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgb(242, 241, 241);
+    width: 82%;
+}
 
 .register_instructions {
     text-align: center;
@@ -31,6 +37,7 @@
 
 .input_row__input {
     width: 50%;
+    border-radius: 2px;
 }
 
 .register_form {
@@ -43,4 +50,16 @@
 .input_row {
     display: flex;
 
+}
+
+.over_18_row {
+    align-self: center;
+    
+}
+
+.errors {
+    color: red;
+    font-weight: bold;
+    margin-top: -1rem;
+    text-align: center;
 }
