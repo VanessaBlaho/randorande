@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import UserContext from "../../UserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Register(props) {
     const [values, setValues] = useState({
@@ -62,7 +62,9 @@ export default function Register(props) {
                 <p className="register_instructions">
                     Already have an account?
                 </p>
-                <button className="register_btn">Login</button>
+                <Link className="login_btn" to={"/login"}>
+                    Login
+                </Link>
             </div>
             <br />
             <form
