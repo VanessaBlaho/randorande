@@ -4,17 +4,7 @@ import { useFiltersContext } from "../../FiltersContext"; //change to FiltersCon
 
 const DateSearch = () => {
     const { state, dispatch } = useFiltersContext();
-    // State for filters and results
-    // const [budgetFilter, setBudgetFilter] = useState("");
-    // const [seasonFilter, setSeasonFilter] = useState("");
-    // const [localityFilter, setLocalityFilter] = useState("");
-
     const isButtonDisabled = !state.budgetFilter || !state.seasonFilter || !state.localityFilter;
-
-    //handling search and redirect on button click
-    // const handleSearch = () => {
-    //     fetchRande();
-    // };
 
     return (
         <>
