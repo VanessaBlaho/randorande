@@ -1,0 +1,37 @@
+
+    .my-journal-parent{
+        h2{
+            text-align: center;
+        }
+        display: flex;
+        flex-direction: column;
+        .my-journal-child{
+            display:flex;
+            flex-direction: row;
+        
+            }
+        }
+
+
+    img{
+        width: 30%;
+    }
+    .user-detail-box{
+        margin-left: 5%;
+        flex-direction: column;
+        background-color: bisque;
+        width: 25%;
+        margin-left: 5%;
+    }
+    .randes-box{
+        display: flex;
+        flex-direction: column;
+        background-color: beige;
+        
+    }
+    .user-detail-list{
+        background-color: aliceblue;
+        width: 50%;
+        margin-left: 5%;
+
+    }

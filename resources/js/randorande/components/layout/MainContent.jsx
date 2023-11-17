@@ -6,6 +6,7 @@ import ScratchOff from "../search/ScratchOff";
 import AboutUs from "../about-us/AboutUs";
 import { RevealedDateDetail } from "../search/RevealedDateDetail";
 import NotFound from "../notfound/NotFound";
+import Journal from "../myJournal/Journal";
 
 export default function MainContent() {
     return (
@@ -33,7 +34,9 @@ export default function MainContent() {
                         path="/about-us" 
                         element={<AboutUs />} />
                         
-                    {/*<Route path="/my-journal" element={} />
+                    
+                    <Route path="/my-journal/:id" element={<Journal/>} />
+                    {/*
                     <Route path="/faq" element={} />
                     <Route path="/login" element={} />
                     <Route path="/register" element={} /> */}
