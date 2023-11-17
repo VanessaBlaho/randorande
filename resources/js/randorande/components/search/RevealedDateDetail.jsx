@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-export function RevealedDateDetail () {
-    const navigate = useNavigate();
+export function RevealedDateDetail() {
+    // search-related variables
     const { rande_id } = useParams();
     const [rande, setRande] = useState(null);
 
@@ -23,26 +22,6 @@ export function RevealedDateDetail () {
     useEffect(() => {
         fetchRandeDetail();
     }, [rande_id]);
-
-    // EXPERIMENT
-    useEffect(() => {
-        // This effect will be called when the component mounts
-        const handleBackButton = (event) => {
-            
-            if (window.location.pathname === "/randes/:rande_id") {
-                // Redirect to the desired page
-                navigate("/date-search");
-            }
-        };
-
-        // Attach the event listener for the "popstate" event (back button press)
-        window.addEventListener("popstate", handleBackButton);
-
-        // Clean up the event listener when the component unmounts
-        return () => {
-            window.removeEventListener("popstate", handleBackButton);
-        };
-    }, [navigate]); // Make sure to include navigate in the dependencies array
 
     return (
         <div className="date-detail">
