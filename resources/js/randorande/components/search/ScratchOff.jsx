@@ -313,7 +313,7 @@ export default function ScratchOff() {
             <p className="scratch_instructions">
                 Check the hints and select 1 date to scratch
             </p>
-            {canvasesReady && (
+            {canvasesReady && results.length > 0 ? (
                 /* DISPLAY FROM RANDES SEARCH */
                 /* below div contains all 3 scratch-offs */
                 <div className="scratchOff_container__parent">
@@ -384,6 +384,8 @@ export default function ScratchOff() {
                         </div>
                     ))}
                 </div>
+            ) : (
+                <div className="edit-loader">&#9203;</div>
             )}
         </>
     );
