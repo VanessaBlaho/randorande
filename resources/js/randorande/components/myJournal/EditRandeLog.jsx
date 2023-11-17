@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 //{ entryId, setEntryId }
-export default function EditRandeLog() {
-    let entryId = 1;
+export default function EditRandeLog({
+    entryId = 2,
+    randeName = "Make pizza",
+}) {
     const [entry, setEntry] = useState(null);
     const [message, setMessage] = useState(null);
 
     //load existing data
     const fetchEntry = async () => {
         try {
-            const response = await axios.get("/api/entries/" + entryId);
-            const data = response.data;
-            console.log(data.rande_id);
+            const response = await axios.get(`/api/entries/${entryId}/edit`);
+            //const data = response.data;
+            //console.log("DATA: ", data);
             setEntry(response.data);
         } catch (error) {
             console.log(error);
@@ -26,8 +28,9 @@ export default function EditRandeLog() {
         e.preventDefault();
 
         try {
+            // /entries/{entry_id}/store
             const response = await axios.post(
-                "api/entries/" + entryId + "/store",
+                `/api/entries/${entryId}/store`,
                 entry
             );
             setMessage(response.data["message"]);
@@ -45,23 +48,21 @@ export default function EditRandeLog() {
 
     useEffect(() => {
         fetchEntry();
-        console.log("data fetched");
-        console.log("After use effect: ", entry);
     }, []);
 
     return (
         <>
-            {entry ? (
-                <div className="edit-page-main-container">
-                    {message ? <span>{message}</span> : ""}
+            <div className="edit-page-main-container">
+                {entry ? (
                     <div className="edit-container">
                         <button className="edit-container__back-btn">
                             <Link to={"/my-journal"}>My Journal</Link>
                         </button>
 
-                        <h1 className="edit-container__title">
-                            Rande name to edit {entry.rande_id}
-                        </h1>
+                        {/* rande name */}
+                        <h1 className="edit-container__title">{randeName}</h1>
+
+                        {message ? <span>{message}</span> : ""}
 
                         <div className="edit-form">
                             <form
@@ -73,37 +74,42 @@ export default function EditRandeLog() {
                                     className="edit-form__input edit-form__input--date"
                                     type="date"
                                     id="date"
-                                    name="rande-date"
-                                    //value={entry.date}
+                                    name="date"
+                                    value={entry.date ?? ""}
                                     onChange={handleChange}
                                 ></input>
                                 <input
                                     className="edit-form__input edit-form__input--location"
                                     type="text"
                                     id="location"
-                                    name="rande-location"
+                                    name="location"
                                     placeholder="Enter location"
-                                    // value={entry.location}
+                                    value={entry.location ?? ""}
                                     onChange={handleChange}
                                 ></input>
                                 <textarea
                                     className="edit-form__textarea"
-                                    id="text"
-                                    name="text"
+                                    id="entry_text"
+                                    name="entry_text"
                                     placeholder="Add a memorable note about your rande here"
                                     rows="4"
                                     cols="50"
-                                    // value={entry.text}
+                                    value={entry.entry_text ?? ""}
                                     onChange={handleChange}
                                 ></textarea>
+                                <button
+                                    type="submit"
+                                    className="edit-form__button"
+                                >
+                                    Save
+                                </button>
                             </form>
                         </div>
-                        <button className="edit-container__button">Save</button>
                     </div>
-                </div>
-            ) : (
-                "Loading..."
-            )}
+                ) : (
+                    <div className="edit-loader">&#9203;</div>
+                )}
+            </div>
         </>
     );
 }

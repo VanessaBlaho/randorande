@@ -26,4 +26,6 @@ Route::get('/date-search/results', [ApiSearchController::class, 'search']);
 Route::get('/randes/{rande_id}', [ApiSearchController::class, 'show']);
 
 //find entry endpoint
-Route::get('/entries/{entry_id}', [JournalController::class, 'find']);
+Route::get('/entries/{entry_id}/edit', [JournalController::class, 'edit']);
+//update entry in journal
+Route::post('/entries/{entry_id}/store', [JournalController::class, 'store']);

@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
-    public function find($entry_id)
+    public function edit($entry_id)
     {
-        $entry = Entry::findOrFail($entry_id)->get();
+        $entry = Entry::findOrFail($entry_id);
 
         return $entry;
     }
@@ -33,11 +33,12 @@ class JournalController extends Controller
 
         $entry->date = $request->input('date');
         $entry->location = $request->input('location');
-        $entry->text = $request->input('text');
+        $entry->entry_text = $request->input('entry_text');
         $entry->save();
 
+
         return [
-            'message' => 'Journal record updated successfully!'
+            'message' => 'Journal updated successfully!'
         ];
     }
 }

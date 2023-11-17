@@ -5,7 +5,6 @@ import DateSearch from "../search/DateSearch";
 import ScratchOff from "../search/ScratchOff";
 import { RevealedDateDetail } from "../search/RevealedDateDetail";
 import NotFound from "../notfound/NotFound";
-import TestParent from "../myJournal/TestParent";
 import EditRandeLog from "../myJournal/EditRandeLog";
 
 export default function MainContent() {
@@ -24,17 +23,11 @@ export default function MainContent() {
                         path="/randes/:rande_id"
                         element={<RevealedDateDetail />}
                     />
-                    <Route path="/my-journal" element={<TestParent />} />
-                    {/* <Route
-                        path="/my-journal/:id/entries/:id/edit"
+                    <Route path="/my-journal" element="My journal page" />
+                    <Route
+                        path="/my-journal/entries/edit"
                         element={<EditRandeLog />}
-                    /> */}
-                    <Route path="/my-journal/test" element={<EditRandeLog />} />
-                    {/*
-                    <Route path="/about-us" element={} />
-                    <Route path="/faq" element={} />
-                    <Route path="/login" element={} />
-                    <Route path="/register" element={} /> */}
+                    />
                 </Routes>
             </main>
         </>
