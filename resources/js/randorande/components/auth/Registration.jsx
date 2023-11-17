@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import UserContext from "../../UserContext";
-
+import { useNavigate } from "react-router-dom";
 
 export default function Register(props) {
-
     const [values, setValues] = useState({
         first_name: "",
         last_name: "",
@@ -14,16 +13,13 @@ export default function Register(props) {
         password_confirmation: "",
     });
 
-    
-
     const [errors, setErrors] = useState({});
 
-    
-
     const { setUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         console.log(values);
 
         // clear the errors
@@ -32,11 +28,12 @@ export default function Register(props) {
         // fetch with axios
         try {
             // make the AJAX request
-            const response = await axios.post('/register', values);
+            const response = await axios.post("/register", values);
             // get the (already JSON-parsed) response data
             // const response_data = response.data; // use later for console.log()
             setUser(null);
             // ADD NAVIGATE TO MY JOURNAL HERE
+            navigate("/my-journal");
         } catch (error) {
             // if the response code is not 2xx (success)
             console.log("Error Response:", error.response.data.errors);
