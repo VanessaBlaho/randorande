@@ -1,3 +1,9 @@
+//color palette testing 1
+$CPT1: #ffe1e1;
+$CPT2: #90a17d;
+$CPT3: #829460;
+$CPT4: #eeeeee;
+
 @mixin flexRowScratch {
     display: flex;
     flex-direction: row;
@@ -14,16 +20,65 @@
     left: 0;
 }
 
+@mixin shadow {
+    box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
+}
+
+@mixin curvedBorder {
+    border-radius: 12px;
+}
+
+@mixin curvedBorderTop {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+@mixin curvedBorderBottom {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+body {
+    background: beige;
+}
+
+.results_h1 {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.scratch_instructions {
+    text-align: center;
+    margin-top: 0;
+}
+
 // below div contains all 3 scratch-offs
 .scratchOff_container__parent {
     @include flexColScratch; // mobile friendly, switch to row in bigger screen
-    background: lightgray;
+    background: $CPT1;
     width: fit-content; // maybe we won't need this
+    align-items: center;
+    justify-content: space-around; // Adjust this value to control the spacing
+    margin: 0 auto; // Center the container horizontally
+    margin-bottom: 5rem;
+    @include shadow;
+    @include curvedBorder;
+    border: black solid 3px;
 }
 
 // below div contains 1 scratch-off
 .scratchOff_container__child {
     @include flexColScratch;
+    border: black solid 3px;
+    margin: 0.625rem;
+    background: $CPT2;
+    @include shadow;
+    @include curvedBorder;
 }
 
 // below div contains just the scratch card with scratch area and reveal image
@@ -33,6 +88,9 @@
     width: 12rem; /* fixed width for the scratch card */
     height: 12rem; /* fixed height for the scratch card */
     margin: 0.625rem; /* margin to separate the cards */
+    border: black dotted 3px;
+    @include curvedBorderTop;
+    margin-bottom: 0;
 }
 
 .scratch_card__mask {
@@ -40,8 +98,13 @@
     z-index: 1;
     width: 100%; /* make the canvas cover the entire scratch card */
     height: 100%;
+    @include curvedBorderTop;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
     &:hover {
-        cursor: url('/images/cursors/coin-in-hand.png') 10 10, crosshair;
+        cursor: url("/images/cursors/coin-in-hand.png") 10 10, crosshair;
     }
 }
 
@@ -49,24 +112,49 @@
     @include scratchCardContentPosition;
     width: inherit; /* make the image cover the entire scratch card */
     height: auto;
+    @include curvedBorder;
 }
 
 .scratchOff_container__child-hint-container {
     background: black;
+    margin: 0.63rem;
+    margin-top: 0;
+    @include curvedBorderBottom;
+    height: fit-content;
+    h5 {
+        padding: 0;
+        margin: 0.6rem 0;
+    }
 }
 
 .scratchOff_container__child-hint {
     text-align: center;
-    color: white;
+    color: $CPT4;
     font-weight: bold;
     white-space: nowrap; // might not need this
 }
 
+.button_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+}
+
 .save_rande_btn {
+    margin: 0 auto;
+    margin-bottom: 0.56rem;
     width: fit-content;
     white-space: nowrap;
-    border-radius: 12px;
-    padding: 0.5rem 0.25rem 0.5rem 0.25rem;
+    @include curvedBorder;
+    border: none;
+    @include shadow;
+    padding: 0.5rem 0.4rem 0.5rem 0.4rem;
+    cursor: pointer;
+    &:hover {
+        color: white;
+        background: $CPT3;
+    }
 }
 
 @media (min-width: 768px) {

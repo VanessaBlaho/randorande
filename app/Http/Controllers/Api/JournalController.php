@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Entry;
+=======
+>>>>>>> main
 use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
+<<<<<<< HEAD
     public function edit($entry_id)
     {
         $entry = Entry::findOrFail($entry_id);
@@ -41,4 +45,7 @@ class JournalController extends Controller
             'message' => 'Journal updated successfully!'
         ];
     }
+=======
+    //
+>>>>>>> main
 }

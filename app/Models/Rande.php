@@ -10,7 +10,7 @@ class Rande extends Model
 {
     use HasFactory;
 
-    public function budgets()
+    public function budget()
     {
         return $this->hasOne(Budget::class);
     }

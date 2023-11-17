@@ -1,4 +1,4 @@
-@import "./varables";
+@import "./variables";
 @import "./layout/homepage";
 @import "./layout/header";
 @import "./layout/main";
@@ -8,12 +8,17 @@
 @import "./search/scratchOff.scss";
 @import "./search/revealed_date_detail";
 @import "./myJournal/editRande";
+@import "./myjournal/myjournal";
+@import "./auth/registration";
+@import "./about-us/about-us";
 
-html {
-    box-sizing: border-box;
-    height: 100%;
-    margin: 0;
-}
+
+
+// html {
+//     box-sizing: border-box;
+//     //height: 100%;
+//margin: 0;
+// }
 
 body {
 

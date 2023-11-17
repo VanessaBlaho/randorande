@@ -1,41 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ResultsContext from "../../ResultsContext";
+import { useFiltersContext } from "../../FiltersContext"; //change to FiltersContext
 
 const DateSearch = () => {
-    // State for filters and results
-    const [budgetFilter, setBudgetFilter] = useState("");
-    const [seasonFilter, setSeasonFilter] = useState("");
-    const [localityFilter, setLocalityFilter] = useState("");
-    const { setResults } = useContext(ResultsContext);
-
-    const isButtonDisabled = !budgetFilter || !seasonFilter || !localityFilter;
-
-    // Fetch data from the backend based on filters
-    const fetchRande = async () => {
-        try {
-            const response = await fetch(
-                `/api/date-search/results?budget=${budgetFilter}&season=${seasonFilter}&locality=${localityFilter}`
-            );
-            const data = await response.json();
-            setResults(data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    //handling search and redirect on button click
-    const handleSearch = () => {
-        fetchRande();
-    };
-
-   
+    const { state, dispatch } = useFiltersContext();
+    const isButtonDisabled = !state.budgetFilter || !state.seasonFilter || !state.localityFilter;
 
     return (
         <>
             <div className="datesearch">
                 <h1>Rendezvous</h1>
-                <h3>Your next date idea is moments away!</h3>
+                <h3>Your next date idea is just moments away!</h3>
                 <div className="filters">
                     {/* Budget dropdown */}
                     <div className="filter__budget-dropdown">
@@ -43,8 +18,13 @@ const DateSearch = () => {
                         <label htmlFor="budgetFilter">Budget</label>
                         <select
                             id="budgetFilter"
-                            value={budgetFilter}
-                            onChange={(e) => setBudgetFilter(e.target.value)}
+                            value={state.budgetFilter}
+                            onChange={(e) =>
+                                dispatch({
+                                    type: "SET_BUDGET_FILTER",
+                                    payload: e.target.value,
+                                })
+                            }
                         >
                             <option value="">--</option>
                             <option value="1">Free</option>
@@ -58,8 +38,13 @@ const DateSearch = () => {
                         <label htmlFor="seasonFilter">Time of Year</label>
                         <select
                             id="seasonFilter"
-                            value={seasonFilter}
-                            onChange={(e) => setSeasonFilter(e.target.value)}
+                            value={state.seasonFilter}
+                            onChange={(e) =>
+                                dispatch({
+                                    type: "SET_SEASON_FILTER",
+                                    payload: e.target.value,
+                                })
+                            }
                         >
                             <option value="">--</option>
                             <option value="spring">Spring</option>
@@ -76,8 +61,13 @@ const DateSearch = () => {
                         </label>
                         <select
                             id="localityFilter"
-                            value={localityFilter}
-                            onChange={(e) => setLocalityFilter(e.target.value)}
+                            value={state.localityFilter}
+                            onChange={(e) =>
+                                dispatch({
+                                    type: "SET_LOCALITY_FILTER",
+                                    payload: e.target.value,
+                                })
+                            }
                         >
                             <option value="">--</option>
                             <option value="1">Indoors</option>
@@ -85,11 +75,11 @@ const DateSearch = () => {
                         </select>
                     </div>
                     {isButtonDisabled ? (
-                        <p>Please select one option from each search feature.</p>
+                        <p>
+                            Please select one option from each search feature.
+                        </p>
                     ) : (
-                        <button onClick={() => handleSearch()}>
-                            <Link to="/date-search/results">Rendezvous</Link>
-                        </button>
+                        <Link className="search_rande_btn" to="/date-search/results">Rendezvous</Link>
                     )}
                 </div>
             </div>

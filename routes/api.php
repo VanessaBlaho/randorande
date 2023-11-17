@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\JournalController;
 use App\Http\Controllers\Api\SearchController as ApiSearchController;
+use App\Http\Controllers\Api\JournalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +29,5 @@ Route::get('/randes/{rande_id}', [ApiSearchController::class, 'show']);
 Route::get('/entries/{entry_id}/edit', [JournalController::class, 'edit']);
 //update entry in journal
 Route::post('/entries/{entry_id}/store', [JournalController::class, 'store']);
+//my journal endpoint
+Route::get('/my-journal/{id}', [JournalController::class, 'show']);

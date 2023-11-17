@@ -18,8 +18,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'username',
         'password',
     ];
 
@@ -43,7 +45,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function journals()
+    public function journal()
     {
         return $this->hasOne(Journal::class);
     }
