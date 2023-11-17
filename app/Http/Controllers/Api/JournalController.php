@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
+    public function show($entry_id)
+    {
+        $entry = Entry::findOrFail($entry_id);
+
+        return $entry;
+    }
+    
     public function edit($entry_id)
     {
         $entry = Entry::findOrFail($entry_id);

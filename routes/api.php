@@ -31,3 +31,5 @@ Route::get('/entries/{entry_id}/edit', [JournalController::class, 'edit']);
 Route::post('/entries/{entry_id}/store', [JournalController::class, 'store']);
 //my journal endpoint
 Route::get('/my-journal/{id}', [JournalController::class, 'show']);
+//my journal entry endpoint
+Route::get('/entries/{entry_id}', [JournalController::class, 'show']);

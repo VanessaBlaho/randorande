@@ -32,10 +32,10 @@ export default function MainContent() {
                     <Route path="/my-journal" element={<Journal />} />
                     <Route path="/register" element={<Registration />} />
                     <Route
-                        path="/my-journal/entries/edit"
+                        path="/my-journal/entry/edit"
                         element={<EditRandeLog />}
                     />
-                    <Route path="/randelog" element={<RandeLog />} />
+                    <Route path="/my-journal/entry" element={<RandeLog />} />
 
                     {/*
                     <Route path="/faq" element={} />

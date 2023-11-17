@@ -2,24 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const RandeLog = ({ editedData }) => {
+
+//we need to use props for the date name from the journal list page
+const RandeLog = ({ entryId = 1  }) => {
     // const [data, setData] = useState(null);
     const [entryData, setEntryData] = useState({
         name: null,
         date: null,
         location: null,
-        description: null
-     });
-   
+        description: null,
+    });
 
     useEffect(() => {
         const fetchEntryData = async () => {
             try {
                 // Replace 'API_ENDPOINT_URL'
-                const response = await axios.get("api-endpoint-url", {
-                    headers: {
-                        Authorization: `Bearer ${authToken}`, // token should be stored and then we can dynamically use
-                    },
+                const response = await axios.get(`/api/entries/${entryId}`, {
+                    // headers: {
+                    //     // Authorization: `Bearer ${authToken}`, // token should be stored and then we can dynamically use
+                    // },
                 });
                 if (response.status === 200) {
                     const apiEntryData = response.data;
@@ -34,19 +35,20 @@ const RandeLog = ({ editedData }) => {
 
         // Fetch data from the API
         fetchEntryData();
-    }, [editedData]);
+    }, []);
 
     return (
         <div>
             <div className="journal-container">
-                <Link to="/edit"> 
-                {/* get path for above from Maria */}
+                <Link to="/my-journal">
                     <h1>My Journal</h1>
                 </Link>
 
                 <div className="randorande-data">
                     <div className="left-section">
                         <h2 className="data__rande-name">
+                            {/* we need to use props for the date name from the
+                            journal list page */}
                             {entryData.name ?? "Date Name"}
                         </h2>
 
@@ -55,7 +57,7 @@ const RandeLog = ({ editedData }) => {
                         </h5>
 
                         <h5 className="date__rande-location">
-                            { entryData.location ?? "Location"}
+                            {entryData.location ?? "Location"}
                         </h5>
 
                         {entryData && entryData.image_url ? (
@@ -72,15 +74,18 @@ const RandeLog = ({ editedData }) => {
 
                         <p className="data__rande-description">
                             Description:
-                            {entryData.entry_text ?? " Please click on the edit button to log your date in your journal."}
+                            {entryData.entry_text ??
+                                " Please click on the edit button to log your date in your journal."}
                         </p>
 
-                        <Link to="/edit" className="button-link">
+                        <Link
+                            to="/my-journal/entries/edit"
+                            className="button-link"
+                        >
                             Edit
                         </Link>
-                        <button disabled>Upload Photo</button>
+                        <button>Upload Photo</button>
                     </div>
-                    <div className="right-section"></div>
                 </div>
             </div>
         </div>

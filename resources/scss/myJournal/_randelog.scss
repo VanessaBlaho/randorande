@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .journal-container {
   font-family: Arial, sans-serif;
   color: rgb(16, 3, 3);
@@ -79,6 +85,14 @@
 }
 
 @media (min-width: 768px) {
-  /* Add styles for desktop */
+ .data__rande-photo-placeholder {
+    width: 10%; 
+  }
+
+  .button-link,
+   .button {
+    display: inline-block;
+    margin: 10px;
+  }
 }
       
