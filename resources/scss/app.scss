@@ -6,9 +6,10 @@
 @import "./search/datesearch";
 @import "./search/scratchOff.scss";
 @import "./search/revealed_date_detail";
-@import "randelog"; //will need to adjust once scss folder is created
+@import "./myJournal/randelog"; 
 @import "./myjournal/myjournal";
 @import "./about-us/about-us";
+@import "./faq/faq";
 
 // html {
 //     box-sizing: border-box;

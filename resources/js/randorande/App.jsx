@@ -4,7 +4,6 @@ import MainContent from "./components/layout/MainContent";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
-import RandeLog from "./components/RandeLog";
 
 export default function App() {
 
@@ -13,9 +12,9 @@ export default function App() {
             <FiltersProvider>
                 <>
                     <Header />
-                    {/* <MainContent />
-                    <Footer /> */}
-                    <RandeLog />
+                    <MainContent />
+                    <Footer />
+                    
                 </>
             </FiltersProvider>
         </BrowserRouter>
