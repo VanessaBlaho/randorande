@@ -36,8 +36,8 @@ const RandeLog = ({ editedData }) => {
     return (
         <div>
             <div className="journal-container">
-                <Link to="/edit"> 
-                {/* get path for above from Maria */}
+                <Link to="/edit">
+                    {/* get path for above from Maria */}
                     <h1>My Journal</h1>
                 </Link>
 
