@@ -13,4 +13,9 @@ class Entry extends Model
     {
         return $this->belongsTo(Journal::class);
     }
+
+    public function randes()
+    {
+        return $this->belongsTo(Rande::class);
+    }
 }
