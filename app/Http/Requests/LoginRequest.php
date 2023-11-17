@@ -23,7 +23,7 @@ class LoginRequest extends FortifyLoginRequest
     public function messages()
     {
         return [
-            
+            'email.required' => 'Please fill in username',
         ];
     }
 }

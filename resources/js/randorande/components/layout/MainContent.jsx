@@ -8,6 +8,7 @@ import { RevealedDateDetail } from "../search/RevealedDateDetail";
 import NotFound from "../notfound/NotFound";
 import Journal from "../myJournal/Journal";
 import Registration from "../auth/Registration";
+import Login from "../auth/Login";
 
 export default function MainContent() {
     return (
@@ -38,10 +39,10 @@ export default function MainContent() {
 
                     <Route path="/my-journal" element={<Journal />} />
                     <Route path="/register" element={<Registration />} />
-
+                    <Route path="/login" element={<Login/>} />
                     {/*
                     <Route path="/faq" element={} />
-                    <Route path="/login" element={} /> */}
+                     */}
                 </Routes>
             </main>
         </>

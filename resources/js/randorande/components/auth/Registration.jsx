@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import UserContext from "../../UserContext";
-
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Register(props) {
 
@@ -18,9 +18,9 @@ export default function Register(props) {
 
     const [errors, setErrors] = useState({});
 
-    
 
     const { setUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -37,6 +37,8 @@ export default function Register(props) {
             // const response_data = response.data; // use later for console.log()
             setUser(null);
             // ADD NAVIGATE TO MY JOURNAL HERE
+            navigate("/my-journal");
+            
         } catch (error) {
             // if the response code is not 2xx (success)
             console.log("Error Response:", error.response.data.errors);
