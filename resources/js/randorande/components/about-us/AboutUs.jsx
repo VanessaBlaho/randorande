@@ -19,7 +19,7 @@ export default function AboutUs() {
                 <div className="team-member__container kokoreva">
                     <img
                         className="team-member__img"
-                        src="/images/about-us/3.png"
+                        src="/images/about-us/4.png"
                         alt="Maria Kokoreva"
                     />
                     <p className="team-member__name">Maria Kokoreva</p>
