@@ -41,11 +41,11 @@
         color: darkgrey;
       }
 
-    //   .data__rande-photo {
-    //     width: 100%;
-    //     max-width: 300px;
-    //     margin-top: 10px;
-    //   }
+      .data__rande-photo {
+        width: 100%;
+        max-width: 300px;
+        margin-top: 10px;
+      }
 
       .data__rande-photo-placeholder {
         background-color: darkgrey;
@@ -67,16 +67,16 @@
         border-radius: 5px;
       }
 
-      button[disabled] {
+      .button {
         display: block;
+        width: 80px;
         margin: 10px auto;
         padding: 10px;
         background-color: grey;
         color: white;
         text-align: center;
-        border: none;
+        text-decoration: none;
         border-radius: 5px;
-        cursor: not-allowed;
       }
     }
 

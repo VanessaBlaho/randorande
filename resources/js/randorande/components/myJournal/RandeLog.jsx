@@ -79,7 +79,7 @@ const RandeLog = ({ entryId = 1  }) => {
                         </p>
 
                         <Link
-                            to="/my-journal/entries/edit"
+                            to="/my-journal/entry/edit"
                             className="button-link"
                         >
                             Edit
