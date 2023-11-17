@@ -244,13 +244,13 @@ export default function Register(props) {
                     )}
                     <div className="input_row over_18_row">
                         <label
-                            className="input_row__label"
+                            className="input_row__label_age-checker"
                             htmlFor="age_confirmation"
                         >
                             I'm over 18
                         </label>
                         <input
-                            className="input_row__input"
+                            className="input_row__input_age-checker"
                             type="checkbox"
                             name="age_confirmation"
                             onChange={handleChange}
@@ -272,7 +272,7 @@ export default function Register(props) {
                         ""
                     )}
                 </div>
-                <button>Register</button>
+                <button className="register_btn">Register</button>
                 <br />
             </form>
         </>

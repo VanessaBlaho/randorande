@@ -2,6 +2,7 @@
     text-align: center;
     padding: 0;
     margin: 0;
+    margin-top: 0.5rem;
 }
 
 .login_reminder {
@@ -22,12 +23,20 @@
 
 .register_instructions {
     text-align: center;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.8rem;
+    margin-top: 0;
 }
 
 .register_btn { 
     margin: auto;
     text-align: center;
+    padding: 0.2rem 0.3rem;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+        background: black;
+        color: white;
+    }
 }
 
 .input_row__label {
@@ -53,8 +62,17 @@
 }
 
 .over_18_row {
-    align-self: center;
-    
+    width: 40%;
+    margin: 0 auto;
+}
+
+.input_row__label_age-checker {
+    text-align: right;
+}
+
+.input_row__input_age-checker {
+    width: fit-content;
+    margin-left: 0.5rem;
 }
 
 .errors {
