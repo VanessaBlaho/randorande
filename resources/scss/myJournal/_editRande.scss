@@ -1,0 +1,151 @@
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.edit-page-main-container {
+    @include flexCol;
+    width: 100%;
+    height: 37rem;
+
+    .edit-loader {
+        font-size: 2rem;
+        animation: rotateAnimation 3s infinite linear;
+    }
+
+
+    .edit-container {
+        @include flexCol;
+        height: 90%;
+        width: 90%;
+        padding: 1rem 0;
+        border: solid 2px black;
+
+        &__back-btn {
+
+            a {
+                text-decoration: none;
+                font-size: 1rem;
+            }
+        }
+
+        &__title {
+            font-weight: 200;
+
+            margin-left: 1rem;
+        }
+
+        .edit-form {
+            @include flexCol;
+
+            height: 70%;
+            width: 90%;
+            //background-color: aquamarine;
+            //border: solid 2px black;
+
+
+            &__form {
+                @include flexCol;
+                align-items: flex-start;
+                justify-content: space-around;
+
+                height: 100%;
+                width: 90%;
+            }
+
+            &__input--date,
+            &__input--location {
+                height: 1.5rem;
+            }
+
+            &__textarea {
+                width: 97%;
+                height: 60%;
+            }
+
+            &__button {
+                align-self: center;
+                color: blue;
+                font-size: 1rem;
+            }
+
+        }
+
+
+    }
+
+    @media (min-width: 768px) {
+        .edit-container {
+            @include flexCol;
+            height: 70%;
+            width: 60%;
+            padding: 1rem 0;
+            border: solid 2px black;
+
+            &__back-btn {
+
+                a {
+                    text-decoration: none;
+                    font-size: 1rem;
+                }
+            }
+
+            &__title {
+                font-weight: 200;
+
+                margin-left: 1rem;
+            }
+
+            .edit-form {
+                @include flexCol;
+
+                height: 70%;
+                width: 90%;
+                //background-color: aquamarine;
+                //border: solid 2px black;
+
+
+                &__form {
+                    @include flexCol;
+                    align-items: flex-start;
+                    justify-content: space-around;
+
+                    height: 100%;
+                    width: 90%;
+
+
+                }
+
+
+                &__input--date,
+                &__input--location {
+                    height: 1.5rem;
+                }
+
+                &__textarea {
+                    width: 97%;
+                    height: 40%;
+                }
+
+                &__button {
+                    align-self: center;
+                    background-color: none;
+                    font-size: 1rem;
+                }
+
+
+
+            }
+
+
+        }
+    }
+
+
+}
