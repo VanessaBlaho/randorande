@@ -9,12 +9,12 @@ class Entry extends Model
 {
     use HasFactory;
 
-    public function journals()
+    public function journal()
     {
         return $this->belongsTo(Journal::class);
     }
 
-    public function randes()
+    public function rande()
     {
         return $this->belongsTo(Rande::class);
     }
