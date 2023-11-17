@@ -6,6 +6,7 @@ import ScratchOff from "../search/ScratchOff";
 import { RevealedDateDetail } from "../search/RevealedDateDetail";
 import NotFound from "../notfound/NotFound";
 import Journal from "../myJournal/Journal";
+import Registration from "../auth/Registration";
 
 export default function MainContent() {
     return (
@@ -23,13 +24,14 @@ export default function MainContent() {
                         path="/randes/:rande_id"
                         element={<RevealedDateDetail />}
                     />
-                    
-                    <Route path="/my-journal/:id" element={<Journal/>} />
+
+                    <Route path="/my-journal/:id" element={<Journal />} />
+                    <Route path="/register" element={<Registration />} />
+
                     {/*
                     <Route path="/about-us" element={} />
                     <Route path="/faq" element={} />
-                    <Route path="/login" element={} />
-                    <Route path="/register" element={} /> */}
+                    <Route path="/login" element={} /> */}
                 </Routes>
             </main>
         </>
