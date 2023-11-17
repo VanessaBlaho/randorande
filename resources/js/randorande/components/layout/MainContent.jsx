@@ -9,6 +9,7 @@ import NotFound from "../notfound/NotFound";
 import Journal from "../myJournal/Journal";
 import Registration from "../auth/Registration";
 import EditRandeLog from "../myJournal/EditRandeLog";
+import RandeLog from "../myJournal/RandeLog";
 
 export default function MainContent() {
     return (
@@ -34,6 +35,7 @@ export default function MainContent() {
                         path="/my-journal/entries/edit"
                         element={<EditRandeLog />}
                     />
+                    <Route path="/randelog" element={<RandeLog />} />
 
                     {/*
                     <Route path="/faq" element={} />

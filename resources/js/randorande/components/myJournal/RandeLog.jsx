@@ -1,36 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const RandeLog = ({ editedData }) => {
-    const [data, setData] = useState(null);
-    const [entryData, setEntryData] = useState(null);
+    // const [data, setData] = useState(null);
+    const [entryData, setEntryData] = useState({
+        name: null,
+        date: null,
+        location: null,
+        description: null
+     });
+   
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchEntryData = async () => {
             try {
                 // Replace 'API_ENDPOINT_URL'
-                const response = await fetch("API_ENDPOINT_URL");
-                const fetchedData = await response.json();
-
-                // Check if editedData is available in the API response
-                const apiEntryData = editedData
-                    ? fetchedData.entries.find(
-                          (entry) => entry.id === editedData.id
-                      )
-                    : null;
-
-                // Update state with fetched data
-                setData(fetchedData);
-
-                // Set entryData based on API response
-                setEntryData(apiEntryData);
+                const response = await axios.get("api-endpoint-url", {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`, // token should be stored and then we can dynamically use
+                    },
+                });
+                if (response.status === 200) {
+                    const apiEntryData = response.data;
+                    setEntryData(apiEntryData);
+                } else {
+                    console.error("Failed to fetch journal entry");
+                }
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
 
         // Fetch data from the API
-        fetchData();
+        fetchEntryData();
     }, [editedData]);
 
     return (
@@ -44,15 +47,15 @@ const RandeLog = ({ editedData }) => {
                 <div className="randorande-data">
                     <div className="left-section">
                         <h2 className="data__rande-name">
-                            {entryData ? entryData.name : "Date Name"}
+                            {entryData.name ?? "Date Name"}
                         </h2>
 
                         <h5 className="data__rande-date">
-                            {entryData ? entryData.date : "MM/DD/YYYY"}
+                            {entryData.date ?? "MM/DD/YYYY"}
                         </h5>
 
                         <h5 className="date__rande-location">
-                            {entryData ? entryData.location : "Location"}
+                            { entryData.location ?? "Location"}
                         </h5>
 
                         {entryData && entryData.image_url ? (
@@ -69,9 +72,7 @@ const RandeLog = ({ editedData }) => {
 
                         <p className="data__rande-description">
                             Description:
-                            {entryData
-                                ? entryData.entry_text
-                                : " Please click on the edit button to log your date in your journal."}
+                            {entryData.entry_text ?? " Please click on the edit button to log your date in your journal."}
                         </p>
 
                         <Link to="/edit" className="button-link">

@@ -7,7 +7,7 @@ import Footer from "./components/layout/Footer";
 import axios from "axios";
 import UserContext from "./UserContext";
 
-import RandeLog from "./components/RandeLog";
+
 
 export default function App() {
     const [user, setUser] = useState(null); // null - user status unknown
@@ -50,6 +50,7 @@ export default function App() {
                         <Header />
                         <MainContent />
                         <Footer />
+                        
                     </>
                 </FiltersProvider>
             </BrowserRouter>
