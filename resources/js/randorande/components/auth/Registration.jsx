@@ -256,7 +256,6 @@ export default function Register(props) {
                             onChange={handleChange}
                         />
                     </div>
-                    <br />
                     {errors.age_confirmation ? (
                         <>
                             <div className="errors">
