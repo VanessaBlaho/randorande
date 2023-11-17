@@ -1,30 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // below imports search data from DateSearch.jsx component via ResultsContext.js
-import  { useFiltersContext } from "../../FiltersContext";
+import { useFiltersContext } from "../../FiltersContext";
 
 export default function ScratchOff() {
+    // below uses the filters context to fetch from API
     const { state, dispatch } = useFiltersContext();
     // below is variable for reroute navigation
     // user will be rerouted back to the DateSearch page upon refresh
     const navigate = useNavigate();
-    // BELOW: main useState hook variables
     // for retrieving the date idea search results
-    const [ results, setResults ] = useState([]);
+    const [results, setResults] = useState([]);
 
     // FETCH CODE BELOW
-    // const { filters } = useContext(FiltersContext)
-    /*
-      // Fetch data from the backend based on filters
-
-    //handling search and redirect on button click
-    const handleSearch = () => {
-        fetchRande();
-    };
-
-    */
-
-    // Fetch data from the backend based on filters
+    // Fetch data from API based on filters
     const fetchRande = async () => {
         try {
             const response = await fetch(
@@ -37,10 +26,11 @@ export default function ScratchOff() {
         }
     };
 
-    useEffect( () => {
+    useEffect(() => {
         fetchRande();
-    }, []) 
+    }, []); // the [] ensures the fetch happens only once
 
+    // BELOW: main useState hook variables
     // for referencing canvases
     const canvasRefs = useRef(Array(results?.length).fill(null));
     // for setting the hint as either a hint or the date name upon 60% scratch
@@ -240,7 +230,7 @@ export default function ScratchOff() {
                 ctx.canvas.getContext("2d").willReadFrequently = true;
 
                 const pixels = imageData.data;
-                const totalPixels = pixels.length / 4; // Each pixel has 4 values (R, G, B, A)
+                const totalPixels = pixels.length / 4; // each pixel has 4 values (R, G, B, A)
                 const transparentPixels = Array.from(pixels).filter(
                     (pixel, i) => i % 4 === 3 && pixel === 0
                 );
@@ -303,13 +293,14 @@ export default function ScratchOff() {
             newVisibility[index] = true;
             return newVisibility;
         });
+        // below targets the canvases so that a pointerEvent can be disabled
         const scratchAreas = document.querySelectorAll(".scratch_card__mask");
-        console.log(scratchAreas);
+        // console.log(scratchAreas);
         scratchAreas.forEach((area) => {
             // if the id of the area does not contain the index of the 1 card scratched more than 60%
             // we will disable scratching on them
             if (!area.id.includes(String(index))) {
-                console.log("huy");
+                // console.log("huy");
                 area.style.pointerEvents = "none";
             }
         });

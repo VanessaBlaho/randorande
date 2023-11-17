@@ -1,4 +1,4 @@
-@import "./varables";
+@import "./variables";
 @import "./layout/homepage";
 @import "./layout/header";
 @import "./layout/footer";
@@ -7,11 +7,12 @@
 @import "./search/scratchOff.scss";
 @import "./search/revealed_date_detail";
 @import "./myjournal/myjournal";
+@import "./about-us/about-us";
 
-html {
-    box-sizing: border-box;
-    //height: 100%;
-}
+// html {
+//     box-sizing: border-box;
+//     //height: 100%;
+// }
 
 body {
     height: 100vh;
