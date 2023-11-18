@@ -56,9 +56,15 @@ const Header = (props) => {
                         <li>
                             <Link to="/date-search">Date Search</Link>
                         </li>
+                        {!user? (
+                            <>
                         <li>
+                            My Journal
+                            </li>
+                        </>
+                        ): ( 
                             <Link to="/my-journal">My Journal</Link>
-                        </li>
+                        )}
                         <li>
                             <Link to="/about-us">About Us</Link>
                         </li>
