@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 //import "../../../../scss/app.scss";
 import UserContext from "../../UserContext";
 import axios from "axios";
+import { useNavigate} from "react-router-dom";
 
 const Header = (props) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const { user, setUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const handleLogout = async ev => {
         ev.preventDefault();
@@ -19,6 +21,7 @@ const Header = (props) => {
             setUser(null);
             // ADD NAVIGATE TO MY JOURNAL HERE
             // navigate("/my-journal");
+            navigate("/");
             
         } catch (error) {
            
