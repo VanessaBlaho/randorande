@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import { Link } from "react-router-dom";
 //import "../../../../scss/app.scss";
 import UserContext from "../../UserContext";
@@ -39,6 +39,20 @@ const Header = (props) => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+
+    useEffect(() => {
+        const checkAuthenticationStatus = async () => {
+            try {
+                const response = await axios.get('/login'); // Replace with your authentication check endpoint
+                const authenticatedUser = response.data.user;
+                setUser(authenticatedUser);
+            } catch (error) {
+                // Handle error (e.g., user not authenticated)
+            }
+        };
+
+        checkAuthenticationStatus();
+    }, [setUser]); 
 
     return (
         <header className={menuOpen ? "open" : ""}>
