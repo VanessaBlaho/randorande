@@ -42,6 +42,16 @@ $CPT4: #eeeeee;
     border-top-right-radius: 0;
 }
 
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 body {
     background: beige;
 }
@@ -161,4 +171,11 @@ body {
     .scratchOff_container__parent {
         @include flexRowScratch;
     }
+}
+
+.edit-loader {
+    margin: auto 0;
+    text-align: center;
+    font-size: 2rem;
+    animation: rotateAnimation 3s infinite linear;
 }

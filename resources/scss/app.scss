@@ -1,27 +1,39 @@
 @import "./variables";
 @import "./layout/homepage";
 @import "./layout/header";
+@import "./layout/main";
 @import "./layout/footer";
 @import "./layout/notfound";
 @import "./search/datesearch";
 @import "./search/scratchOff.scss";
 @import "./search/revealed_date_detail";
+@import "./myJournal/randelog"; 
+@import "./myJournal/editRande";
 @import "./myjournal/myjournal";
 @import "./auth/registration";
 @import "./about-us/about-us";
+@import "./faq/faq";
+
+
 
 // html {
 //     box-sizing: border-box;
 //     //height: 100%;
+//margin: 0;
 // }
 
 body {
-    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
 
-    #randorande-app {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-    }
+    // #randorande-app {
+    //     align-self: center;
+    //     flex: 1;
+    //     // height: 100%;
+    //     // width: 100%;
+    //     //margin: 0;
+    // }
 }
