@@ -51,6 +51,7 @@ export default function App() {
                         <Header />
                         <MainContent />
                         <Footer />
+                        
                     </>
                 </FiltersProvider>
             </BrowserRouter>

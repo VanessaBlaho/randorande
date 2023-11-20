@@ -12,6 +12,8 @@ import Login from "../auth/Login";
 import EditRandeLog from "../myJournal/EditRandeLog";
 import Faq from "../faq/Faq";
 import SubpageLayout from "../myJournal/SubPageLayout";
+import RandeLog from "../myJournal/RandeLog";
+
 
 export default function MainContent() {
     return (
@@ -44,7 +46,20 @@ export default function MainContent() {
                     <Route path="/faq" element={<Faq />} />
 
                     <Route path="/register" element={<Registration />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/login" element={<Login/>} />
+                    {/*
+                    <Route path="/faq" element={} />
+                     */}
+                    <Route
+                        path="/my-journal/entry/edit"
+                        element={<EditRandeLog />}
+                    />
+                    <Route path="/my-journal/entry" element={<RandeLog />} />
+
+                     <Route path="/faq" element={<Faq />} />
+                    {/*
+                   
+                    <Route path="/login" element={} /> */}
                 </Routes>
             </main>
         </>
