@@ -8,6 +8,7 @@ import { RevealedDateDetail } from "../search/RevealedDateDetail";
 import NotFound from "../notfound/NotFound";
 import Journal from "../myJournal/Journal";
 import Registration from "../auth/Registration";
+import Login from "../auth/Login";
 import EditRandeLog from "../myJournal/EditRandeLog";
 import Faq from "../faq/Faq";
 
@@ -32,6 +33,10 @@ export default function MainContent() {
 
                     <Route path="/my-journal" element={<Journal />} />
                     <Route path="/register" element={<Registration />} />
+                    <Route path="/login" element={<Login/>} />
+                    {/*
+                    <Route path="/faq" element={} />
+                     */}
                     <Route
                         path="/my-journal/entries/edit"
                         element={<EditRandeLog />}
