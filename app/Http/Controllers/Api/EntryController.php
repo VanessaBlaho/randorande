@@ -12,7 +12,7 @@ class EntryController extends Controller
     public function show($entry_id)
     {
 
-        $entry = Entry::select('entries.*', 'randes.name as rande_name')
+        $entry = Entry::select('entries.*', 'randes.name as rande_name', 'randes.description as rande_description')
             ->join('randes', 'entries.rande_id', '=', 'randes.id')
             ->find($entry_id);
 
