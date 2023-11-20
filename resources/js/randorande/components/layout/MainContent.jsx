@@ -7,6 +7,8 @@ import AboutUs from "../about-us/AboutUs";
 import { RevealedDateDetail } from "../search/RevealedDateDetail";
 import NotFound from "../notfound/NotFound";
 import Journal from "../myJournal/Journal";
+import Registration from "../auth/Registration";
+import EditRandeLog from "../myJournal/EditRandeLog";
 import Faq from "../faq/Faq";
 
 
@@ -15,15 +17,9 @@ export default function MainContent() {
         <>
             <main>
                 <Routes>
-                    <Route 
-                        path="/" 
-                        element={<Homepage />} />
-                    <Route 
-                        path="*" 
-                        element={<NotFound />} />
-                    <Route 
-                        path="/date-search" 
-                        element={<DateSearch />} />
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="*" element={<NotFound />} />
+                    <Route path="/date-search" element={<DateSearch />} />
                     <Route
                         path="/date-search/results"
                         element={<ScratchOff />}
@@ -32,17 +28,19 @@ export default function MainContent() {
                         path="/randes/:rande_id"
                         element={<RevealedDateDetail />}
                     />
-                    <Route 
-                        path="/about-us" 
-                        element={<AboutUs />} />
-                        
-                    
-                    <Route path="/my-journal/:id" element={<Journal/>} />
+                    <Route path="/about-us" element={<AboutUs />} />
+
+                    <Route path="/my-journal" element={<Journal />} />
+                    <Route path="/register" element={<Registration />} />
+                    <Route
+                        path="/my-journal/entries/edit"
+                        element={<EditRandeLog />}
+                    />
+
                      <Route path="/faq" element={<Faq />} />
                     {/*
                    
-                    <Route path="/login" element={} />
-                    <Route path="/register" element={} /> */}
+                    <Route path="/login" element={} /> */}
                 </Routes>
             </main>
         </>
