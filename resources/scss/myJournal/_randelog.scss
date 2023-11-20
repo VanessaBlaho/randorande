@@ -35,16 +35,15 @@
         color: darkgrey;
       }
 
-    //   .data__rande-photo {
-    //     width: 100%;
-    //     max-width: 300px;
-    //     margin-top: 10px;
-    //   }
+      .data__rande-photo {
+        width: 50vw;
+        
+      }
 
       .data__rande-photo-placeholder {
         background-color: darkgrey;
-        width: 75%;
-        height: 150px; /* Adjust the height as needed */
+        width: 30vw;
+        height: 15vh;
         margin: 10px auto;
         
       }
@@ -60,18 +59,9 @@
         text-decoration: none;
         border-radius: 5px;
       }
+       
 
-      button[disabled] {
-        display: block;
-        margin: 10px auto;
-        padding: 10px;
-        background-color: grey;
-        color: white;
-        text-align: center;
-        border: none;
-        border-radius: 5px;
-        cursor: not-allowed;
-      }
+      
     }
 
     
@@ -79,5 +69,39 @@
 }
 
 @media (min-width: 768px) {
-  /* Add styles for larger screens if needed */
+  .data__rande-photo-placeholder {
+        background-color: darkgrey;
+        width: 30vw !important;
+        height: 38vh !important;
+        margin: 10px auto;
+        
+      }
+
+  .buttons {
+    display: flex;
+    justify-content: space-around; 
+    width: 200px;
+    height: 80px; 
+    margin: auto;
+    margin-top: 50px;
+    gap: 20px;
+
+   .button-link {
+  display: flex;
+  align-items: center; // This will center the text vertically
+  justify-content: center; // This will center the text horizontally
+  height: 20px;
+  padding: 10px;
+  background-color: grey;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
 }
+  }
+ 
+
+
+
+} 
+ 
+
