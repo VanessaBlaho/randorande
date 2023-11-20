@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 //{ entryId, setEntryId }
-export default function EditRandeLog({ entryId }) {
+export default function EditRandeLog() {
+    const { entryId } = useParams();
     const [entry, setEntry] = useState(null);
     const [message, setMessage] = useState(null);
 

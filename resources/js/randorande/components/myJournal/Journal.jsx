@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import UserContext from "../../UserContext";
 
 import axios from "axios";
@@ -10,6 +11,11 @@ export default function Journal(props) {
 
     const [entryId, setEntryId] = useState(null);
     const [entries, setEntries] = useState([]);
+
+    const dataToSend = {
+        prop1: "entryId",
+        prop2: "setEntryId",
+    };
 
     const fetchEntries = async () => {
         try {
@@ -28,7 +34,8 @@ export default function Journal(props) {
         fetchEntries();
     }, []);
 
-    return !entryId ? (
+    //
+    return (
         <>
             <div className="my-journal-parent">
                 {user ? (
@@ -53,13 +60,17 @@ export default function Journal(props) {
                                         {entries.map((entry) => {
                                             return (
                                                 <li
-                                                    key={entry.id}
+                                                    key={entry.entry_id}
                                                     className="randex-list__rande-name"
-                                                    onClick={() => {
-                                                        setEntryId(entry.id);
-                                                    }}
                                                 >
-                                                    <p>{entry.name}</p>
+                                                    <Link
+                                                        to={
+                                                            "/my-journal/entry/" +
+                                                            entry.entry_id
+                                                        }
+                                                    >
+                                                        {entry.rande_name}
+                                                    </Link>
                                                 </li>
                                             );
                                         })}
@@ -75,7 +86,5 @@ export default function Journal(props) {
                 )}
             </div>
         </>
-    ) : (
-        <RandeLog entryId={entryId} setEntryId={setEntryId} />
     );
 }
