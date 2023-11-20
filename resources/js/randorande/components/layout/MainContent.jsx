@@ -8,8 +8,10 @@ import { RevealedDateDetail } from "../search/RevealedDateDetail";
 import NotFound from "../notfound/NotFound";
 import Journal from "../myJournal/Journal";
 import Registration from "../auth/Registration";
+import Login from "../auth/Login";
 import EditRandeLog from "../myJournal/EditRandeLog";
-import RandeLog from "../myJournal/RandeLog";
+import Faq from "../faq/Faq";
+
 
 export default function MainContent() {
     return (
@@ -31,14 +33,19 @@ export default function MainContent() {
 
                     <Route path="/my-journal" element={<Journal />} />
                     <Route path="/register" element={<Registration />} />
+                    <Route path="/login" element={<Login/>} />
+                    {/*
+                    <Route path="/faq" element={} />
+                     */}
                     <Route
                         path="/my-journal/entry/edit"
                         element={<EditRandeLog />}
                     />
                     <Route path="/my-journal/entry" element={<RandeLog />} />
 
+                     <Route path="/faq" element={<Faq />} />
                     {/*
-                    <Route path="/faq" element={} />
+                   
                     <Route path="/login" element={} /> */}
                 </Routes>
             </main>
