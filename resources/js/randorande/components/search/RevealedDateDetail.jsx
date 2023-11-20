@@ -2,11 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
 export function RevealedDateDetail() {
     // search-related variables
     const { rande_id } = useParams();
     const [rande, setRande] = useState(null);
     const [message, setMessage] = useState(null);
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     const fetchRandeDetail = async () => {
         try {
@@ -23,26 +26,26 @@ export function RevealedDateDetail() {
         }
     };
     const addToJournal = async () => {
+        if (buttonClicked) {
+            // If button already clicked, do nothing
+            return;
+        }
+
         try {
-            
+            setButtonClicked(true); // Disable the button
+
             const response = await axios.post('/api/entries/create', {
                 rande_id: rande_id,
-                date: 'date', 
-                location: 'Some location', 
-                entry_text: 'Your entry text here', 
+                date: 'date',
+                location: 'Some location',
+                entry_text: 'Your entry text here',
             });
 
-         
-            
-           setMessage(response.data["message"]);
-
-            
+            setMessage(response.data["message"]);
         } catch (error) {
             console.log(error);
-            
         }
     };
-
 
     useEffect(() => {
         fetchRandeDetail();
@@ -62,7 +65,7 @@ export function RevealedDateDetail() {
 
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
-                            <button onClick ={addToJournal}>Add to My Journal</button>
+                            <button onClick ={addToJournal} disabled={buttonClicked}><Link to="/my-journal">Add to My Journal</Link></button>
                             {message ? <span>{message}</span> : ""}
                         </div>
                     </div>
