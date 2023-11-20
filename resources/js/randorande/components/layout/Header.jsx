@@ -1,9 +1,9 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 //import "../../../../scss/app.scss";
 import UserContext from "../../UserContext";
 import axios from "axios";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -11,23 +11,19 @@ const Header = (props) => {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
 
-    const handleLogout = async ev => {
+    const handleLogout = async (ev) => {
         ev.preventDefault();
-      
+
         try {
-           
-            const response = await axios.post('/logout');
-       
+            const response = await axios.post("/logout");
+
             setUser(null);
             // ADD NAVIGATE TO MY JOURNAL HERE
             // navigate("/my-journal");
             navigate("/");
-            
         } catch (error) {
-           
             console.log("Error Response:", error.response.data.errors);
             if (error.response.status === 422) {
-                
                 setErrors(error.response.data.errors);
             } else if (error.response.status === 500) {
                 console.log("UNKNOWN ERROR", error.response.data);
@@ -35,24 +31,23 @@ const Header = (props) => {
         }
     };
 
-
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
-    useEffect(() => {
-        const checkAuthenticationStatus = async () => {
-            try {
-                const response = await axios.get('/login'); // Replace with your authentication check endpoint
-                const authenticatedUser = response.data.user;
-                setUser(authenticatedUser);
-            } catch (error) {
-                // Handle error (e.g., user not authenticated)
-            }
-        };
+    // useEffect(() => {
+    //     const checkAuthenticationStatus = async () => {
+    //         try {
+    //             const response = await axios.get('/login'); // Replace with your authentication check endpoint
+    //             const authenticatedUser = response.data.user;
+    //             setUser(authenticatedUser);
+    //         } catch (error) {
+    //             // Handle error (e.g., user not authenticated)
+    //         }
+    //     };
 
-        checkAuthenticationStatus();
-    }, [setUser]); 
+    //     checkAuthenticationStatus();
+    // }, [setUser]);
 
     return (
         <header className={menuOpen ? "open" : ""}>
@@ -70,13 +65,11 @@ const Header = (props) => {
                         <li>
                             <Link to="/date-search">Date Search</Link>
                         </li>
-                        {!user? (
+                        {!user ? (
                             <>
-                        <li>
-                            My Journal
-                            </li>
-                        </>
-                        ): ( 
+                                <li>My Journal</li>
+                            </>
+                        ) : (
                             <Link to="/my-journal">My Journal</Link>
                         )}
                         <li>
@@ -90,7 +83,7 @@ const Header = (props) => {
             </div>
             <div className="auth-buttons">
                 <ul>
-                {!user ? (
+                    {!user ? (
                         <>
                             <li className="auth-button">
                                 <Link to="/login">Login</Link>
@@ -101,8 +94,9 @@ const Header = (props) => {
                         </>
                     ) : (
                         <li className="auth-button">
-                            <Link to="/logout" onClick={handleLogout}>Logout</Link>
-
+                            <Link to="/logout" onClick={handleLogout}>
+                                Logout
+                            </Link>
                         </li>
                     )}
                 </ul>

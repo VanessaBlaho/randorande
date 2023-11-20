@@ -6,9 +6,33 @@ use App\Http\Controllers\Controller;
 use App\Models\Entry;
 use App\Models\Rande;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EntryController extends Controller
 {
+    public function create(Request $request)
+    {
+        $request->validate([
+            'rande_id' => 'required',
+        ]);
+
+        $user = Auth::user();
+        $journal = $user->journal;
+
+        $entry = new Entry;
+
+        $entry->rande_id = $request->rande_id;
+        $entry->journal_id = $journal->id;
+        $entry->date = $request->date;
+        $entry->location = $request->location;
+        $entry->entry_text = $request->entry_text;
+        $entry->save();
+
+        return [
+            'message' => 'Added to journal successfully!'
+        ];
+    }
+    
     public function show($entry_id)
     {
 
@@ -50,4 +74,6 @@ class EntryController extends Controller
             'message' => 'Journal updated successfully!'
         ];
     }
+    
 }
+

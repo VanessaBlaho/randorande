@@ -12,6 +12,7 @@ import Login from "../auth/Login";
 import EditRandeLog from "../myJournal/EditRandeLog";
 import Faq from "../faq/Faq";
 import SubpageLayout from "../myJournal/SubPageLayout";
+import RandeLog from "../myJournal/RandeLog";
 
 export default function MainContent() {
     return (
@@ -33,7 +34,10 @@ export default function MainContent() {
                     {/* layout fot my journal page */}
                     <Route path="/" element={<SubpageLayout />}>
                         <Route path="/my-journal" element={<Journal />} />
-
+                        <Route
+                            path="/my-journal/entry"
+                            element={<RandeLog />}
+                        />
                         <Route
                             path="/my-journal/entries/edit"
                             element={<EditRandeLog />}
@@ -45,6 +49,7 @@ export default function MainContent() {
 
                     <Route path="/register" element={<Registration />} />
                     <Route path="/login" element={<Login />} />
+                
                 </Routes>
             </main>
         </>
