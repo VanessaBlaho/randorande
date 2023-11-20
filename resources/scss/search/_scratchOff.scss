@@ -52,10 +52,6 @@ $CPT4: #eeeeee;
     }
 }
 
-body {
-    background: beige;
-}
-
 .results_h1 {
     text-align: center;
     margin-top: 0.5rem;
@@ -160,19 +156,7 @@ body {
 }
 
 .save_rande_btn {
-    margin: 0 auto;
-    margin-bottom: 0.56rem;
-    width: fit-content;
-    white-space: nowrap;
-    @include curvedBorder;
-    border: none;
-    @include shadow;
-    padding: 0.5rem 0.4rem 0.5rem 0.4rem;
-    cursor: pointer;
-    &:hover {
-        color: white;
-        background: $CPT3;
-    }
+    @include buttonStyle;
 }
 
 @media (min-width: 768px) {

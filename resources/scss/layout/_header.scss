@@ -7,141 +7,196 @@ $randorande5: #4e8fa1;
 $randorande6: #f4b7a0; // button color // button rounded color is 4px
 $randorande7: #e0dfcd; // "white"
 
-
-
 // Mobile First Styles
 header {
-  position: relative;
-  background-color: $randorande2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  @include shadow;
+    position: relative;
+    background-color: $randorande2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    @include shadow;
 
-  .burger-menu {
-    display: block;
+    .empty_div {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+        cursor: pointer;
+
+        span {
+            display: block;
+            height: 6px;
+            width: 35px;
+            background-color: #e0dfcd;
+            margin: 5px 0;
+        }
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        min-width: fit-content;
+        padding: 0;
+        z-index: 3;
+
+        .nav {
+            ul {
+                list-style: none;
+                padding: 0;
+                padding-bottom: 0.2rem;
+                margin: 0;
+                background: $randorande2;
+                li {
+                    margin-bottom: 10px;
+                    &:hover {
+                        background: $randorande3;
+                    }
+                    a {
+                        color: $randorande7;
+                        text-decoration: none;
+                        font-size: 36px;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .journal_link {
+    color: $randorande7;
+    text-decoration: none;
+    font-size: 36px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     cursor: pointer;
-
-    span {
-      display: block;
-      height: 6px;
-      width: 35px;
-      background-color: #e0dfcd;
-      margin: 5px 0;
+    &:hover {
+      background: none;
+      text-decoration: underline;
     }
   }
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    min-width: fit-content;
-    padding: 0 10px 0 10px;
-    z-index: 3;
-    background: $randorande2;
+    .auth-buttons {
+        display: block;
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            li {
+                margin: 0 10px;
+                a {
+                    color: $randorande7;
+                    text-decoration: none;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
 
+    &.open {
+        .nav-links {
+            display: flex;
+        }
+    }
+}
+
+// styling for after smaller phones
+    @media (min-width: 375px) {
+
+
+header {
     .nav {
-      ul {
-        list-style: none;
-        padding: 0;
-
-        li {
-          margin-bottom: 10px;
-          &:hover {
-            background: $randorande3;
-          }
-          a {
-            color: $randorande7;
-            text-decoration: none;
-            font-size: 36px;
+        > li > a {
             padding-left: 3rem;
             padding-right: 3rem;
-            cursor: pointer;
-          }
         }
-      }
     }
-  }
-
-  .auth-buttons {
-    display: block;
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      li {
-        margin: 0 10px;
-        a {
-          color: $randorande7;
-          text-decoration: none;
-          font-size: 24px;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  &.open {
-    .nav-links {
-      display: flex;
-    }
-  }
 }
+
+    .journal_link {
+    
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+    }
 
 // Desktop Styles
 @media (min-width: 767px) {
-  header {
-    height: 1.5rem;
-    .burger-menu {
-      display: none;
-    }
-
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 1vh;
-      position: static;
-
-      .nav {
-        ul {
-          display: flex;
-          justify-content: space-around;
-          width: 100%;
-          li {
-            margin: 0 15px;
-            &:hover {
-              background: none;
-            }
-            a {
-              font-size: 18px;
-              padding-left: 0;
-              padding-right: 0;
-              &:hover {
-                text-decoration: underline;
-              }
-            }
-          }
+    header {
+        height: 1.8rem;
+        .burger-menu {
+            display: none;
         }
+
+        .empty_div {
+            display: block;
+            width: 30%;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1vh;
+            position: static;
+            width: 40%;
+
+            .nav {
+                ul {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 100%;
+                    background: none;
+                    li {
+                        margin: 0 15px;
+                        &:hover {
+                            background: none;
+                        }
+                        a {
+                            font-size: 18px;
+                            padding: 0;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        .journal_link {
+      font-size: 18px;
+      padding: 0;
+      margin: 0;
+      &:hover {
+        text-decoration: underline;
       }
     }
 
-    .auth-buttons {
-      display: flex;
-      margin-left: auto;
+        .auth-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-left: auto;
+            padding-left: 1rem;
+            width: 30%;
+        }
     }
-  }
+    header .auth-buttons ul li a {
+    font-size: 18px;
+    &:hover {
+        text-decoration: underline;
+    }
 }
-
-header .auth-buttons ul li a {
- font-size: 18px;
- &:hover {
-  text-decoration: underline;
- }
 }

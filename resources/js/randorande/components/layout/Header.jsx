@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext} from "react";
 import { Link } from "react-router-dom";
 //import "../../../../scss/app.scss";
 import UserContext from "../../UserContext";
@@ -35,26 +35,13 @@ const Header = (props) => {
         setMenuOpen(!menuOpen);
     };
 
-    // useEffect(() => {
-    //     const checkAuthenticationStatus = async () => {
-    //         try {
-    //             const response = await axios.get('/login'); // Replace with your authentication check endpoint
-    //             const authenticatedUser = response.data.user;
-    //             setUser(authenticatedUser);
-    //         } catch (error) {
-    //             // Handle error (e.g., user not authenticated)
-    //         }
-    //     };
-
-    //     checkAuthenticationStatus();
-    // }, [setUser]);
-
     return (
         <header className={menuOpen ? "open" : ""}>
+            <div className="empty_div"></div>
             <div className="burger-menu" onClick={toggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
+                <span className="burger-bun"></span>
+                <span className="burger-patty"></span>
+                <span className="burger-bun"></span>
             </div>
             <div className="nav-links">
                 <nav className={`nav ${menuOpen ? "open" : ""}`}>
@@ -67,10 +54,12 @@ const Header = (props) => {
                         </li>
                         {!user ? (
                             <>
-                                <li>My Journal</li>
+                                <li className="journal_link">My Journal</li>
                             </>
                         ) : (
-                            <Link to="/my-journal">My Journal</Link>
+                            <Link to="/my-journal" className="journal_link">
+                                My Journal
+                            </Link>
                         )}
                         <li>
                             <Link to="/about-us">About Us</Link>
@@ -85,16 +74,24 @@ const Header = (props) => {
                 <ul>
                     {!user ? (
                         <>
-                            <li className="auth-button">
-                                <Link to="/login">Login</Link>
+                            <li>
+                                <Link className="auth-button" to="/login">
+                                    Login
+                                </Link>
                             </li>
-                            <li className="auth-button">
-                                <Link to="/register">Register</Link>
+                            <li>
+                                <Link className="auth-button" to="/register">
+                                    Register
+                                </Link>
                             </li>
                         </>
                     ) : (
-                        <li className="auth-button">
-                            <Link to="/logout" onClick={handleLogout}>
+                        <li>
+                            <Link
+                                className="auth-button"
+                                to="/logout"
+                                onClick={handleLogout}
+                            >
                                 Logout
                             </Link>
                         </li>

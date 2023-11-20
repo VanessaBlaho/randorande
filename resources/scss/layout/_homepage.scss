@@ -5,8 +5,30 @@
     align-items: center;
 }
 
+@mixin buttonStyle {
+    font-family: 'Josefin Sans', sans-serif;
+        font-size: 16px;
+        background: $randorande6;
+        border: none;
+        width: fit-content;
+        white-space: nowrap;
+        padding: 0.4rem 0.5rem 0.2rem 0.5rem;
+        border-radius: 4px;
+        @include shadow;
+        margin: 0.3rem 0;
+        cursor: pointer;
+        &:hover {
+            background: $randorande8;
+        }
+}
+
 @mixin shadow {
     box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
+}
+
+.homepage__instructions {
+    // background-color: $randorande1;
+    width: 100%;
 }
 
 .homepage {
@@ -23,20 +45,11 @@
     }
 
     .modal_btn {
-        font-family: 'Josefin Sans', sans-serif;
-        font-size: 16px;
-        background: $randorande6;
-        border: none;
-        width: fit-content;
-        white-space: nowrap;
-        padding: 0.4rem 0.5rem 0.2rem 0.5rem;
-        border-radius: 4px;
-        @include shadow;
-        margin: 0.3rem 0;
-        cursor: pointer;
-        &:hover {
-            background: $randorande8;
-        }
+        @include buttonStyle;
+    }
+
+    .homepage__instructions-btn-trigger {
+        @include buttonStyle;
     }
 
     &__instructions {
@@ -106,39 +119,27 @@
     //desktop design
     @media (min-width: 768px) {
 
-
-        &__logo {
-            background-color: greenyellow;
-            width: 30rem;
-            height: 10rem;
-            margin-bottom: 1rem;
-
-
-            // img {
-            //     height: 20rem; // Increase height for larger screens
-            // }
-        }
-
         &__instructions {
             justify-content: space-around;
-            width: 50%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
 
 
             &-title {
-                font-size: 3rem; // Larger font for desktop
+                font-size: 42px; // Larger font for desktop
                 margin: 0;
 
             }
 
-
             &-list {
                 flex: 1;
-                height: 15rem;
+                
                 text-align: center;
             }
 
             &-item {
-                font-size: 1.3rem;
+                font-size: 20px
             }
 
             &-btn-trigger {
@@ -155,3 +156,6 @@
     }
 }
 
+.ReactModal__Content {
+    background-color: pink;
+}
