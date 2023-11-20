@@ -38,57 +38,56 @@ const RandeLog = ({ entryId = 1  }) => {
     }, []);
 
     return (
-        <div>
-            <div className="journal-container">
-                <Link to="/my-journal">
-                    <h1>My Journal</h1>
-                </Link>
-
-                <div className="randorande-data">
-                    <div className="left-section">
-                        <h2 className="data__rande-name">
-                            {/* we need to use props for the date name from the
+        <div className="journal-container">
+            <div className="randorande-data">
+                <div className="left-section">
+                    <h2 className="data__rande-name">
+                        {/* we need to use props for the date name from the
                             journal list page */}
-                            {entryData.name ?? "Date Name"}
-                        </h2>
+                        {entryData.name ?? "Date Name"}
+                    </h2>
 
-                        <h5 className="data__rande-date">
-                            {entryData.date ?? "MM/DD/YYYY"}
-                        </h5>
+                    <h5 className="data__rande-date">
+                        {entryData.date ?? "MM/DD/YYYY"}
+                    </h5>
 
-                        <h5 className="date__rande-location">
-                            {entryData.location ?? "Location"}
-                        </h5>
+                    <h5 className="date__rande-location">
+                        {entryData.location ?? "Location"}
+                    </h5>
 
-                        {entryData && entryData.image_url ? (
-                            <img
-                                src={entryData.image_url}
-                                alt="Date Photo"
-                                className="data__rande-photo"
-                            />
-                        ) : (
-                            <div className="data__rande-photo-placeholder">
-                                {/* Placeholder for photo */}
-                            </div>
-                        )}
+                    {entryData && entryData.image_url ? (
+                        <img
+                            src={entryData.image_url}
+                            alt="Date Photo"
+                            className="data__rande-photo"
+                        />
+                    ) : (
+                        <div className="data__rande-photo-placeholder">
+                            {/* Placeholder for photo */}
+                        </div>
+                    )}
 
-                        <p className="data__rande-description">
-                            Description:
-                            {entryData.entry_text ??
-                                " Please click on the edit button to log your date in your journal."}
-                        </p>
+                    <p className="data__rande-description">
+                        Description:
+                        {entryData.entry_text ??
+                            " Please click on the edit button to log your date in your journal."}
+                    </p>
 
+                    <div className="buttons">
                         <Link
                             to="/my-journal/entry/edit"
                             className="button-link"
                         >
                             Edit
                         </Link>
-                        <button>Upload Photo</button>
+
+                        <Link className="button-link">Photo</Link>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+       
     );
 };
 

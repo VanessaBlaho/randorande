@@ -11,6 +11,7 @@ import Registration from "../auth/Registration";
 import Login from "../auth/Login";
 import EditRandeLog from "../myJournal/EditRandeLog";
 import Faq from "../faq/Faq";
+import RandeLog from "../myJournal/RandeLog";
 
 
 export default function MainContent() {
