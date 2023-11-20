@@ -13,7 +13,7 @@ export default function EditRandeLog({ entryId = 3 }) {
             // '/api/entries/{entryId}/edit'
             const response = await axios.get(`/api/entries/${entryId}/edit`);
             //const data = response.data;
-            console.log("DATA: ", response.data);
+            //console.log("DATA: ", response.data);
             setEntry(response.data);
         } catch (error) {
             console.log(error);
