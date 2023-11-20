@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EntryController;
 use App\Http\Controllers\Api\SearchController as ApiSearchController;
 use App\Http\Controllers\Api\JournalController;
 use Illuminate\Http\Request;
@@ -26,8 +27,15 @@ Route::get('/date-search/results', [ApiSearchController::class, 'search']);
 Route::get('/randes/{rande_id}', [ApiSearchController::class, 'show']);
 
 //find entry endpoint
-Route::get('/entries/{entry_id}/edit', [JournalController::class, 'edit']);
+// Route::get('/entries/{entry_id}/edit', [JournalController::class, 'edit']);
+// //update entry in journal
+// Route::post('/entries/store', [JournalController::class, 'store']);
+// //my journal endpoint
+// Route::get('/my-journal/{id}', [JournalController::class, 'show']);
+
+//show entry with rande name endpoint
+Route::get('/entries/{entry_id}/show', [EntryController::class, 'show']);
+//edit entry with rande name endpoint
+Route::get('/entries/{entry_id}/edit', [EntryController::class, 'edit']);
 //update entry in journal
-Route::post('/entries/store', [JournalController::class, 'store']);
-//my journal endpoint
-Route::get('/my-journal/{id}', [JournalController::class, 'show']);
+Route::post('/entries/{entry_id}/store', [EntryController::class, 'store']);
