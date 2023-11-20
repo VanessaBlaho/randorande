@@ -17,7 +17,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  
+  @include shadow;
 
   .burger-menu {
     display: block;
@@ -26,8 +26,8 @@ header {
     span {
       display: block;
       height: 6px;
-      width: 25px;
-      background-color: #fff;
+      width: 35px;
+      background-color: #e0dfcd;
       margin: 5px 0;
     }
   }
@@ -41,6 +41,7 @@ header {
     min-width: fit-content;
     padding: 0 10px 0 10px;
     z-index: 3;
+    background: $randorande2;
 
     .nav {
       ul {
@@ -49,6 +50,9 @@ header {
 
         li {
           margin-bottom: 10px;
+          &:hover {
+            background: $randorande3;
+          }
           a {
             color: $randorande7;
             text-decoration: none;
@@ -74,7 +78,7 @@ header {
       li {
         margin: 0 10px;
         a {
-          color: #fff;
+          color: $randorande7;
           text-decoration: none;
           font-size: 24px;
           cursor: pointer;
@@ -93,6 +97,7 @@ header {
 // Desktop Styles
 @media (min-width: 767px) {
   header {
+    height: 1.5rem;
     .burger-menu {
       display: none;
     }
@@ -109,14 +114,18 @@ header {
           display: flex;
           justify-content: space-around;
           width: 100%;
-
           li {
             margin: 0 15px;
-
+            &:hover {
+              background: none;
+            }
             a {
               font-size: 18px;
               padding-left: 0;
               padding-right: 0;
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
         }
@@ -128,4 +137,11 @@ header {
       margin-left: auto;
     }
   }
+}
+
+header .auth-buttons ul li a {
+ font-size: 18px;
+ &:hover {
+  text-decoration: underline;
+ }
 }

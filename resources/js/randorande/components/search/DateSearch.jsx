@@ -9,12 +9,12 @@ const DateSearch = () => {
     return (
         <>
             <div className="datesearch">
-                <h1>Rendezvous</h1>
-                <h3>Your next date idea is just moments away!</h3>
+                <h1 className="datesearch__headline">Rendezvous</h1>
+                <h3 className="datesearch__subheadline">Your next date idea is just moments away!</h3>
                 <div className="filters">
                     {/* Budget dropdown */}
                     <div className="filter__budget-dropdown">
-                        <h3>Tell us what you're in the mood for:</h3>
+                        <h3 className="filter__headline">Tell us what you're in the mood for:</h3>
                         <label htmlFor="budgetFilter">Budget</label>
                         <select
                             id="budgetFilter"
@@ -75,7 +75,7 @@ const DateSearch = () => {
                         </select>
                     </div>
                     {isButtonDisabled ? (
-                        <p>
+                        <p className="filter__instructions">
                             Please select one option from each search feature.
                         </p>
                     ) : (

@@ -18,12 +18,13 @@
     .logo {
         display: block;
         margin: 0 auto;
-        margin-top: 0.2rem;
-        width: 30rem;
+        margin-top: 0.5rem;
+        width: 100%;
     }
 
     .modal_btn {
         font-family: 'Josefin Sans', sans-serif;
+        font-size: 16px;
         background: $randorande6;
         border: none;
         width: fit-content;
@@ -31,11 +32,10 @@
         padding: 0.4rem 0.5rem 0.2rem 0.5rem;
         border-radius: 4px;
         @include shadow;
-        margin: 0.7rem 0;
+        margin: 0.3rem 0;
         cursor: pointer;
         &:hover {
             background: $randorande8;
-            color: $randorande7;
         }
     }
 
@@ -85,6 +85,23 @@
         width: inherit;
         height: inherit;
     }
+
+    // styling for after smaller phones
+    @media (min-width: 375px) {
+    .modal_btn {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 590px) {
+    .logo {
+        margin-top: 0.5rem;
+        width: 30rem;
+    }
+    .modal_btn {
+        margin-top: 0.3rem;
+    }
+}
 
     //desktop design
     @media (min-width: 768px) {
@@ -137,3 +154,4 @@
         }
     }
 }
+

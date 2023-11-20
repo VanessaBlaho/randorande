@@ -10,10 +10,22 @@ $grey: #888;
 // Style for the entire component
 .datesearch {
   text-align: center;
-  padding: 20px;
-
+  padding: 0;
+  width: 100%;
   h1 {
     color: $black;
+  }
+
+  .datesearch__headline {
+    margin: 0.2rem 0.2rem 0 0.2rem;
+    padding: 0;
+
+  }
+
+  .datesearch__subheadline {
+    padding: 0;
+    margin: 0 auto;
+    width: 70%; 
   }
 
   h3 {
@@ -21,13 +33,18 @@ $grey: #888;
     margin-bottom: 20px;
   }
 
+  .filter__headline {
+    padding: 0;
+    margin: 0 0 0.5rem 0
+  }
+
   .filters {
-    width: 50%; 
+    width: 70%; 
     margin: 0 auto;
-    border: 2px solid $black;
+    border: 7px solid $randorande6;
     padding: 20px;
     margin-top: 20px;
-
+    margin-bottom: 2rem;
     // Style for dropdowns
     .filter__budget-dropdown,
     .filter__season-dropdown,
@@ -72,9 +89,19 @@ $grey: #888;
       }
     }
 
+    .filter__instructions {
+      margin: 0 auto;
+    }
+
     // Style for the result section
     .result-section {
       margin-top: 20px;
     }
+  }
+}
+
+@media (min-width: 850px) {
+  .datesearch .filters {
+    width: 45%;
   }
 }
