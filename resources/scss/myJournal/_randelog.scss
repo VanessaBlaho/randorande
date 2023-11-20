@@ -1,0 +1,83 @@
+.journal-container {
+  font-family: Arial, sans-serif;
+  color: rgb(16, 3, 3);
+  background-color: rgb(241, 234, 234);
+  padding: 20px;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 20px;
+   
+  }
+
+   a {
+    text-decoration: none; 
+    color: inherit; 
+
+    &:hover {
+      text-decoration: none; 
+      color: inherit; 
+    }
+  }
+  
+
+  .randorande-data {
+    border: 2px solid grey;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+
+    .left-section {
+      .data__rande-name,
+      .data__rande-date,
+      .date__rande-location,
+      .data__rande-description {
+        color: darkgrey;
+      }
+
+    //   .data__rande-photo {
+    //     width: 100%;
+    //     max-width: 300px;
+    //     margin-top: 10px;
+    //   }
+
+      .data__rande-photo-placeholder {
+        background-color: darkgrey;
+        width: 75%;
+        height: 150px; /* Adjust the height as needed */
+        margin: 10px auto;
+        
+      }
+
+      .button-link {
+        display: block;
+        width: 80px;
+        margin: 10px auto;
+        padding: 10px;
+        background-color: grey;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      button[disabled] {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        background-color: grey;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        cursor: not-allowed;
+      }
+    }
+
+    
+  }
+}
+
+@media (min-width: 768px) {
+  /* Add styles for larger screens if needed */
+}

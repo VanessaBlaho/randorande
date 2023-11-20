@@ -9,21 +9,18 @@ import NotFound from "../notfound/NotFound";
 import Journal from "../myJournal/Journal";
 import Registration from "../auth/Registration";
 import Login from "../auth/Login";
+import EditRandeLog from "../myJournal/EditRandeLog";
+import Faq from "../faq/Faq";
+
 
 export default function MainContent() {
     return (
         <>
             <main>
                 <Routes>
-                    <Route 
-                        path="/" 
-                        element={<Homepage />} />
-                    <Route 
-                        path="*" 
-                        element={<NotFound />} />
-                    <Route 
-                        path="/date-search" 
-                        element={<DateSearch />} />
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="*" element={<NotFound />} />
+                    <Route path="/date-search" element={<DateSearch />} />
                     <Route
                         path="/date-search/results"
                         element={<ScratchOff />}
@@ -32,10 +29,7 @@ export default function MainContent() {
                         path="/randes/:rande_id"
                         element={<RevealedDateDetail />}
                     />
-                    <Route 
-                        path="/about-us" 
-                        element={<AboutUs />} />
-                        
+                    <Route path="/about-us" element={<AboutUs />} />
 
                     <Route path="/my-journal" element={<Journal />} />
                     <Route path="/register" element={<Registration />} />
@@ -43,6 +37,15 @@ export default function MainContent() {
                     {/*
                     <Route path="/faq" element={} />
                      */}
+                    <Route
+                        path="/my-journal/entries/edit"
+                        element={<EditRandeLog />}
+                    />
+
+                     <Route path="/faq" element={<Faq />} />
+                    {/*
+                   
+                    <Route path="/login" element={} /> */}
                 </Routes>
             </main>
         </>
