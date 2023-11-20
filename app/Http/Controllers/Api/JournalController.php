@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Entry;
+use App\Models\Journal;
+use App\Models\Rande;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JournalController extends Controller
 {
@@ -15,27 +18,24 @@ class JournalController extends Controller
         return $entry;
     }
 
-    public function store(Request $request, $entry_id)
+    public function store(Request $request)
     {
+
         $request->validate([
-            'date' => 'required',
-            'location' => 'required',
+            'rande_id' => 'required',
         ]);
 
-        $entry = Entry::find($entry_id);
+        $user = Auth::user();
+        $journal = $user->journal;
 
-        if (!$entry) {
-            return [
-                'message' => 'Journal record not found :('
-            ];
-        }
+        $entry = new Entry;
 
-
-        $entry->date = $request->input('date');
-        $entry->location = $request->input('location');
-        $entry->entry_text = $request->input('entry_text');
+        $entry->rande_id = $request->rande_id;
+        $entry->journal_id = $journal->id;
+        $entry->date = $request->date;
+        $entry->location = $request->location;
+        $entry->entry_text = $request->entry_text;
         $entry->save();
-
 
         return [
             'message' => 'Journal updated successfully!'

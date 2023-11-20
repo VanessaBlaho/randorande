@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -8,16 +9,39 @@ export function RevealedDateDetail() {
 
     const fetchRandeDetail = async () => {
         try {
-            const response = await fetch(`/api/randes/${rande_id}`);
+            const response = await axios.get(`/api/randes/${rande_id}`);
             const data = await response.json();
             console.log("Data:", data);
             console.log("Setting Rande:", data);
 
             setRande(data);
+
+            
         } catch (error) {
             console.log(error);
         }
     };
+    const addToJournal = async () => {
+        try {
+            
+            const response = await axios.post('/api/entries/store', {
+                rande_id: rande_id,
+                date: 'date', 
+                location: 'Some location', 
+                entry_text: 'Your entry text here', 
+            });
+
+            const data = await response.json();
+            console.log("New entry added:", data);
+           
+
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+    };
+
 
     useEffect(() => {
         fetchRandeDetail();
@@ -37,6 +61,7 @@ export function RevealedDateDetail() {
 
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
+                            <button onClick ={addToJournal}>Add to My Journal</button>
                         </div>
                     </div>
                 </>
