@@ -31,11 +31,6 @@ class EntryController extends Controller
 
     public function store(Request $request, $entry_id)
     {
-        $request->validate([
-            'date' => 'required',
-            'location' => 'required',
-        ]);
-
         $entry = Entry::find($entry_id);
 
         if (!$entry) {
