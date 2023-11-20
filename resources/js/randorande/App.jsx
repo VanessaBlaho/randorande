@@ -7,17 +7,14 @@ import Footer from "./components/layout/Footer";
 import axios from "axios";
 import UserContext from "./UserContext";
 
-
-
-
 export default function App() {
     const [user, setUser] = useState(null); // null - user status unknown
     // false - user not logged in (but we know that)
 
     const loadUserStatus = async () => {
-    try {
+        try {
             // make the AJAX request
-            const response = await axios.get('/api/user');
+            const response = await axios.get("/api/user");
             // get the (already JSON-parsed) response data
             // const response_data = response.data; // use later for console.log()
             setUser(response.data);
@@ -26,22 +23,24 @@ export default function App() {
             switch (error.response.status) {
                 case 422:
                     // handle validation errors here
-                    console.log('VALIDATION FAILED:', error.response.data.errors);
+                    console.log(
+                        "VALIDATION FAILED:",
+                        error.response.data.errors
+                    );
                     break;
                 case 500:
-                    console.log('UNKNOWN ERROR', error.response.data);
+                    console.log("UNKNOWN ERROR", error.response.data);
                     break;
             }
         }
-    }
+    };
 
     useEffect(() => {
-        if (user === null) {
+        if (user === null || user === "logged") {
             // load user status anytime user is null, i.e. we don't know his or her or their status
             loadUserStatus();
         }
     }, [user]);
-
 
     return (
         <UserContext.Provider value={{ user, setUser }}>
