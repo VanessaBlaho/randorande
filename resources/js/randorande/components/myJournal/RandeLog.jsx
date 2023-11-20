@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 //we need to use props for the date name from the journal list page
-const RandeLog = ({ entryId = 1 }) => {
+const RandeLog = ({ entryId }) => {
     // const [data, setData] = useState(null);
     const [entryData, setEntryData] = useState({
         rande_name: null,
