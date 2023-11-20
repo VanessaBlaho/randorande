@@ -3,19 +3,17 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 //{ entryId, setEntryId }
-export default function EditRandeLog({
-    entryId = 2,
-    randeName = "Make pizza",
-}) {
+export default function EditRandeLog({ entryId = 3 }) {
     const [entry, setEntry] = useState(null);
     const [message, setMessage] = useState(null);
 
     //load existing data
     const fetchEntry = async () => {
         try {
+            // '/api/entries/{entryId}/edit'
             const response = await axios.get(`/api/entries/${entryId}/edit`);
             //const data = response.data;
-            //console.log("DATA: ", data);
+            console.log("DATA: ", response.data);
             setEntry(response.data);
         } catch (error) {
             console.log(error);
@@ -28,7 +26,7 @@ export default function EditRandeLog({
         e.preventDefault();
 
         try {
-            // /entries/{entry_id}/store
+            // '/entries/{entry_id}/edit'
             const response = await axios.post(
                 `/api/entries/${entryId}/store`,
                 entry
@@ -60,7 +58,9 @@ export default function EditRandeLog({
                         </button>
 
                         {/* rande name */}
-                        <h1 className="edit-container__title">{randeName}</h1>
+                        <h1 className="edit-container__title">
+                            {entry.rande_name}
+                        </h1>
 
                         {message ? <span>{message}</span> : ""}
 
