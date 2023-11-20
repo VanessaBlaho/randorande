@@ -1,27 +1,19 @@
+import React, { useState, useContext } from "react";
+import UserContext from "../../UserContext";
 
+import axios from "axios";
 
-import React, { useState } from 'react';
+export default function Journal(props) {
 
+    const {user, setUser} = useContext(UserContext);
 
-export default function Journal() {
-
-   
-    const [user,setUser] = useState({
-        username: 'vanessab',
-        first_name:'Vanessa',
-        last_name:'Durazo',
-        email: 'vanessa@email.com'
-    })
-
-  
+    
 
     return (
         <div className= "my-journal-parent">
           { user ?(
             <>
-                <h2 >
-                    My Journal
-                </h2>
+                
                 <div className="my-journal-child">
                     <div className="user-detail-box">
                         <img src="/images/profile_image.png" alt="Sample Photo"  style={{ width: '30%', margin:'5%'} } />
@@ -46,4 +38,3 @@ export default function Journal() {
       </div>
     );
 }
-

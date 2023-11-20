@@ -11,6 +11,7 @@ import Registration from "../auth/Registration";
 import Login from "../auth/Login";
 import EditRandeLog from "../myJournal/EditRandeLog";
 import Faq from "../faq/Faq";
+import RandeLog from "../myJournal/RandeLog";
 
 
 export default function MainContent() {
@@ -38,9 +39,10 @@ export default function MainContent() {
                     <Route path="/faq" element={} />
                      */}
                     <Route
-                        path="/my-journal/entries/edit"
+                        path="/my-journal/entry/edit"
                         element={<EditRandeLog />}
                     />
+                    <Route path="/my-journal/entry" element={<RandeLog />} />
 
                      <Route path="/faq" element={<Faq />} />
                     {/*
