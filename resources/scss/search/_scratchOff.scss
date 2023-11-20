@@ -71,10 +71,10 @@ body {
 .scratchOff_container__parent {
     @include flexColScratch; // mobile friendly, switch to row in bigger screen
     background: $CPT1;
-    width: fit-content; // maybe we won't need this
+    // width: fit-content; // maybe we won't need this
     align-items: center;
     justify-content: space-around; // Adjust this value to control the spacing
-    margin: 0 auto; // Center the container horizontally
+    margin: 0 3rem; // Center the container horizontally
     margin-bottom: 5rem;
     @include shadow;
     @include curvedBorder;
@@ -97,8 +97,8 @@ body {
     display: inline-block; /* ensure the scratch card only takes as much space as needed */
     width: 12rem; /* fixed width for the scratch card */
     height: 12rem; /* fixed height for the scratch card */
-    margin: 0.625rem; /* margin to separate the cards */
-    border: black dotted 3px;
+    // margin: 0.625rem; /* margin to separate the cards */
+    // border: black dotted 3px;
     @include curvedBorderTop;
     margin-bottom: 0;
 }
@@ -122,26 +122,34 @@ body {
     @include scratchCardContentPosition;
     width: inherit; /* make the image cover the entire scratch card */
     height: auto;
-    @include curvedBorder;
+    @include curvedBorderTop;
 }
 
 .scratchOff_container__child-hint-container {
-    background: black;
-    margin: 0.63rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: pink;
     margin-top: 0;
     @include curvedBorderBottom;
     height: fit-content;
+    min-height: 2.5rem;
+    text-align: center;
     h5 {
         padding: 0;
-        margin: 0.6rem 0;
+        margin: 0;
     }
 }
 
 .scratchOff_container__child-hint {
-    text-align: center;
     color: $CPT4;
     font-weight: bold;
     white-space: nowrap; // might not need this
+}
+
+.scratchOff_container__child-hint_img {
+    height: 36px;
+    width: 36px;
 }
 
 .button_div {
@@ -170,6 +178,9 @@ body {
 @media (min-width: 768px) {
     .scratchOff_container__parent {
         @include flexRowScratch;
+        max-width: 900px;
+        margin: 0 auto;
+        margin-bottom: 5rem;
     }
 }
 
@@ -178,4 +189,25 @@ body {
     text-align: center;
     font-size: 2rem;
     animation: rotateAnimation 3s infinite linear;
+}
+
+@media (max-width: 967px) {
+    .scratchOff_container__parent {
+        @include flexColScratch;
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    .scratchOff_container__child_scratch-card {
+        width: 18rem; /* fixed width for the scratch card */
+        height: 18rem; /* fixed height for the scratch card */
+    }
+}
+
+@media (max-width: 400px) {
+    .scratchOff_container__child_scratch-card {
+        width: 12rem; /* fixed width for the scratch card */
+        height: 12rem; /* fixed height for the scratch card */
+    }
 }

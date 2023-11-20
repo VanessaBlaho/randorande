@@ -86,12 +86,16 @@ export default function ScratchOff() {
                     parentWidth,
                     parentHeight
                 );
+                console.log(parentWidth, parentHeight);
             } else {
                 console.error("Canvas is not defined at index", index);
             }
         });
         setCanvasesReady(true);
     };
+
+
+    
 
     const loadImage = () => {
         const img = new Image();
@@ -203,7 +207,7 @@ export default function ScratchOff() {
                 const { left, top } = canvas.getBoundingClientRect();
                 const offsetX = clientX - left;
                 const offsetY = clientY - top;
-                const radius = 40; // adjust the brush size of the scratch
+                const radius = 50; // adjust the brush size of the scratch
 
                 // clear a circular area to reveal the underlying content
                 ctx.globalCompositeOperation = "destination-out";
@@ -356,11 +360,25 @@ export default function ScratchOff() {
                             </div>
                             {/* below div contains hint / hint will be h1 text for now but later an icon image */}
                             <div className="scratchOff_container__child-hint-container">
-                                <h5 className="scratchOff_container__child-hint">
-                                    {hint && hint.resultIndex == index
-                                        ? hint.text
-                                        : rande.hint_path}
-                                </h5>
+                                {hint &&
+                                hint.resultIndex === index &&
+                                hint.text ? (
+                                    // If there's text in the hint, display it inside an h5 element
+                                    <h5 className="scratchOff_container__child-hint hint_share">
+                                        {hint.text}
+                                    </h5>
+                                ) : (
+                                    // If there's no text in the hint, try to display the image
+                                    <img
+                                        src={
+                                            "/images/hints/" +
+                                            rande.hint_path +
+                                            ".png"
+                                        }
+                                        alt="Hint Image"
+                                        className="scratchOff_container__child-hint_img hint_share"
+                                    />
+                                )}
                             </div>
 
                             <div className="button_div">
