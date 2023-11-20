@@ -26,8 +26,12 @@ Route::get('/date-search/results', [ApiSearchController::class, 'search']);
 //rande detail endpoint
 Route::get('/randes/{rande_id}', [ApiSearchController::class, 'show']);
 
-//my journal endpoint
-Route::get('/my-journal/{id}', [JournalController::class, 'show']);
+//find entry endpoint
+// Route::get('/entries/{entry_id}/edit', [JournalController::class, 'edit']);
+// //update entry in journal
+
+// //my journal endpoint
+// Route::get('/my-journal/{id}', [JournalController::class, 'show']);
 
 //show entry with rande name endpoint
 Route::get('/entries/{entry_id}/show', [EntryController::class, 'show']);
@@ -35,3 +39,4 @@ Route::get('/entries/{entry_id}/show', [EntryController::class, 'show']);
 Route::get('/entries/{entry_id}/edit', [EntryController::class, 'edit']);
 //update entry in journal
 Route::post('/entries/{entry_id}/store', [EntryController::class, 'store']);
+Route::post('/entries/create', [EntryController::class, 'create']);
