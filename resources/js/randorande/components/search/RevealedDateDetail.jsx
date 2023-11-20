@@ -10,11 +10,11 @@ export function RevealedDateDetail() {
     const fetchRandeDetail = async () => {
         try {
             const response = await axios.get(`/api/randes/${rande_id}`);
-            const data = await response.json();
-            console.log("Data:", data);
-            console.log("Setting Rande:", data);
+            // const data = await response.data();
+            console.log("Data:", response.data);
+            // console.log("Setting Rande:", data);
 
-            setRande(data);
+            setRande(response.data);
 
             
         } catch (error) {
@@ -24,7 +24,7 @@ export function RevealedDateDetail() {
     const addToJournal = async () => {
         try {
             
-            const response = await axios.post('/api/entries/store', {
+            const response = await axios.post('/api/entries/create', {
                 rande_id: rande_id,
                 date: 'date', 
                 location: 'Some location', 
@@ -66,7 +66,7 @@ export function RevealedDateDetail() {
                     </div>
                 </>
             ) : (
-                "Loading..."
+                <div className="edit-loader">&#9203;</div>
             )}
         </div>
     );
