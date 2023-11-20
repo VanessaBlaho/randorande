@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import React, { useContext} from "react";
+import UserContext from "../../UserContext";
 
 export default function Homepage() {
+    const { user, setUser } = useContext(UserContext);
+    // setUser("logged");
+
     return (
         <>
             <div className="homepage">
@@ -37,9 +42,15 @@ export default function Homepage() {
                             Make everlasting memories
                         </li>
                     </ul>
-                    <button className="homepage__instructions-btn-trigger">
+                    {!user ? (
+                        <button className="homepage__instructions-btn-trigger">
+                            <Link to={"/login"}>Gimme ideas!</Link>
+                        </button>
+                    ) : (
+                        <button className="homepage__instructions-btn-trigger">
                         <Link to={"/date-search"}>Gimme ideas!</Link>
-                    </button>
+                        </button>
+                    )}
                 </div>
             </div>
         </>
