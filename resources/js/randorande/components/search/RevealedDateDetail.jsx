@@ -6,6 +6,7 @@ export function RevealedDateDetail() {
     // search-related variables
     const { rande_id } = useParams();
     const [rande, setRande] = useState(null);
+    const [message, setMessage] = useState(null);
 
     const fetchRandeDetail = async () => {
         try {
@@ -31,9 +32,9 @@ export function RevealedDateDetail() {
                 entry_text: 'Your entry text here', 
             });
 
-            const data = await response.json();
-            console.log("New entry added:", data);
-           
+         
+            
+           setMessage(response.data["message"]);
 
             
         } catch (error) {
@@ -52,7 +53,7 @@ export function RevealedDateDetail() {
             {rande ? (
                 <>
                     <div className="date-detail-name">
-                        <h3>Rande name: {rande.name}</h3>
+                        <h3>{rande.name}</h3>
                     </div>
                     <div className="date-detail-image-description">
                         <div className="date-detail-image">
@@ -62,6 +63,7 @@ export function RevealedDateDetail() {
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
                             <button onClick ={addToJournal}>Add to My Journal</button>
+                            {message ? <span>{message}</span> : ""}
                         </div>
                     </div>
                 </>
