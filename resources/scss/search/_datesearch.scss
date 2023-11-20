@@ -40,6 +40,7 @@ $grey: #888;
     .filters {
         @include shadow;
         width: 70%;
+        max-width: 500px;
         margin: 0 auto;
         border: 7px solid $randorande6;
         padding: 20px;
@@ -59,7 +60,7 @@ $grey: #888;
             }
 
             select {
-                width: 30%;
+                width: 150px;
                 padding: 8px;
                 box-sizing: border-box;
                 text-align: center; // Center the text
@@ -98,6 +99,6 @@ $grey: #888;
 
 @media (min-width: 850px) {
     .datesearch .filters {
-        width: 45%;
+        width: 500px;
     }
 }
