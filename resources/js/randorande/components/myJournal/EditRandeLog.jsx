@@ -53,10 +53,6 @@ export default function EditRandeLog({ entryId = 3 }) {
             <div className="edit-page-main-container">
                 {entry ? (
                     <div className="edit-container">
-                        <button className="edit-container__back-btn">
-                            <Link to={"/my-journal"}>My Journal</Link>
-                        </button>
-
                         {/* rande name */}
                         <h1 className="edit-container__title">
                             {entry.rande_name}

@@ -11,7 +11,7 @@
 
 .edit-page-main-container {
     @include flexCol;
-    width: 100%;
+    width: 100vw;
     height: 37rem;
 
     .edit-loader {

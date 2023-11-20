@@ -1,0 +1,41 @@
+.journal-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+
+    .back-to-journal-btn {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: solid 1px black;
+        cursor: pointer;
+
+        a {
+            text-decoration: none;
+            color: rgb(10, 11, 11);
+
+
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        .back-to-journal-btn {
+            font-size: 1.3rem;
+
+            background-color: Transparent;
+            background-repeat: no-repeat;
+            border: solid 1px black;
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+                color: rgb(10, 11, 11);
+                background: transparent;
+
+            }
+        }
+    }
+}
