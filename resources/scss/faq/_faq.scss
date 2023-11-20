@@ -1,0 +1,64 @@
+.faq-container {
+  background-color: white;
+  color: black;
+  padding: 20px; 
+  max-width: 80%; 
+
+  margin: 0 auto; // Center the container
+  text-align: left; // Align text to the left
+
+  section {
+    margin-bottom: 20px; // Add space between sections
+  }
+
+  .faq-heading {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px; // Add space below the heading
+  }
+
+  h2 {
+    font-size: 1.7em;
+    font-weight: bold;
+    margin-top: 2em;
+    
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.1em;
+    margin-left: 3em;
+    
+    
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 3em;
+
+    li {
+      position: relative;
+      
+      
+      p {
+        margin-left: 0;
+       
+
+      &:before {
+        position: absolute;
+        left: -1.5em;
+      }
+    }
+  }
+}
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+}

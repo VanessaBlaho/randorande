@@ -7,6 +7,9 @@ import Footer from "./components/layout/Footer";
 import axios from "axios";
 import UserContext from "./UserContext";
 
+
+
+
 export default function App() {
     const [user, setUser] = useState(null); // null - user status unknown
     // false - user not logged in (but we know that)
