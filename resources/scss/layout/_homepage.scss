@@ -5,22 +5,38 @@
     align-items: center;
 }
 
+@mixin shadow {
+    box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
+}
+
 .homepage {
     @include flexCol;
+    justify-content: flex-start;
     width: 100%;
 
 
-    &__logo {
-        background-color: greenyellow;
-        width: 20rem;
-        height: 10rem;
-        text-align: center;
-        margin-bottom: -1rem;
+    .logo {
+        display: block;
+        margin: 0 auto;
+        margin-top: 0.2rem;
+        width: 30rem;
+    }
 
-        // img {
-        //     width: 100%;
-        //     height: 100%;
-        // }
+    .modal_btn {
+        font-family: 'Josefin Sans', sans-serif;
+        background: $randorande6;
+        border: none;
+        width: fit-content;
+        white-space: nowrap;
+        padding: 0.4rem 0.5rem 0.2rem 0.5rem;
+        border-radius: 4px;
+        @include shadow;
+        margin: 0.7rem 0;
+        cursor: pointer;
+        &:hover {
+            background: $randorande8;
+            color: $randorande7;
+        }
     }
 
     &__instructions {
@@ -65,7 +81,10 @@
         }
     }
 
-
+    .bg_img {
+        width: inherit;
+        height: inherit;
+    }
 
     //desktop design
     @media (min-width: 768px) {

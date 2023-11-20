@@ -1,12 +1,23 @@
 import { Link } from "react-router-dom";
 
 export default function Homepage() {
+
+    const homepageStyle = {
+        backgroundImage: "url('/images/homepage/rr_bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        /* Additional background properties as needed */
+        minHeight: "100vh", // Ensure the container covers the entire viewport height
+    };
+
     return (
         <>
-            <div className="homepage">
-                <div className="homepage__logo">LOGO </div>
+            <div className="homepage" style={homepageStyle}>
+                <img className="logo" src="/images/homepage/RR_logo_ALL.svg" alt="" />
+                <button className="modal_btn">HOW DOES IT WORK?</button>
 
-                <div className="homepage__instructions">
+                {/* <div className="homepage__instructions">
                     <h1 className="homepage__instructions-title">
                         How it works
                     </h1>
@@ -40,7 +51,7 @@ export default function Homepage() {
                     <button className="homepage__instructions-btn-trigger">
                         <Link to={"/date-search"}>Gimme ideas!</Link>
                     </button>
-                </div>
+                </div> */}
             </div>
         </>
     );

@@ -1,10 +1,24 @@
 main {
     //mobile dimensions
+    
+    // BELOW recommendd additions
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
     flex: 1;
-    width: 100vw;
+    width: 100%;
     align-self: center;
     justify-content: center;
 
     //desktop
     @media (min-width: 768px) {}
 }
+
+
+/* Html and body 100%
+Randorandeapp  100%, flex column
+Main flex, align-items: center, flex column
+
+Add a mix width to the media queries to 1000 px
+*/

@@ -1,11 +1,23 @@
+// put color palette here
+$randorande1: #201f1e; // footer color
+$randorande2: #145267; // header color  // need a lighter shade for the dropdown burger
+$randorande3: #468ca4; // dropdown color
+$randorande4: #c4cacb;
+$randorande5: #4e8fa1;
+$randorande6: #f4b7a0; // button color // button rounded color is 4px
+$randorande7: #e0dfcd; // "white"
+
+
+
 // Mobile First Styles
 header {
   position: relative;
-  background-color: #333;
-  padding: 10px;
+  background-color: $randorande2;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  
 
   .burger-menu {
     display: block;
@@ -27,7 +39,6 @@ header {
     top: 60px;
     left: 0;
     min-width: fit-content;
-    background-color: #333;
     padding: 0 10px 0 10px;
     z-index: 3;
 
@@ -39,7 +50,7 @@ header {
         li {
           margin-bottom: 10px;
           a {
-            color: #fff;
+            color: $randorande7;
             text-decoration: none;
             font-size: 36px;
             padding-left: 3rem;
