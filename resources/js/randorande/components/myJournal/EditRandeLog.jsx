@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 //{ entryId, setEntryId }
-export default function EditRandeLog({ entryId = 3 }) {
+export default function EditRandeLog({ entryId }) {
     const [entry, setEntry] = useState(null);
     const [message, setMessage] = useState(null);
 
