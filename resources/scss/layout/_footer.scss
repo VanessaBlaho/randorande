@@ -1,39 +1,16 @@
-// html body {
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh;
-//   /* Set minimum height to at least 100% of the viewport height */
-//   margin: 0;
-//   height: 100%;
-//   margin: 0;
-//   padding: 0;
-// }
-
-
-// body {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .main-content {
-//   flex: 1;
-// }
-
-
-
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   /* Align items at the start of the flex container */
-  background-color: #f0f0f0;
-  padding: 10px;
+  background-color: $randorande1;
+  // padding: 10px;
   flex-wrap: wrap;
   /* Allow items to wrap onto the next line if necessary */
-  // position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 10px;
 
   .footer-col {
     flex: 1;
