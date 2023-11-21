@@ -12,7 +12,9 @@ export default function EditRandeLog() {
     const fetchEntry = async () => {
         try {
             // '/api/entries/{entryId}/edit'
-            const response = await axios.get(`/api/entries/${entryId}/edit`);
+            //edit: /api/entries/${entryId}/edit
+            ///api/entries/${entryId}/show`
+            const response = await axios.get(`/api/entries/${entryId}/show`);
             //const data = response.data;
             //console.log("DATA: ", response.data);
             setEntry(response.data);

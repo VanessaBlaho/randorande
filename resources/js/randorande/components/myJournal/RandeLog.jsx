@@ -66,8 +66,9 @@ const RandeLog = ({ entryId }) => {
                 );
                 if (response.status === 200) {
                     const apiEntryData = response.data;
+                    console.log(apiEntryData);
                     setEntryData(apiEntryData);
-                    console.log("Entry Data:", apiEntryData);
+                    //console.log("Entry Data:", apiEntryData);
                 } else {
                     console.error("Failed to fetch journal entry");
                 }
