@@ -19,6 +19,16 @@ class EntryController extends Controller
         $user = Auth::user();
         $journal = $user->journal;
 
+        //create variable entries to find this relationship
+        //if there is an entry where journal id and rande id are already connected
+        $entries = Entry::where(['journal_id' => $journal->id, 'rande_id' => $request->rande_id])->get();
+        
+        //then return message below
+
+        if(count($entries)){
+            return ['message2' => 'rande already exists in the journal'];
+        }
+    
         $entry = new Entry;
 
         $entry->rande_id = $request->rande_id;
@@ -53,27 +63,30 @@ class EntryController extends Controller
         return $entry;
     }
 
-    public function store(Request $request, $entry_id)
-    {
-        $entry = Entry::find($entry_id);
+    // public function store(Request $request, $entry_id)
+    // {
+    //     $entry = Entry::find($entry_id);
 
-        if (!$entry) {
-            return [
-                'message' => 'Journal record not found :('
-            ];
-        }
+    //     if (!$entry) {
+    //         return [
+    //             'message' => 'Journal record not found :('
+    //         ];
+    //     }
+    //     $user = Auth::user();
+    //     $journal = $user->journal;
+
+    //     if ($journal)
+
+    //     $entry->date = $request->input('date');
+    //     $entry->location = $request->input('location');
+    //     $entry->entry_text = $request->input('entry_text');
+    //     $entry->save();
 
 
-        $entry->date = $request->input('date');
-        $entry->location = $request->input('location');
-        $entry->entry_text = $request->input('entry_text');
-        $entry->save();
-
-
-        return [
-            'message' => 'Journal updated successfully!'
-        ];
-    }
+    //     return [
+    //         'message' => 'Journal updated successfully!'
+    //     ];
+    // }
     
 }
 

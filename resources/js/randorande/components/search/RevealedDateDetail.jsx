@@ -9,7 +9,6 @@ export function RevealedDateDetail() {
     const { rande_id } = useParams();
     const [rande, setRande] = useState(null);
     const [message, setMessage] = useState(null);
-    const [buttonClicked, setButtonClicked] = useState(false);
 
     const fetchRandeDetail = async () => {
         try {
@@ -26,13 +25,9 @@ export function RevealedDateDetail() {
         }
     };
     const addToJournal = async () => {
-        if (buttonClicked) {
-            // If button already clicked, do nothing
-            return;
-        }
+        
 
         try {
-            setButtonClicked(true); // Disable the button
 
             const response = await axios.post('/api/entries/create', {
                 rande_id: rande_id,
@@ -65,7 +60,9 @@ export function RevealedDateDetail() {
 
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
-                            <button onClick ={addToJournal} disabled={buttonClicked}><Link to="/my-journal">Add to My Journal</Link></button>
+                            <button onClick ={addToJournal}>
+                                <Link to="/my-journal">Add to My Journal</Link>
+                            </button>
                             {message ? <span>{message}</span> : ""}
                         </div>
                     </div>
