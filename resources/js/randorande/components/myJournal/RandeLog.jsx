@@ -2,16 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-<<<<<<< Updated upstream
-//we need to use props for the date name from the journal list page
-const RandeLog = () => {
-    const { entryId } = useParams();
-    // const [data, setData] = useState(null);
-=======
 
 //coming from parent component
 const RandeLog = ({ entryId }) => {
->>>>>>> Stashed changes
     const [entryData, setEntryData] = useState({
         rande_name: null,
         date: null,
