@@ -83,31 +83,45 @@ export default function Homepage() {
                             HOW DOES IT WORK?
                         </button>
                         {isButtonClicked && (
-                            <ul className="button-clicked__text">
-                                <li>
-                                    &#9829; What kind of date are you in the
-                                    mood for?
-                                </li>
-                                <li>&#9829; Choose your search parameters</li>
-                                <li>
-                                    &#9829; Get 3 random date ideas based on
-                                    your search
-                                </li>
-                                <li>
-                                    &#9829; Based on hints, choose which date
-                                    you want
-                                </li>
-                                <li>&#9829; Scratch off to reveal your date</li>
-                                <li>
-                                    &#9829; Go on your date with your
-                                    significant other
-                                </li>
-                                <li>
-                                    &#9829; Keep track of your dating journey in
-                                    your Journal
-                                </li>
-                                <li>&#9829; Make everlasting memories</li>
-                            </ul>
+                            <>
+                                <ul className="button-clicked__text">
+                                    <li>
+                                        &#9829; What kind of date are you in the
+                                        mood for?
+                                    </li>
+                                    <li>
+                                        &#9829; Choose your search parameters
+                                    </li>
+                                    <li>
+                                        &#9829; Get 3 random date ideas based on
+                                        your search
+                                    </li>
+                                    <li>
+                                        &#9829; Based on hints, choose which
+                                        date you want
+                                    </li>
+                                    <li>
+                                        &#9829; Scratch off to reveal your date
+                                    </li>
+                                    <li>
+                                        &#9829; Go on your date with your
+                                        significant other
+                                    </li>
+                                    <li>
+                                        &#9829; Keep track of your dating
+                                        journey in your Journal
+                                    </li>
+                                    <li>&#9829; Make everlasting memories</li>
+                                    <li style={{marginTop: "1rem", display: "flex", justifyContent: "center"}}>
+                                        <Link
+                                            to={"/date-search"}
+                                            className="homepage__instructions-btn-trigger"
+                                        >
+                                            Gimme ideas!
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </>
                         )}
                     </>
                 ) : (

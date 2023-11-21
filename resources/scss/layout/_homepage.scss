@@ -26,11 +26,6 @@
     box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
 }
 
-// .modal-open .logo,
-// .modal-open .modal_btn {
-//     display: none;
-// }
-
 .homepage__instructions {
     width: 100%;
 }
@@ -66,11 +61,11 @@
         &-title {
             font-size: 2rem; // Smaller font for mobile
             font-weight: 400;
+            color: $randorande7;
         }
 
         &-list {
             @include flexCol;
-            
             height: 30%;
             list-style: none;
             line-height: 1.5;
@@ -78,6 +73,7 @@
         }
 
         &-item {
+            color: $randorande7;
             text-align: left;
             width: 100%;
             font-size: 1.1rem;
@@ -92,6 +88,7 @@
             color: black;
             height: fit-content;
             text-align: center;
+            margin-bottom: 1.5rem;
             a {
                 margin: 0;
                 text-decoration: none;
