@@ -7,22 +7,13 @@ import axios from "axios";
 export default function Journal(props) {
     const { user, setUser } = useContext(UserContext);
 
-    const journalId = 1;
-
-    const [entryId, setEntryId] = useState(null);
+    //const [entryId, setEntryId] = useState(null);
     const [entries, setEntries] = useState([]);
-
-    const dataToSend = {
-        prop1: "entryId",
-        prop2: "setEntryId",
-    };
 
     const fetchEntries = async () => {
         try {
-            //'/api/my-journal/{id}'
-            const response = await axios.get(`/api/my-journal/${journalId}`);
-            //const data = response.data;
-            console.log("DATA: ", response.data);
+            const response = await axios.get(`/api/my-journal`);
+
             setEntries(response.data);
         } catch (error) {
             console.log(error);
@@ -60,16 +51,16 @@ export default function Journal(props) {
                                         {entries.map((entry) => {
                                             return (
                                                 <li
-                                                    key={entry.entry_id}
+                                                    key={entry.id}
                                                     className="randex-list__rande-name"
                                                 >
                                                     <Link
                                                         to={
                                                             "/my-journal/entry/" +
-                                                            entry.entry_id
+                                                            entry.id
                                                         }
                                                     >
-                                                        {entry.rande_name}
+                                                        {entry.rande.name}
                                                     </Link>
                                                 </li>
                                             );

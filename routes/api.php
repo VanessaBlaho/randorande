@@ -27,7 +27,7 @@ Route::get('/date-search/results', [ApiSearchController::class, 'search']);
 Route::get('/randes/{rande_id}', [ApiSearchController::class, 'show']);
 
 //my journal endpoint
-Route::get('/my-journal/{id}', [JournalController::class, 'show']);
+Route::get('/my-journal', [JournalController::class, 'show']);
 
 //show entry with rande name endpoint
 Route::get('/entries/{entry_id}/show', [EntryController::class, 'show']);

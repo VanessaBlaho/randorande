@@ -10,16 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class JournalController extends Controller
 {
     //display randes in my journal main page
-    public function show($journal_id)
+    public function show()
     {
-        //$journal_entries = Entry::where('journal_id', $journal_id)->join('randes', 'entries.rande_id', '=', 'randes.id')->get();
+        $user = Auth::user();
 
-        $journal_entries = Entry::where('journal_id', $journal_id)
-            ->join('randes', 'entries.rande_id', '=', 'randes.id')
-            ->select('entries.id as entry_id', 'randes.name as rande_name')
-            ->get();
+        $entries = $user->journal->entries->load('rande');
 
-        return $journal_entries;
+        return $entries;
     }
 
     public function edit($entry_id)
