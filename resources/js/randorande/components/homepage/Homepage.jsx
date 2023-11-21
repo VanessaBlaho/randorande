@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import ModalWindow from "./ModalWindow";
-import { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext } from "react";
 Modal.setAppElement("#randorande-app");
-import React, { useContext} from "react";
 import UserContext from "../../UserContext";
 
 export default function Homepage() {

@@ -65,9 +65,18 @@ const Header = (props) => {
                                 </li>
                             </>
                         ) : (
-                            <Link to="/my-journal" className="journal_link">
-                                My Journal
-                            </Link>
+                            <>
+                                <li>
+                                    <Link to="/date-search" className="journal_link">
+                                                Date Search
+                                            </Link>
+                                </li>
+                                <li>
+                                    <Link to="/my-journal" className="journal_link">
+                                        My Journal
+                                    </Link>
+                                </li>
+                            </>
                         )}
                         <li>
                             <Link to="/about-us">About Us</Link>
