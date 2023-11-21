@@ -15,7 +15,8 @@
 }
 
 @mixin shadow {
-    box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
+    box-shadow: 0 5px 8px -4px rgba(0, 0, 0, 0.1), 0 0 3px 1px transparent;
+    // fix it to be less out there
 }
 
 @mixin curvedBorder {
@@ -46,6 +47,10 @@
     }
 }
 
+.scratchOff {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 .results_h1 {
     text-align: center;
     margin-top: 0.5rem;
@@ -66,7 +71,9 @@
     justify-content: space-around; // Adjust this value to control the spacing
     margin: 0 3rem; // Center the container horizontally
     margin-bottom: 5rem;
-    
+    border: 1px solid black;
+    padding: 1rem 1rem 0 1rem;
+    border-radius: 4px;
     
 }
 
@@ -75,9 +82,9 @@
     @include flexColScratch;
     
     margin: 0.625rem;
-    background: $randorande4;
-    @include shadow;
-    border: 1px solid $randorande1;
+    // background: $randorande4;
+    // @include shadow;
+    // border: 1px solid $randorande1;
     border-radius: 4px;
     cursor: pointer; 
     --webkit-transition-property: all; 
@@ -95,7 +102,7 @@
     width: 12rem; /* fixed width for the scratch card */
     height: 12rem; /* fixed height for the scratch card */
     // margin: 0.625rem; /* margin to separate the cards */
-    // border: black dotted 3px;
+    
     border-radius: 4px;
     margin-bottom: 0;
 }
@@ -106,6 +113,7 @@
     width: 100%; /* make the canvas cover the entire scratch card */
     height: 100%;
     border-radius: 4px;
+    border: 1px solid black;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;

@@ -76,7 +76,7 @@ const registrationStyle = {
                         Already have an account?
                     </p>
                     <Link className="login_btn2" to={"/login"}>
-                        Login
+                        LOGIN
                     </Link>
                 </div>
                 <br />
@@ -295,7 +295,7 @@ const registrationStyle = {
                             ""
                         )}
                     </div>
-                    <button className="register_btn">Register</button>
+                    <button className="register_btn">REGISTER</button>
                     <br />
                 </form>
             </div>

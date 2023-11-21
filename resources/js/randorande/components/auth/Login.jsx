@@ -5,6 +5,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Login(props) {
+
+    const loginStyle = {
+        backgroundImage: "url('/images/homepage/rr_bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        /* Additional background properties as needed */
+        minHeight: "100vh", // Ensure the container covers the entire viewport height
+    };
+
     const [values, setValues] = useState({
         username: "",
         password: "",
@@ -50,78 +60,86 @@ export default function Login(props) {
     };
     return (
         <>
-            <h1 className="login_headline">Login</h1>
-            <form
-                className="register_form"
-                action="/login"
-                method="post"
-                onSubmit={handleSubmit}
-            >
-                <div className="labels_and_inputs__container">
-                    <div className="input_row">
-                        <label htmlFor="username" className="input_row__label">
-                            Username
-                        </label>
+            <div className="login" style={loginStyle}>
+                <h1 className="login_headline">Login</h1>
+                <form
+                    className="register_form"
+                    action="/login"
+                    method="post"
+                    onSubmit={handleSubmit}
+                >
+                    <div className="labels_and_inputs__container">
+                        <div className="input_row">
+                            <label
+                                htmlFor="username"
+                                className="input_row__label"
+                            >
+                                Username
+                            </label>
+                            <br />
+                            <input
+                                className="input_row__input"
+                                type="username"
+                                name="username"
+                                value={values.username}
+                                onChange={handleChange}
+                            />
+                        </div>
                         <br />
-                        <input
-                            className="input_row__input"
-                            type="username"
-                            name="username"
-                            value={values.username}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <br />
-                    {errors.username ? (
-                        <div className="errors">
-                            {errors.username.map((error, i) => (
-                                <div key={i} className="error">
-                                    {error}
-                                </div>
-                            ))}
+                        {errors.username ? (
+                            <div className="errors">
+                                {errors.username.map((error, i) => (
+                                    <div key={i} className="error">
+                                        {error}
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            ""
+                        )}
+                        <div className="input_row">
+                            <label
+                                htmlFor="password"
+                                className="input_row__label"
+                            >
+                                Password
+                            </label>
+                            <input
+                                className="input_row__input"
+                                type="password"
+                                name="password"
+                                value={values.password}
+                                onChange={handleChange}
+                            />
                         </div>
-                    ) : (
-                        ""
-                    )}
-                    <div className="input_row">
-                        <label htmlFor="password" className="input_row__label">
-                            Password
-                        </label>
-                        <input
-                            className="input_row__input"
-                            type="password"
-                            name="password"
-                            value={values.password}
-                            onChange={handleChange}
-                        />
-                    </div>
 
-                    {errors.password ? (
-                        <div className="errors">
-                            {errors.password.map((error, i) => (
-                                <div key={i} className="error">
-                                    {error}
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        ""
-                    )}
-                    <p className="forgot_password">
-                        &#128148; I forgot my password
-                    </p>
-                </div>
-                <button className="login_btn">Login</button>
-                <br />
-                <div className="register">
-                    I don't have an account{" "}
-                    <button className="login_btn">
-                        <Link to="/register" className="login_btn">
-                            Register
-                        </Link>
-                    </button>
-                </div>
-            </form>
+                        {errors.password ? (
+                            <div className="errors">
+                                {errors.password.map((error, i) => (
+                                    <div key={i} className="error">
+                                        {error}
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            ""
+                        )}
+                        <p className="forgot_password">
+                            &#128148; I forgot my password
+                        </p>
+                    </div>
+                    <button className="login_btn">Login</button>
+                    <br />
+                    <div className="register">
+                        I don't have an account{" "}
+                        <button className="login_btn">
+                            <Link to="/register" className="login_btn">
+                                Register
+                            </Link>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </>
     );
 }

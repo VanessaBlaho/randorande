@@ -9,7 +9,7 @@ const DateSearch = () => {
     return (
         <>
             <div className="datesearch">
-                <h1 className="datesearch__headline">Rendezvous</h1>
+                {/* <h1 className="datesearch__headline">Rendezvous</h1> */}
                 <h3 className="datesearch__subheadline">Your next date idea is just moments away!</h3>
                 <div className="filters">
                     {/* Budget dropdown */}
@@ -79,7 +79,7 @@ const DateSearch = () => {
                             Please select one option from each search feature.
                         </p>
                     ) : (
-                        <Link className="search_rande_btn" to="/date-search/results">Rendezvous</Link>
+                        <Link className="search_rande_btn" to="/date-search/results">RENDEZVOUS</Link>
                     )}
                 </div>
             </div>

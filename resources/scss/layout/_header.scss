@@ -16,6 +16,7 @@ header {
     align-items: center;
     padding: 0 12px;
     @include shadow;
+    font-family: 'Josefin Sans', sans-serif;
 
     .empty_div {
         display: none;

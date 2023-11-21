@@ -25,6 +25,7 @@ $grey: #888;
         padding: 0;
         margin: 0 auto;
         width: 70%;
+        color: $randorande2;
     }
 
     h3 {
@@ -35,6 +36,8 @@ $grey: #888;
     .filter__headline {
         padding: 0;
         margin: 0 0 0.5rem 0;
+        color: $randorande5;
+        font-size: 18px;
     }
 
     .filters {
@@ -42,7 +45,7 @@ $grey: #888;
         width: 70%;
         max-width: 500px;
         margin: 0 auto;
-        border: 7px solid $randorande6;
+        border: 1px solid $randorande2;
         padding: 20px;
         margin-top: 20px;
         margin-bottom: 2rem;
@@ -64,10 +67,10 @@ $grey: #888;
                 padding: 8px;
                 box-sizing: border-box;
                 text-align: center; // Center the text
-                @include shadow;
+                // @include shadow;
                 border-radius: 4px;
-                border: none;
-                background: $randorande7;
+                border: 1px $randorande2 solid;
+                background: $randorande9;
                 option {
                     text-align: center; // Center the text in the options
                 }
@@ -81,13 +84,19 @@ $grey: #888;
         // Style for the button
         .search_rande_btn {
             @include buttonStyle;
-            font-size: 20px;
+            // box-shadow: none;  /// LESS SHADOW
+            // border: 1px solid black;
+            font-size: 15px;
+            padding: 0.7rem 0.5rem 0.5rem 0.5rem;
             text-decoration: none;
             color: $black;
         }
 
         .filter__instructions {
             margin: 0 auto;
+            color: $randorande5;
+            font-size: 18px;
+            font-weight: bolder;
         }
 
         // Style for the result section
