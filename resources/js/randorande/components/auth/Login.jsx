@@ -124,19 +124,19 @@ export default function Login(props) {
                         ) : (
                             ""
                         )}
-                        <p className="forgot_password">
+                        <p className="forgot_password tooltip">
                             &#128148; I forgot my password
                         </p>
                     </div>
-                    <button className="login_btn">Login</button>
+                    <Link className="login_btn2" to={"/login"}>
+                        LOGIN
+                    </Link>
                     <br />
                     <div className="register">
-                        I don't have an account{" "}
-                        <button className="login_btn">
-                            <Link to="/register" className="login_btn">
-                                Register
-                            </Link>
-                        </button>
+                        <p className="no_account">I don't have an account</p>{" "}
+                        <Link to="/register" className="register_btn">
+                            REGISTER
+                        </Link>
                     </div>
                 </form>
             </div>

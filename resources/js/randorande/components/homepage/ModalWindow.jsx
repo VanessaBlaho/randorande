@@ -69,22 +69,22 @@ const ModalWindow = ({ isOpen, closeModal }) => {
 
                 {!user ? (
                     <>
-                            {" "}
-                            <Link
-                                to="/login"
-                                className="homepage__instructions-btn-trigger"
-                            >
-                                Date Search
-                            </Link>{" "}
+                        {" "}
+                        <Link
+                            to="/login"
+                            className="homepage__instructions-btn-trigger"
+                        >
+                            GIMME IDEAS!
+                        </Link>{" "}
                     </>
                 ) : (
                     <>
-                            <Link
-                                to={"/date-search"}
-                                className="homepage__instructions-btn-trigger"
-                            >
-                                GIMME IDEAS!
-                            </Link>
+                        <Link
+                            to={"/date-search"}
+                            className="homepage__instructions-btn-trigger"
+                        >
+                            GIMME IDEAS!
+                        </Link>
                     </>
                 )}
             </div>

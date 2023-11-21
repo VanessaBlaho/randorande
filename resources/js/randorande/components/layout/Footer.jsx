@@ -18,12 +18,18 @@ export default function Footer() {
                         <>
                             <li>
                                 {" "}
-                                <Link to="/login" >
+                                <Link
+                                    to="/login"
+                                    className="tooltip_login__footer"
+                                >
                                     Date Search
                                 </Link>{" "}
                             </li>
                             <li>
-                                <Link to="/login" >
+                                <Link
+                                    to="/login"
+                                    className="tooltip_login__footer"
+                                >
                                     My Journal
                                 </Link>{" "}
                             </li>
@@ -39,9 +45,7 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/my-journal" >
-                                    My Journal
-                                </Link>
+                                <Link to="/my-journal">My Journal</Link>
                             </li>
                         </>
                     )}

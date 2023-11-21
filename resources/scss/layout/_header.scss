@@ -205,3 +205,17 @@ header {
         }
     }
 }
+
+.tooltip_login:hover::before {
+  content: "Must be logged in";
+  position: absolute;
+  font-size: 14px;
+  background-color: #333;
+  opacity: 0.5;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1;
+  margin-top: 1.5rem;
+  margin-left: 2.2rem;
+}

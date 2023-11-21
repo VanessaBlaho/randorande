@@ -130,7 +130,7 @@ export default function Homepage() {
                                                     to="/login"
                                                     className="homepage__instructions-btn-trigger"
                                                 >
-                                                    Date Search
+                                                    GIMME IDEAS!
                                                 </Link>{" "}
                                             </li>
                                         </>
