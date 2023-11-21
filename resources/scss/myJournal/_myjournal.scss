@@ -1,37 +1,163 @@
+.journal-parent {
+    @include flexCol;
+    height: 35rem;
+    margin-top: 1rem;
 
-    .my-journal-parent{
-        h2{
-            text-align: center;
-        }
-        display: flex;
-        flex-direction: column;
-        .my-journal-child{
-            display:flex;
-            flex-direction: row;
-        
+    .journal-child {
+        @include flexCol;
+        justify-content: space-around;
+        height: 100%;
+
+        .user-detail-box {
+            @include flexCol;
+
+            &__image {
+                width: 30%;
+                padding: 0.5rem;
+            }
+
+            .user-detail-list {
+                @include flexCol;
+                height: 70%;
+                padding: 1rem;
+
+
+                &__username {
+                    padding: 0.3rem;
+                    margin: 0.4rem;
+                }
+
+                &__info {
+
+                    font-size: 1.2rem;
+                    margin: 0.3rem;
+                }
             }
         }
 
+        .randes-box {
+            @include flexCol;
+            height: 80%;
+            width: 80%;
 
-    img{
-        width: 30%;
-    }
-    .user-detail-box{
-        margin-left: 5%;
-        flex-direction: column;
-        background-color: bisque;
-        width: 25%;
-        margin-left: 5%;
-    }
-    .randes-box{
-        display: flex;
-        flex-direction: column;
-        background-color: beige;
-        
-    }
-    .user-detail-list{
-        background-color: aliceblue;
-        width: 50%;
-        margin-left: 5%;
+            .randes-list {
+                @include flexCol;
+                justify-content: flex-start;
+                list-style: none;
+                text-align: justify;
+                height: 100%;
+                width: 95%;
+                padding-left: 0;
 
+                &__item {
+                    a {
+                        text-decoration: none;
+                        cursor: pointer;
+                        font-size: 1.2rem;
+
+
+                        :hover {
+                            font-size: 2rem;
+                            cursor: pointer;
+                        }
+
+                        :visited {
+                            color: black;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
     }
+
+    @media (min-width: 768px) {
+        @include flexCol;
+        width: 100%;
+
+        .journal-child {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            justify-content: space-around;
+            padding-top: 2rem;
+            height: 90%;
+            width: 80%;
+            border: solid 1px black;
+
+            .user-detail-box {
+                @include flexCol;
+                width: 40%;
+
+                &__image {
+                    width: 20%;
+                    padding: 0.5rem;
+                }
+
+                .user-detail-list {
+                    @include flexCol;
+                    height: 65%;
+                    padding: 0 1rem 1rem 1rem;
+                    background-color: antiquewhite;
+
+
+                    &__username {
+                        padding: 0.3rem;
+                        margin: 0.4rem;
+                    }
+
+                    &__info {
+
+                        font-size: 1.2rem;
+                        margin: 0.3rem;
+                    }
+                }
+            }
+
+            .randes-box {
+                @include flexCol;
+                background-color: aquamarine;
+                height: 95%;
+                width: 55%;
+
+                .randes-list {
+                    @include flexCol;
+                    justify-content: flex-start;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: flex-start;
+                    list-style: none;
+                    text-align: justify;
+                    background-color: yellow;
+                    height: 100%;
+                    width: 100%;
+                    padding-left: 0;
+
+                    &__item {
+
+
+                        a {
+                            text-decoration: none;
+                            color: black;
+                            cursor: pointer;
+                            font-size: 1.5rem;
+                            background-color: pink;
+
+
+                            :hover {
+                                font-size: 2rem;
+                            }
+
+                            :visited {
+                                color: black;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
