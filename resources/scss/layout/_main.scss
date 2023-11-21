@@ -1,9 +1,16 @@
 main {
     //mobile dimensions
+    
+    // BELOW recommendd additions
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
     flex: 1;
-    width: 100vw;
+    width: 100%;
     align-self: center;
     justify-content: center;
+    background: white;
 
     //desktop
     @media (min-width: 768px) {}

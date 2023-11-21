@@ -179,7 +179,7 @@ export default function ScratchOff() {
 
     // new useEffect for handling scratchPercentage updates
     useEffect(() => {
-        if (scratchPercentage[scratchedCanvasIndex] >= 60) {
+        if (scratchPercentage[scratchedCanvasIndex] >= 35) {
             const timeoutId = setTimeout(() => {
                 persistScratch(scratchedCanvasIndex)();
             }, 500); // adjust the delay duration as needed
@@ -249,7 +249,7 @@ export default function ScratchOff() {
                 });
 
                 // if the scratch is at 60%, update hint and show "Let's rande!" button
-                if (transparentPercentage >= 60) {
+                if (transparentPercentage >= 35) {
                     // update hint content
                     setHint({
                         resultIndex: index,
@@ -312,7 +312,7 @@ export default function ScratchOff() {
 
     // render component
     return (
-        <>
+        <div className="scratchOff">
             <h1 className="results_h1">Your Date Idea Results</h1>
             <p className="scratch_instructions">
                 Check the hints and select 1 date to scratch
@@ -383,7 +383,7 @@ export default function ScratchOff() {
 
                             <div className="button_div">
                                 {/* below button saves the rande but only appears after a percentage of scratch */}
-                                {scratchPercentage[index] >= 60 ? (
+                                {scratchPercentage[index] >= 35 ? (
                                     // display button...
                                     <Link to={`/randes/${rande.id}`}>
                                         <button
@@ -405,6 +405,6 @@ export default function ScratchOff() {
             ) : (
                 <div className="edit-loader">&#9203;</div>
             )}
-        </>
+        </div>
     );
 }

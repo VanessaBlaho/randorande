@@ -5,22 +5,51 @@
     align-items: center;
 }
 
+@mixin buttonStyle {
+    font-family: 'Josefin Sans', sans-serif;
+        font-size: 16px;
+        background: $randorande6;
+        border: none;
+        width: fit-content;
+        white-space: nowrap;
+        padding: 1rem 0.7rem 0.7rem 0.7rem;
+        border-radius: 4px;
+        @include shadow;
+        margin: 0.3rem 0;
+        cursor: pointer;
+        &:hover {
+            background: $randorande8;
+        }
+}
+
+@mixin shadow {
+    box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
+}
+
+.homepage__instructions {
+    // background-color: $randorande1;
+    width: 100%;
+}
+
 .homepage {
     @include flexCol;
+    justify-content: flex-start;
     width: 100%;
 
 
-    &__logo {
-        background-color: greenyellow;
-        width: 20rem;
-        height: 10rem;
-        text-align: center;
-        margin-bottom: -1rem;
+    .logo {
+        display: block;
+        margin: 0 auto;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
 
-        // img {
-        //     width: 100%;
-        //     height: 100%;
-        // }
+    .modal_btn {
+        @include buttonStyle;
+    }
+
+    .homepage__instructions-btn-trigger {
+        @include buttonStyle;
     }
 
     &__instructions {
@@ -65,44 +94,52 @@
         }
     }
 
+    .bg_img {
+        width: inherit;
+        height: inherit;
+    }
 
+    // styling for after smaller phones
+    @media (min-width: 375px) {
+    .modal_btn {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 590px) {
+    .logo {
+        margin-top: 0.5rem;
+        width: 30rem;
+    }
+    .modal_btn {
+        margin-top: 0.3rem;
+    }
+}
 
     //desktop design
     @media (min-width: 768px) {
 
-
-        &__logo {
-            background-color: greenyellow;
-            width: 30rem;
-            height: 10rem;
-            margin-bottom: 1rem;
-
-
-            // img {
-            //     height: 20rem; // Increase height for larger screens
-            // }
-        }
-
         &__instructions {
             justify-content: space-around;
-            width: 50%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
 
 
             &-title {
-                font-size: 3rem; // Larger font for desktop
+                font-size: 42px; // Larger font for desktop
                 margin: 0;
 
             }
 
-
             &-list {
                 flex: 1;
-                height: 15rem;
+                
                 text-align: center;
             }
 
             &-item {
-                font-size: 1.3rem;
+                font-size: 20px
             }
 
             &-btn-trigger {
@@ -117,4 +154,8 @@
             }
         }
     }
+}
+
+.ReactModal__Content {
+    background-color: pink;
 }
