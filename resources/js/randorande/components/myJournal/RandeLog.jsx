@@ -30,9 +30,10 @@ const RandeLog = ({ entryId }) => {
         try {
             const formData = new FormData();
             formData.append("photo", selectedFile);
+            formData.append("entry_id", entryId)
 
             const response = await axios.post(
-                `/api/entries/${entryId}/upload-photo`,
+                `/api/entries/upload-photo`,
                 formData,
                 {
                     headers: {
@@ -102,8 +103,6 @@ const RandeLog = ({ entryId }) => {
                         {entryData.location ?? "Location"}
                     </h5>
                     <div className="modal">
-                        
-
                         <button onClick={openModal}>Rande Info</button>
                         {isModalOpen && (
                             <div className="modal-overlay">
@@ -117,7 +116,7 @@ const RandeLog = ({ entryId }) => {
                             </div>
                         )}
                     </div>
-                    
+
                     {uploadedImageUrl ? (
                         <img
                             src={uploadedImageUrl}
@@ -126,11 +125,13 @@ const RandeLog = ({ entryId }) => {
                         />
                     ) : (
                         <div className="data__rande-photo-placeholder">
-                            {/* Placeholder for photo */}
+                            <img
+                                src="\images\homepage\upload-image_icon.svg"
+                                alt=""
+                            />
                         </div>
                     )}
                     <p className="data__rande-description">
-                        
                         {entryData.entry_text ??
                             ` Date Description: Please click on the edit button to log your date in your journal.`}
                     </p>
@@ -150,8 +151,9 @@ const RandeLog = ({ entryId }) => {
                                 style={{ display: "none" }}
                             />
                         </label>
-                        <button onClick={handleUpload}
-                        className="button-link">Upload</button>
+                        <button onClick={handleUpload} className="button-link">
+                            Upload
+                        </button>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,9 @@ class EntryController extends Controller
     //journal creation method
     public function create(Request $request)
     {
+        
+
+
         $request->validate([
             'rande_id' => 'required',
         ]);
@@ -90,4 +93,58 @@ class EntryController extends Controller
             'message' => 'Journal updated successfully!'
         ];
     }
-}
+
+    public function uploadPhoto(Request $request){
+        
+         $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,gif,svg|max:2048',
+            'entry_id' => 'required'
+        ]);
+
+        //still waiting on the props 
+        $entry = Entry::find($request->entry_id);
+        $photo= $request->file('photo');
+
+        $originalFileName = $photo->getClientOriginalName();
+
+        $photoPath = $photo->storeAs('images/uploads/entries', $originalFileName, 'public');
+        $entry->image_path = $photoPath;
+        $entry->save();
+
+        return response()->json(['message' => 'Photo uploaded successfully', 'photo_path' => $photoPath], 200);
+    }
+
+        // $request->file('uploaded_file')->storeAs(
+        //     'uploaded_files',
+        //     $request->file('uploaded_file')->getClientOriginalName(),
+        //     'uploads'
+        // ); 
+
+    }
+
+    // public function store(Request $request, $entry_id)
+    // {
+    //     $entry = Entry::find($entry_id);
+
+        if (!$entry) {
+            return [
+                'message' => 'Journal record not found :('
+            ];
+        }
+        $user = Auth::user();
+        $journal = $user->journal;
+
+        if ($journal)
+
+            $entry->date = $request->input('date');
+        $entry->location = $request->input('location');
+        $entry->entry_text = $request->input('entry_text');
+        $entry->save();
+
+
+        return [
+            'message' => 'Journal updated successfully!'
+        ];
+    
+    
+

@@ -30,15 +30,21 @@
   .randorande-data {
     border: 2px solid grey;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 25px;
     text-align: center;
 
     .left-section {
       .data__rande-name,
       .data__rande-date,
-      .date__rande-location,
-      .data__rande-description {
+      .date__rande-location{
+
         color: darkgrey;
+      }
+      .data__rande-description{
+        margin-top: 1em auto;
+        @media (min-width: 768px) {
+          margin-top: 12em;
+        }
       }
 
       .data__rande-photo {
@@ -47,18 +53,35 @@
       }
 
       .data__rande-photo-placeholder {
-        background-color: darkgrey;
-        width: 30vw;
-        height: 15vh;
+        width: 50vw;
+        height: 10vh;
         margin: 10px auto;
-        
+        margin-top: 2em;
+        @media (min-width: 768px) {
+        margin-top: 3em;
       }
+    }
 
       .buttons {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
+      width: fit-content;
+      
+
+      @media (min-width: 768px) {
+        display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    width: 200px;
+    height: 80px; 
+    margin: auto;
+    margin-top: 1.5em;
+    gap: 20px;
+    width: fit-content;
+
+      }
 
       .button-link, button {
         color: black;
@@ -69,7 +92,7 @@
         border: 1px solid black;
         background-color: white;
         transition: background-color 0.3s, color 0.3s;
-        width: fit-content;
+       
 
         &:hover {
           background-color: black;
@@ -88,48 +111,17 @@
 
     
   }
+
+
+
+
+  
+
+
+
 }
 
-@media (min-width: 768px) {
-  .data__rande-photo-placeholder {
-        background-color: darkgrey;
-        width: 30vw !important;
-        height: 38vh !important;
-        margin: 10px auto;
-        
-      }
 
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around; 
-    width: 200px;
-    height: 80px; 
-    margin: auto;
-    margin-top: 50px;
-    gap: 20px;
-
-//    .button-link {
-//   display: flex;
-//   align-items: center; // center the text vertically
-//   justify-content: center; // center the text horizontally
-//   width: fit-content;
-//   height: 20px;
-//   padding: 10px;
-//   background-color: grey;
-//   color: white;
-//   text-decoration: none;
-//   border-radius: 5px;
- 
-// }
-.button-link {
-              // ... additional styles for larger screens ...
-              display: flex;  // Display in a row
-              gap: 10px;  // Adjust the gap as needed for spacing
-              align-items: center;  // Center items horizontally
-            }
-  }
-}
  
 
 
