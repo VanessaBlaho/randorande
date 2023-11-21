@@ -114,7 +114,7 @@ export default function Login(props) {
                         </div>
 
                         {errors.password ? (
-                            <div className="errors">
+                            <div className="errors__password">
                                 {errors.password.map((error, i) => (
                                     <div key={i} className="error">
                                         {error}
