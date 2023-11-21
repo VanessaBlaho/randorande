@@ -136,7 +136,7 @@
 
                         a {
                             text-decoration: none;
-                            color: black;
+                            color: $randorande1;
                             cursor: pointer;
                             font-size: 1.5rem;
 
@@ -144,11 +144,12 @@
 
                             &:hover {
                                 font-size: 2rem;
-                                color: $randorande2;
+                                color: $randorande4;
                             }
 
                             &:visited {
                                 cursor: pointer;
+                                color: $randorande1;
                             }
                         }
                     }
