@@ -5,9 +5,8 @@ import UserContext from "../../UserContext";
 import axios from "axios";
 
 export default function Journal(props) {
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
-    //const [entryId, setEntryId] = useState(null);
     const [entries, setEntries] = useState([]);
 
     const fetchEntries = async () => {
