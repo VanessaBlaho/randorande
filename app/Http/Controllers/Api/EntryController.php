@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class EntryController extends Controller
 {
+    //!!!!!! DO NOT TOUCH !!!!!!!!
+    //journal creation method
     public function create(Request $request)
     {
         $request->validate([
@@ -22,13 +24,13 @@ class EntryController extends Controller
         //create variable entries to find this relationship
         //if there is an entry where journal id and rande id are already connected
         $entries = Entry::where(['journal_id' => $journal->id, 'rande_id' => $request->rande_id])->get();
-        
+
         //then return message below
 
-        if(count($entries)){
+        if (count($entries)) {
             return ['message2' => 'rande already exists in the journal'];
         }
-    
+
         $entry = new Entry;
 
         $entry->rande_id = $request->rande_id;
@@ -42,51 +44,50 @@ class EntryController extends Controller
             'message' => 'Added to journal successfully!'
         ];
     }
-    
+
+    //!!!!!! DO NOT TOUCH !!!!!!!!
     public function show($entry_id)
     {
+        $user = Auth::user();
 
-        $entry = Entry::select('entries.*', 'randes.name as rande_name', 'randes.description as rande_description')
+        // Ensure the user can only access their own entries
+        $entry = $user->journal->entries()
+            ->select('entries.*', 'randes.name as rande_name', 'randes.description as rande_description')
             ->join('randes', 'entries.rande_id', '=', 'randes.id')
             ->find($entry_id);
+
+        if (!$entry) {
+            // Entry not found or doesn't belong to the user
+            return response()->json(['error' => 'Entry not found or unauthorized'], 404);
+        }
 
         return $entry;
     }
 
-    public function edit($entry_id)
+    //!!!!!! DO NOT TOUCH !!!!!!!!
+    //editing journal entry method
+    public function store(Request $request, $entry_id)
     {
+        $entry = Entry::find($entry_id);
 
-        $entry = Entry::select('entries.*', 'randes.name as rande_name')
-            ->join('randes', 'entries.rande_id', '=', 'randes.id')
-            ->find($entry_id);
+        if (!$entry) {
+            return [
+                'message' => 'Journal record not found :('
+            ];
+        }
+        $user = Auth::user();
+        $journal = $user->journal;
 
-        return $entry;
+        if ($journal)
+
+            $entry->date = $request->input('date');
+        $entry->location = $request->input('location');
+        $entry->entry_text = $request->input('entry_text');
+        $entry->save();
+
+
+        return [
+            'message' => 'Journal updated successfully!'
+        ];
     }
-
-    // public function store(Request $request, $entry_id)
-    // {
-    //     $entry = Entry::find($entry_id);
-
-    //     if (!$entry) {
-    //         return [
-    //             'message' => 'Journal record not found :('
-    //         ];
-    //     }
-    //     $user = Auth::user();
-    //     $journal = $user->journal;
-
-    //     if ($journal)
-
-    //     $entry->date = $request->input('date');
-    //     $entry->location = $request->input('location');
-    //     $entry->entry_text = $request->input('entry_text');
-    //     $entry->save();
-
-
-    //     return [
-    //         'message' => 'Journal updated successfully!'
-    //     ];
-    // }
-    
 }
-
