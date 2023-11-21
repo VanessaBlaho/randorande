@@ -4,6 +4,8 @@ import ModalWindow from "./ModalWindow";
 import { useState, useEffect } from "react";
 
 Modal.setAppElement("#randorande-app");
+import React, { useContext} from "react";
+import UserContext from "../../UserContext";
 
 export default function Homepage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,6 +43,9 @@ export default function Homepage() {
         /* Additional background properties as needed */
         minHeight: "100vh", // Ensure the container covers the entire viewport height
     };
+
+    const { user, setUser } = useContext(UserContext);
+    // setUser("logged");
 
     return (
         <>
@@ -100,7 +105,12 @@ export default function Homepage() {
                             Make everlasting memories
                         </li>
                     </ul>
-                    <button className="homepage__instructions-btn-trigger">
+                    {!user ? (
+                        <button className="homepage__instructions-btn-trigger">
+                            <Link to={"/login"}>Gimme ideas!</Link>
+                        </button>
+                    ) : (
+                        <button className="homepage__instructions-btn-trigger">
                         <Link to={"/date-search"}>Gimme ideas!</Link>
                     </button>
                 </div> */
