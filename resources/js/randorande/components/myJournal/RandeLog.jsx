@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
+<<<<<<< Updated upstream
 //we need to use props for the date name from the journal list page
 const RandeLog = () => {
     const { entryId } = useParams();
     // const [data, setData] = useState(null);
+=======
+
+//coming from parent component
+const RandeLog = ({ entryId }) => {
+>>>>>>> Stashed changes
     const [entryData, setEntryData] = useState({
         rande_name: null,
         date: null,
@@ -16,6 +22,42 @@ const RandeLog = () => {
     });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
+    
+
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+        
+    };
+
+    const handleUpload = async () => {
+        try {
+            const formData = new FormData();
+            formData.append("photo", selectedFile);
+
+            const response = await axios.post(
+                `/api/entries/${entryId}/upload-photo`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
+            );
+
+            if (response.status === 200) {
+                console.log("Photo uploaded successfully");
+                setUploadedImageUrl(response.data.imageUrl); // Assuming the server returns the URL of the uploaded image
+            } else {
+                console.error("Failed to upload photo");
+            }
+        } catch (error) {
+            console.error("Error uploading photo:", error);
+        }
+    };
 
     useEffect(() => {
         const fetchEntryData = async () => {
@@ -57,21 +99,18 @@ const RandeLog = () => {
             <div className="randorande-data">
                 <div className="left-section">
                     <h2 className="data__rande-name">
-                        {/* we need to use props for the date name from the
-                            journal list page */}
                         {entryData.rande_name ?? "Date Name"}
                     </h2>
-
                     <h5 className="data__rande-date">
                         {entryData.date ?? "MM/DD/YYYY"}
                     </h5>
-
                     <h5 className="date__rande-location">
                         {entryData.location ?? "Location"}
                     </h5>
                     <div className="modal">
-                        <button onClick={openModal}>Rande</button>
+                        
 
+                        <button onClick={openModal}>Rande Info</button>
                         {isModalOpen && (
                             <div className="modal-overlay">
                                 <div className="modal-content">
@@ -84,10 +123,11 @@ const RandeLog = () => {
                             </div>
                         )}
                     </div>
-                    {entryData && entryData.image_url ? (
+                    
+                    {uploadedImageUrl ? (
                         <img
-                            src={entryData.image_url}
-                            alt="Date Photo"
+                            src={uploadedImageUrl}
+                            alt="Uploaded Photo"
                             className="data__rande-photo"
                         />
                     ) : (
@@ -95,13 +135,11 @@ const RandeLog = () => {
                             {/* Placeholder for photo */}
                         </div>
                     )}
-
                     <p className="data__rande-description">
-                        Description:
+                        
                         {entryData.entry_text ??
-                            " Please click on the edit button to log your date in your journal."}
+                            ` Date Description: Please click on the edit button to log your date in your journal.`}
                     </p>
-
                     <div className="buttons">
                         <Link
                             to={"/my-journal/edit/" + entryData.id}
@@ -109,13 +147,23 @@ const RandeLog = () => {
                         >
                             Edit
                         </Link>
-
-                        <Link className="button-link">Photo</Link>
+                        <label className="button-link">
+                            Add Photo
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                style={{ display: "none" }}
+                            />
+                        </label>
+                        <button onClick={handleUpload}
+                        className="button-link">Upload</button>
                     </div>
                 </div>
             </div>
         </div>
     );
 };
+
 
 export default RandeLog;
