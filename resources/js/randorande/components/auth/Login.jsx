@@ -128,9 +128,9 @@ export default function Login(props) {
                             &#128148; I forgot my password
                         </p>
                     </div>
-                    <Link className="login_btn2" to={"/login"}>
+                    <button type="submit" className="login_btn2">
                         LOGIN
-                    </Link>
+                    </button>
                     <br />
                     <div className="register">
                         <p className="no_account">I don't have an account</p>{" "}
