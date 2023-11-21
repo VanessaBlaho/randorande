@@ -1,11 +1,48 @@
 import { Link } from "react-router-dom";
 
 export default function AboutUs() {
+
+    const aboutUsStyle = {
+        backgroundImage: "url('/public/images/cloud-background.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        /* Additional background properties as needed */
+        minHeight: "100vh", // Ensure the container covers the entire viewport height
+    };
+
     return (
         <>
+        <div className="homepage" style={aboutUsStyle}>
+        <div className= "container">
             <div className="about-us__headline__container">
                 <h1 className="about-us__headline">The RandoRande Team</h1>
             </div>
+            <div className="about_us__text">
+                <p>
+                    <strong>RandoRande</strong> is a date ideas generator and
+                    personal date journal. The web application was developed by
+                    4 classmates at Coding Bootcamp Praha in November 2023 in
+                    Prague, Czech Republic.
+                </p>
+
+                <p>
+                    The name RandoRande comes from the English word "
+                    <strong>rando</strong>", which is short for "
+                    <strong>random</strong>
+                    ", and the Czech word for date "<strong>rande</strong>",
+                    which is a loanword borrowed from the French word "
+                    <strong>rendezvous</strong>
+                    ". <i>Rendezvous</i> means a meet-up between 2 or more
+                    people.
+                </p>
+
+                <p>
+                    Paired up with someone special but at a loss for what to do?
+                    We've taken out all the guesswork for you.
+                </p>
+                </div>
+                
             <div className="team__container">
                 <div className="team-member__container crisafi">
                     <img
@@ -42,37 +79,16 @@ export default function AboutUs() {
                     />
                     <p className="team-member__name">Ephram Daniels</p>
                 </div>
+               
             </div>
-            <div className="about_us__text">
-                <p>
-                    <strong>RandoRande</strong> is a date ideas generator and
-                    personal date journal. The web application was developed by
-                    4 classmates at Coding Bootcamp Praha in November 2023 in
-                    Prague, Czech Republic.
-                </p>
-
-                <p>
-                    The name RandoRande comes from the English word "
-                    <strong>rando</strong>", which is short for "
-                    <strong>random</strong>
-                    ", and the Czech word for date "<strong>rande</strong>",
-                    which is a loanword borrowed from the French word "
-                    <strong>rendezvous</strong>
-                    ". <i>Rendezvous</i> means a meet-up between 2 or more
-                    people.
-                </p>
-
-                <p>
-                    Paired up with someone special but at a loss for what to do?
-                    We've taken out all the guesswork for you.
-                </p>
-
-                <div className="link_to_search__container">
+            <div className="link_to_search__container">
                     <Link className="link_to_search" to={"/date-search"}>
                         Try our date generator today!
                     </Link>
                 </div>
-            </div>
+                </div>
+                </div>
+            
         </>
     );
 }
