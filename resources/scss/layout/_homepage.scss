@@ -6,28 +6,32 @@
 }
 
 @mixin buttonStyle {
-    font-family: 'Josefin Sans', sans-serif;
-        font-size: 16px;
-        background: $randorande6;
-        border: none;
-        width: fit-content;
-        white-space: nowrap;
-        padding: 1rem 0.7rem 0.7rem 0.7rem;
-        border-radius: 4px;
-        @include shadow;
-        margin: 0.3rem 0;
-        cursor: pointer;
-        &:hover {
-            background: $randorande8;
-        }
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    background: $randorande6;
+    border: none;
+    width: fit-content;
+    white-space: nowrap;
+    padding: 1rem 0.7rem 0.7rem 0.7rem;
+    border-radius: 4px;
+    @include shadow;
+    margin: 0.3rem 0;
+    cursor: pointer;
+    &:hover {
+        background: $randorande8;
+    }
 }
 
 @mixin shadow {
     box-shadow: 0 10px 13px -7px rgba(0, 0, 0, 0.4), 0 0 5px 2px transparent;
 }
 
+// .modal-open .logo,
+// .modal-open .modal_btn {
+//     display: none;
+// }
+
 .homepage__instructions {
-    // background-color: $randorande1;
     width: 100%;
 }
 
@@ -35,7 +39,7 @@
     @include flexCol;
     justify-content: flex-start;
     width: 100%;
-
+    font-family: "Josefin Sans", sans-serif;
 
     .logo {
         display: block;
@@ -55,9 +59,8 @@
     &__instructions {
         @include flexCol;
         //color: grey; will be raplaced with main style color
-        text-align: justify;
+        text-align: left;
         width: 100%;
-        padding: 0;
 
 
         &-title {
@@ -65,30 +68,32 @@
             font-weight: 400;
         }
 
-
         &-list {
             @include flexCol;
-            width: 90%;
+            
             height: 30%;
             list-style: none;
             line-height: 1.5;
-            padding-left: 0;
+            
         }
 
         &-item {
-            text-align: center;
+            text-align: left;
             width: 100%;
             font-size: 1.1rem;
+            display: inline-block; // Make each list item inline-block
+            margin-right: 10px;
         }
 
         &-btn-trigger {
-            height: 2rem;
-            width: 8rem;
-            margin: 0.5rem;
-            font-size: 1rem;
+            @include buttonStyle;
+            padding: 0;
+            text-decoration: none;
+            color: black;
+            height: fit-content;
             text-align: center;
-
             a {
+                margin: 0;
                 text-decoration: none;
             }
         }
@@ -101,51 +106,48 @@
 
     // styling for after smaller phones
     @media (min-width: 375px) {
-    .modal_btn {
-        font-size: 20px;
+        .modal_btn {
+            font-size: 20px;
+        }
     }
-}
 
-@media (min-width: 590px) {
-    .logo {
-        margin-top: 0.5rem;
-        width: 30rem;
+    @media (min-width: 590px) {
+        .logo {
+            margin-top: 0.5rem;
+            width: 30rem;
+        }
+        .modal_btn {
+            margin-top: 0.3rem;
+        }
     }
-    .modal_btn {
-        margin-top: 0.3rem;
-    }
-}
 
     //desktop design
     @media (min-width: 768px) {
-
         &__instructions {
             justify-content: space-around;
+
             width: 100%;
             margin: 0;
             padding: 0;
 
-
             &-title {
                 font-size: 42px; // Larger font for desktop
                 margin: 0;
-
             }
 
             &-list {
                 flex: 1;
-                
+
                 text-align: center;
             }
 
             &-item {
-                font-size: 20px
+                font-size: 20px;
             }
 
             &-btn-trigger {
-                height: 2.2rem;
-                width: 10rem;
-                margin-bottom: 0.5rem;
+                padding: 0;
+                padding: 0.5rem 0.5rem 0.4rem 0.5rem;
                 font-size: 1.2rem;
 
                 a {
@@ -156,6 +158,30 @@
     }
 }
 
+.modal_btn__container {
+    align-self: flex-end;
+    button {
+        @include buttonStyle;
+        padding: 0;
+        padding: 0.35rem 0.5rem 0.25rem 0.5rem;
+        cursor: pointer;
+    }
+}
+
+.button-clicked__text {
+    background: rgba($randorande1, 0.8);
+    border-radius: 4px;
+    padding: 1rem;
+    color: white;
+    li {
+        list-style-type: none;
+        line-height: 1.2rem;
+        margin-bottom: 0.2rem;
+    }
+}
+
 .ReactModal__Content {
-    background-color: pink;
+  background: transparent;
+  border: none;
+  padding: 0;
 }

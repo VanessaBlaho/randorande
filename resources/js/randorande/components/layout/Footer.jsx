@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer-col">
-                <ul>
+                <ul className="footer-nav__container">
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -26,16 +26,36 @@ export default function Footer() {
 
             <div className="footer-col-contactUs">
                 <ul>
-                    <li>Follow Us</li>
-                    <li>
-                        <a href="#">#</a>
-                    </li>
-                    <li>
-                        <a href="#">#</a>
-                    </li>
-                    <li>
-                        <a href="#">#</a>
-                    </li>
+                    <li className="follow-us">Follow Us</li>
+                    <div className="social-media__container">
+                        <li className="social-media__circle">
+                            <a href="#">
+                                <img
+                                    className="social-media__image"
+                                    src="/images/footer-icons/twitter.svg"
+                                    alt="twitter"
+                                />
+                            </a>
+                        </li>
+                        <li className="social-media__circle">
+                            <a href="#">
+                                <img
+                                    className="social-media__image"
+                                    src="/images/footer-icons/instagram.svg"
+                                    alt="instagram"
+                                />
+                            </a>
+                        </li>
+                        <li className="social-media__circle">
+                            <a href="#">
+                                <img
+                                    className="social-media__image"
+                                    src="/images/footer-icons/github.svg"
+                                    alt="github"
+                                />
+                            </a>
+                        </li>
+                    </div>
                 </ul>
             </div>
 
