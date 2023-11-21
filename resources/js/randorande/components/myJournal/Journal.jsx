@@ -47,7 +47,7 @@ export default function Journal(props) {
                             <div className="randes-box">
                                 {entries.length > 0 ? (
                                     <ul className="randes-list__list">
-                                        {entries.map((entry) => {
+                                        {entries?.map((entry) => {
                                             return (
                                                 <li
                                                     key={entry.id}
