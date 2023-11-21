@@ -19,34 +19,5 @@ class JournalController extends Controller
         return $entries;
     }
 
-    public function edit($entry_id)
-    {
-        $entry = Entry::findOrFail($entry_id);
-
-        return $entry;
-    }
-
-    public function store(Request $request)
-    {
-
-        $request->validate([
-            'rande_id' => 'required',
-        ]);
-
-        $user = Auth::user();
-        $journal = $user->journal;
-
-        $entry = new Entry;
-
-        $entry->rande_id = $request->rande_id;
-        $entry->journal_id = $journal->id;
-        $entry->date = $request->date;
-        $entry->location = $request->location;
-        $entry->entry_text = $request->entry_text;
-        $entry->save();
-
-        return [
-            'message' => 'Journal updated successfully!'
-        ];
-    }
+   
 }
