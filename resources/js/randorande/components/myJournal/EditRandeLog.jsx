@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 //{ entryId, setEntryId }
-export default function EditRandeLog({ entryId = 3 }) {
+export default function EditRandeLog() {
+    const { entryId } = useParams();
     const [entry, setEntry] = useState(null);
     const [message, setMessage] = useState(null);
 
@@ -11,7 +12,9 @@ export default function EditRandeLog({ entryId = 3 }) {
     const fetchEntry = async () => {
         try {
             // '/api/entries/{entryId}/edit'
-            const response = await axios.get(`/api/entries/${entryId}/edit`);
+            //edit: /api/entries/${entryId}/edit
+            ///api/entries/${entryId}/show`
+            const response = await axios.get(`/api/entries/${entryId}/show`);
             //const data = response.data;
             //console.log("DATA: ", response.data);
             setEntry(response.data);

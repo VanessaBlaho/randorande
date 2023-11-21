@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-
 //we need to use props for the date name from the journal list page
-const RandeLog = ({ entryId }) => {
+const RandeLog = () => {
+    const { entryId } = useParams();
     // const [data, setData] = useState(null);
     const [entryData, setEntryData] = useState({
         rande_name: null,
@@ -12,7 +12,7 @@ const RandeLog = ({ entryId }) => {
         location: null,
         entry_text: null,
         rande_description: null,
-        image_url: null
+        image_url: null,
     });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,8 +31,9 @@ const RandeLog = ({ entryId }) => {
                 );
                 if (response.status === 200) {
                     const apiEntryData = response.data;
+                    console.log(apiEntryData);
                     setEntryData(apiEntryData);
-                     console.log("Entry Data:", apiEntryData);
+                    //console.log("Entry Data:", apiEntryData);
                 } else {
                     console.error("Failed to fetch journal entry");
                 }
@@ -41,17 +42,16 @@ const RandeLog = ({ entryId }) => {
             }
         };
 
-        
         fetchEntryData();
     }, [entryId]);
 
-     const openModal = () => {
-         setIsModalOpen(true);
-     };
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
 
-     const closeModal = () => {
-         setIsModalOpen(false);
-     };
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className="journal-container">
@@ -71,23 +71,20 @@ const RandeLog = ({ entryId }) => {
                         {entryData.location ?? "Location"}
                     </h5>
                     <div className="modal">
-                        
                         <button onClick={openModal}>Rande</button>
-                    
-                    {isModalOpen && (
-                        <div className="modal-overlay">
-                            <div className="modal-content">
-                                
-                                <p>
-                                    {entryData.rande_description ??
-                                        "No description available."}
-                                </p>
-                                <button onClick={closeModal}>Close</button>
+
+                        {isModalOpen && (
+                            <div className="modal-overlay">
+                                <div className="modal-content">
+                                    <p>
+                                        {entryData.rande_description ??
+                                            "No description available."}
+                                    </p>
+                                    <button onClick={closeModal}>Close</button>
+                                </div>
                             </div>
-                        </div>
-                        
-                    )}
-</div>
+                        )}
+                    </div>
                     {entryData && entryData.image_url ? (
                         <img
                             src={entryData.image_url}
@@ -108,7 +105,7 @@ const RandeLog = ({ entryId }) => {
 
                     <div className="buttons">
                         <Link
-                            to="/my-journal/entry/edit"
+                            to={"/my-journal/edit/" + entryData.id}
                             className="button-link"
                         >
                             Edit

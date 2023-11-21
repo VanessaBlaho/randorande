@@ -35,11 +35,11 @@ export default function MainContent() {
                     <Route path="/" element={<SubpageLayout />}>
                         <Route path="/my-journal" element={<Journal />} />
                         <Route
-                            path="/my-journal/entry"
+                            path="/my-journal/entry/:entryId"
                             element={<RandeLog />}
                         />
                         <Route
-                            path="/my-journal/entries/edit"
+                            path="/my-journal/edit/:entryId"
                             element={<EditRandeLog />}
                         />
                     </Route>
@@ -49,7 +49,6 @@ export default function MainContent() {
 
                     <Route path="/register" element={<Registration />} />
                     <Route path="/login" element={<Login />} />
-                
                 </Routes>
             </main>
         </>
