@@ -17,6 +17,7 @@ header {
     padding: 0 12px;
     @include shadow;
     font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
 
     .empty_div {
         display: none;
@@ -28,10 +29,10 @@ header {
 
         span {
             display: block;
-            height: 6px;
+            height: 0.3em;
             width: 35px;
             background-color: #e0dfcd;
-            margin: 5px 0;
+            margin: 0.4rem 0;
         }
     }
 
