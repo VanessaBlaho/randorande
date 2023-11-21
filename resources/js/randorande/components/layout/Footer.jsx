@@ -39,7 +39,6 @@ export default function Footer() {
                             <li>
                                 <Link
                                     to="/date-search"
-                                    className="journal_link"
                                 >
                                     Date Search
                                 </Link>
