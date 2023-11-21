@@ -40,13 +40,13 @@
     }
 
     .follow-us {
-        color: $randorande6;
+        color: $randorande7;
         margin-bottom: 0.7rem;
     }
 
     .copyright {
         width: fit-content;
-        color: $randorande6;
+        color: $randorande7;
         
         @media (min-width: 600px) {
             width: 30%;
@@ -79,7 +79,7 @@
                 margin-bottom: 5px;
                 a {
                   text-decoration: none;
-                  color: $randorande6;
+                  color: $randorande7;
                   &:hover {
                     text-decoration: underline;
                   }

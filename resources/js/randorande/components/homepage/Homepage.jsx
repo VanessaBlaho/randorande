@@ -85,6 +85,9 @@ export default function Homepage() {
                         {isButtonClicked && (
                             <>
                                 <ul className="button-clicked__text">
+                                    <h4 className="how_it_works__headline">
+                                        HOW IT WORKS
+                                    </h4>
                                     <li>
                                         &#9829; What kind of date are you in the
                                         mood for?
@@ -93,8 +96,8 @@ export default function Homepage() {
                                         &#9829; Choose your search parameters
                                     </li>
                                     <li>
-                                        &#9829; Get 3 random date ideas based on
-                                        your search
+                                        &#9829; Get up to 3 random date ideas
+                                        based on your search
                                     </li>
                                     <li>
                                         &#9829; Based on hints, choose which
@@ -112,14 +115,43 @@ export default function Homepage() {
                                         journey in your Journal
                                     </li>
                                     <li>&#9829; Make everlasting memories</li>
-                                    <li style={{marginTop: "1rem", display: "flex", justifyContent: "center"}}>
-                                        <Link
-                                            to={"/date-search"}
-                                            className="homepage__instructions-btn-trigger"
-                                        >
-                                            Gimme ideas!
-                                        </Link>
-                                    </li>
+
+                                    {!user ? (
+                                        <>
+                                            <li
+                                                style={{
+                                                    marginTop: "1rem",
+                                                    display: "flex",
+                                                    justifyContent: "center",
+                                                }}
+                                            >
+                                                {" "}
+                                                <Link
+                                                    to="/login"
+                                                    className="homepage__instructions-btn-trigger"
+                                                >
+                                                    Date Search
+                                                </Link>{" "}
+                                            </li>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <li
+                                                style={{
+                                                    marginTop: "1rem",
+                                                    display: "flex",
+                                                    justifyContent: "center",
+                                                }}
+                                            >
+                                                <Link
+                                                    to={"/date-search"}
+                                                    className="homepage__instructions-btn-trigger"
+                                                >
+                                                    GIMME IDEAS!
+                                                </Link>
+                                            </li>
+                                        </>
+                                    )}
                                 </ul>
                             </>
                         )}
