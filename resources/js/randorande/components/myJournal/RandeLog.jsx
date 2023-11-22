@@ -130,7 +130,7 @@ const RandeLog = () => {
                         <div className="data__rande-photo-placeholder">
                             <img
                                 src="\images\homepage\upload-image_icon.svg"
-                                alt=""
+                                alt="image placholder"
                             />
                         </div>
                     )}

@@ -22,6 +22,127 @@
     align-items: center;
 }
 
+.journal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
+        padding: 1rem;
+        width: 80vw;
+        margin: 1rem;
+     
+
+    .randorande-data {
+          text-align: center;
+          
+
+        .left-section {
+          display: flex;
+          flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h2.data__rande-name {
+                color: $randorande2;
+                font-size: 2rem; 
+
+                // Media query for desktop
+                @media (min-width: 768px) {
+                    font-size: 3rem;
+                }
+            }
+
+            h5 {
+                color: $randorande1; 
+            }
+
+            .modal {
+                
+
+                button {
+                    @include buttonStyle; 
+                }
+
+                .modal-overlay {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                }
+                .modal-content {
+                  max-width: 80%;
+                  text-align: center;
+                }
+                
+            }
+
+            .data__rande-photo {
+                
+                max-width: 50%; 
+                height: auto; 
+                margin-top: 1rem; 
+            }
+
+            .data__rande-photo-placeholder {
+                
+                // max-width: 50%; 
+                // height: auto; 
+                // margin-top: 1rem; 
+                
+                img {
+                  // width: 30%;
+                  // height: auto;
+                  // max-height: 20vh;
+                  width: 30vw;
+                  height: 10vh;
+                  margin: 0.7rem auto;
+                  margin-top: 2em;
+
+                  @media (min-width: 768px) {
+                    margin-top: 3em;
+                      }
+                }
+            }
+
+            .data__rande-description {
+                color: $randorande1;
+                
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: fit-content;
+                
+
+                      @media (min-width: 768px) {
+                          display: flex;
+                          flex-direction: row;
+                          justify-content: space-around; 
+                          width: 200px;
+                          height: 80px; 
+                          margin: auto;
+                          margin-top: 1.5em;
+                          gap: 20px;
+                          width: fit-content;
+
+      }
+
+                .button-link, button {
+                    @include buttonStyle; 
+                    text-decoration: none;
+                    color: $randorande1;
+                }
+                 input[type="file"] {
+                    display: none;
+                  }
+            }
+        }
+    }
+}
+
 
 
 
