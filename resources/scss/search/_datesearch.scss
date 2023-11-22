@@ -53,7 +53,7 @@ $grey: #888;
         margin-bottom: 2rem;
         border-radius: 4px;
         background: rgba(70, 140, 164, 0.3);
-        border-radius: 4px 4px 30px 78px;
+        border-radius: 4px;
         // Style for dropdowns
         .filter__budget-dropdown,
         .filter__season-dropdown,
@@ -98,7 +98,7 @@ $grey: #888;
 
         .filter__instructions {
             margin: 0 auto;
-            color: $randorande5;
+            color: $randorande1;
             font-size: 18px;
             font-weight: bolder;
         }
