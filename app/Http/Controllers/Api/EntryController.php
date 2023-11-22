@@ -101,13 +101,13 @@ class EntryController extends Controller
             'entry_id' => 'required'
         ]);
 
-        //still waiting on the props 
+        
         $entry = Entry::find($request->entry_id);
         $photo= $request->file('photo');
 
         $originalFileName = $photo->getClientOriginalName();
 
-        $photoPath = $photo->storeAs('images/uploads/entries', $originalFileName, 'public');
+        $photoPath = $photo->storeAs('/uploads/entries', $originalFileName, 'uploads');
         $entry->image_path = $photoPath;
         $entry->save();
 
@@ -122,29 +122,7 @@ class EntryController extends Controller
 
     }
 
-    // public function store(Request $request, $entry_id)
-    // {
-    //     $entry = Entry::find($entry_id);
 
-        if (!$entry) {
-            return [
-                'message' => 'Journal record not found :('
-            ];
-        }
-        $user = Auth::user();
-        $journal = $user->journal;
-
-        if ($journal)
-
-            $entry->date = $request->input('date');
-        $entry->location = $request->input('location');
-        $entry->entry_text = $request->input('entry_text');
-        $entry->save();
-
-
-        return [
-            'message' => 'Journal updated successfully!'
-        ];
     
     
 

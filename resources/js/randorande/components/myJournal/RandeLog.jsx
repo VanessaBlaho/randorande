@@ -4,7 +4,9 @@ import axios from "axios";
 
 
 //coming from parent component
-const RandeLog = ({ entryId }) => {
+const RandeLog = () => {
+    const { entryId } = useParams();
+
     const [entryData, setEntryData] = useState({
         rande_name: null,
         date: null,
@@ -44,7 +46,8 @@ const RandeLog = ({ entryId }) => {
 
             if (response.status === 200) {
                 console.log("Photo uploaded successfully");
-                setUploadedImageUrl(response.data.imageUrl); // Assuming the server returns the URL of the uploaded image
+                console.log(response.data.photo_path);
+                setUploadedImageUrl('/images/'+response.data.photo_path); // Assuming the server returns the URL of the uploaded image
             } else {
                 console.error("Failed to upload photo");
             }
