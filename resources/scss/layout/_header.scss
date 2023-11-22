@@ -49,11 +49,13 @@ header {
             ul {
                 list-style: none;
                 padding: 0;
-                padding-bottom: 0.2rem;
+
                 margin: 0;
                 background: $randorande2;
                 li {
-                    margin-bottom: 10px;
+                    // margin-bottom: 10px;
+                    padding-top: 0.4rem;
+                    padding-bottom: 0.1rem;
                     &:hover {
                         background: $randorande3;
                     }
