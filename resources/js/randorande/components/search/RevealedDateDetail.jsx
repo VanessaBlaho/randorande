@@ -5,6 +5,14 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export function RevealedDateDetail() {
+    const revealedDateDetail = {
+        backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+    };
+
     // search-related variables
     const { rande_id } = useParams();
     const [rande, setRande] = useState(null);
@@ -47,9 +55,11 @@ export function RevealedDateDetail() {
     }, [rande_id]);
 
     return (
+        <div className="revealed-date-detail" style={revealedDateDetail}>
         <div className="date-detail">
             {rande ? (
                 <>
+                <div className ="date-detail-container">
                     <div className="date-detail-name">
                         <h3>{rande.name}</h3>
                     </div>
@@ -61,15 +71,17 @@ export function RevealedDateDetail() {
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
                             <button onClick ={addToJournal}>
-                                <Link to="/my-journal">Add to My Journal</Link>
+                                <Link to="/my-journal">ADD TO MY JOURNAL</Link>
                             </button>
                             {message ? <span>{message}</span> : ""}
                         </div>
                     </div>
+                </div>
                 </>
             ) : (
                 <div className="edit-loader">&#9203;</div>
             )}
+        </div>
         </div>
     );
 }

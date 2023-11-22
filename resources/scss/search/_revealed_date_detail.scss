@@ -1,6 +1,31 @@
+.date-detail-name{
+  h3{
+    font-size: 3rem;
+    color: $randorande2;
+    text-align: center;
+  }
+}
+.date-detail-container{
+  @include shadow;
+  border-radius: 4px;
+  background: rgba(70, 140, 164, 0.3);
+  margin:10%;
+  border: 1px solid $randorande2;
+  
 
 
+}
 @media (max-width: 600px){
+  // .date-detail-container{
+  //   @include shadow;
+  //   border-radius: 4px;
+  //   background: rgba(70, 140, 164, 0.3);
+  //   margin:10%;
+  //   border: 1px solid $randorande2;
+    
+
+
+  // }
 
   .date-detail{
     display: flex;
@@ -12,12 +37,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 5%;
     
     .date-detail-image{
         width: 80%;
         padding-left: 20% ;
+        
         img{
             width: inherit;
+            
         }
        
     }
@@ -28,6 +56,17 @@
     width: 65%;
     text-align: center;
     padding-left: 3%;
+    button{
+      @include buttonStyle;
+      font-size: 15px;
+      padding: 0.9rem 0.7rem 0.7rem 0.7rem;
+      text-decoration: none;
+      color: $black;
+      a{
+        text-decoration: none;
+        color: $black;
+      }
+    }
     
 
 }
