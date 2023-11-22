@@ -106,7 +106,7 @@ const RandeLog = () => {
                         {entryData.location ?? "Location"}
                     </h5>
                     <div className="modal">
-                        <button onClick={openModal}>Rande Info</button>
+                        <button onClick={openModal}>RANDE INFO</button>
                         {isModalOpen && (
                             <div className="modal-overlay">
                                 <div className="modal-content">
@@ -114,7 +114,7 @@ const RandeLog = () => {
                                         {entryData.rande_description ??
                                             "No description available."}
                                     </p>
-                                    <button onClick={closeModal}>Close</button>
+                                    <button onClick={closeModal}>CLOSE</button>
                                 </div>
                             </div>
                         )}
@@ -143,10 +143,10 @@ const RandeLog = () => {
                             to={"/my-journal/edit/" + entryData.id}
                             className="button-link"
                         >
-                            Edit
+                            EDIT
                         </Link>
                         <label className="button-link">
-                            Add Photo
+                            ADD PHOTO
                             <input
                                 type="file"
                                 accept="image/*"
@@ -155,7 +155,7 @@ const RandeLog = () => {
                             />
                         </label>
                         <button onClick={handleUpload} className="button-link">
-                            Upload
+                            UPLOAD
                         </button>
                     </div>
                 </div>

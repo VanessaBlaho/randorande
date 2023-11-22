@@ -23,14 +23,17 @@
 }
 
 .journal-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  @include flexCol;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 100vh;
     background-color: rgba(255, 255, 255, 0.5);
         padding: 1rem;
-        width: 80vw;
-        margin: 1rem;
+        // width: 80vw;
+        width: fit-content;
+        max-width: 80%;
+        margin: 1rem auto;
      
 
     .randorande-data {
@@ -46,11 +49,22 @@
             h2.data__rande-name {
                 color: $randorande2;
                 font-size: 2rem; 
+                margin: 0;
 
                 // Media query for desktop
                 @media (min-width: 768px) {
                     font-size: 3rem;
                 }
+            }
+
+            h5.data__rande-date {
+              margin: 0;
+              margin: 0.6rem 0;
+            }
+
+            h5.date__rande-location {
+              margin: 0;
+              margin: 0.6rem 0;
             }
 
             h5 {
@@ -78,7 +92,7 @@
 
             .data__rande-photo {
                 
-                max-width: 50%; 
+                max-width: 38%; 
                 height: auto; 
                 margin-top: 1rem; 
             }
