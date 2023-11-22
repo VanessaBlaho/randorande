@@ -2,12 +2,17 @@
     @include flexCol;
     height: 35rem;
     margin-top: 1rem;
+    margin-bottom: 2rem;
 
     .journal-child {
         @include flexCol;
         justify-content: space-around;
-        height: 100%;
+        // height: 100%;
+        width: fit-content;
         max-width: 80%;
+        background-color: rgba(255, 255, 255, 0.5);
+        color: $randorande1;
+        padding: 1rem;
 
         .user-detail-box {
             @include flexCol;
@@ -19,19 +24,23 @@
 
             .user-detail-list {
                 @include flexCol;
+                align-items: flex-start;
                 height: 70%;
-                padding: 1rem;
+                padding: 0.5rem;
 
+                @media (min-width: 281px) {
+                    align-items: center;
+                }
 
                 &__username {
-                    padding: 0.3rem;
-                    margin: 0.4rem;
+                    padding: 0;
+                    margin: 0.4rem 0;
+                    color: $randorande2;
                 }
 
                 &__info {
-
-                    font-size: 1.2rem;
-                    margin: 0.3rem;
+                    font-size: 1rem;
+                    margin: 0.3rem 0;
                 }
             }
         }
@@ -40,35 +49,42 @@
             @include flexCol;
             height: 80%;
             width: 80%;
+            padding: 0.5rem 0;
 
             .randes-list {
                 @include flexCol;
-                justify-content: flex-start;
+                justify-content: flex-start; /* Center vertically within .randes-box */
+                align-items: flex-start;
+                // white-space: nowrap;
                 list-style: none;
-                text-align: justify;
                 height: 100%;
-                width: 95%;
+                width: 90%;
                 padding-left: 0;
 
                 &__item {
+                    padding: 0.4rem 0;
+
                     a {
                         text-decoration: none;
-                        cursor: pointer;
-                        font-size: 1.2rem;
                         color: $randorande2;
-
+                        cursor: pointer;
+                        font-size: 1rem;
 
                         &:hover {
-                            font-size: 2rem;
+                            color: $randorande4;
                             cursor: pointer;
                         }
 
                         &:visited {
-                            color: $randorande2;
+                            color: $randorande3;
                             cursor: pointer;
+
+                            &:hover {
+                                color: $randorande4;
+                            }
                         }
                     }
-                }
+                } // Add this closing brace for &__item
             }
         }
     }
@@ -83,15 +99,15 @@
             justify-content: center;
             align-items: flex-start;
             justify-content: space-around;
-            padding-top: 2rem;
+            padding-top: 1rem;
+            padding-right: 0;
             height: 90%;
-            width: 80%;
-            border: solid 1px black;
+            max-width: 80%;
 
             .user-detail-box {
                 @include flexCol;
                 width: 40%;
-                padding: 2rem;
+                padding: 1rem;
 
                 &__image {
                     width: 50%;
@@ -103,15 +119,14 @@
                     height: 65%;
                     padding: 0 1rem 1rem 1rem;
 
-
                     &__username {
                         padding: 0.3rem;
                         margin: 0.4rem;
                     }
 
                     &__info {
-
-                        font-size: 1.2rem;
+                        white-space: nowrap;
+                        font-size: 1rem;
                         margin: 0.3rem;
                     }
                 }
@@ -119,9 +134,10 @@
 
             .randes-box {
                 @include flexCol;
-                height: 90%;
+                margin: 0 auto;
+                // height: 90%;
                 width: 55%;
-                padding: 1rem;
+                padding: 1rem 0;
 
                 .randes-list {
                     @include flexCol;
@@ -131,26 +147,31 @@
                     width: 90%;
                     list-style: none;
                     text-align: justify;
+                    overflow: auto;
 
                     &__item {
-                        padding: 0.5rem;
+                        padding: 0.5rem 0;
+                        margin-left: auto;
+                        margin-right: auto;
+                        white-space: nowrap;
 
                         a {
                             text-decoration: none;
                             color: $randorande1;
                             cursor: pointer;
-                            font-size: 1.5rem;
-
-
+                            font-size: 1.2rem;
 
                             &:hover {
-                                font-size: 2rem;
                                 color: $randorande4;
                             }
 
                             &:visited {
+                                color: $randorande3;
                                 cursor: pointer;
-                                color: $randorande1;
+
+                                &:hover {
+                                    color: $randorande4;
+                                }
                             }
                         }
                     }
