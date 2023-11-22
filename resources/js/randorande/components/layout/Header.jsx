@@ -54,12 +54,18 @@ const Header = (props) => {
                             <>
                                 <li>
                                     {" "}
-                                    <Link to="/login" className="journal_link">
+                                    <Link
+                                        to="/login"
+                                        className="journal_link tooltip_login"
+                                    >
                                         Date Search
                                     </Link>{" "}
                                 </li>
                                 <li>
-                                    <Link to="/login" className="journal_link">
+                                    <Link
+                                        to="/login"
+                                        className="journal_link tooltip_login"
+                                    >
                                         My Journal
                                     </Link>{" "}
                                 </li>
@@ -67,12 +73,18 @@ const Header = (props) => {
                         ) : (
                             <>
                                 <li>
-                                    <Link to="/date-search" className="journal_link">
-                                                Date Search
-                                            </Link>
+                                    <Link
+                                        to="/date-search"
+                                        className="journal_link"
+                                    >
+                                        Date Search
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link to="/my-journal" className="journal_link">
+                                    <Link
+                                        to="/my-journal"
+                                        className="journal_link"
+                                    >
                                         My Journal
                                     </Link>
                                 </li>

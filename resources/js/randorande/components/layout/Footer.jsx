@@ -1,7 +1,12 @@
 // import '../../../scss/app.scss'
 import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import UserContext from "../../UserContext";
 
 export default function Footer() {
+    const { user, setUser } = useContext(UserContext);
+
+
     return (
         <footer className="footer">
             <div className="footer-col">
@@ -9,12 +14,40 @@ export default function Footer() {
                     <li>
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
-                        <Link to="/date-search">Date Search</Link>
-                    </li>
-                    <li>
-                        <Link to="/profile">Profile</Link>
-                    </li>
+                    {!user ? (
+                        <>
+                            <li>
+                                {" "}
+                                <Link
+                                    to="/login"
+                                    className="tooltip_login__footer"
+                                >
+                                    Date Search
+                                </Link>{" "}
+                            </li>
+                            <li>
+                                <Link
+                                    to="/login"
+                                    className="tooltip_login__footer"
+                                >
+                                    My Journal
+                                </Link>{" "}
+                            </li>
+                        </>
+                    ) : (
+                        <>
+                            <li>
+                                <Link
+                                    to="/date-search"
+                                >
+                                    Date Search
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/my-journal">My Journal</Link>
+                            </li>
+                        </>
+                    )}
                     <li>
                         <Link to="/about-us">About Us</Link>
                     </li>
