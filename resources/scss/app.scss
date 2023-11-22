@@ -7,9 +7,9 @@
 @import "./search/datesearch";
 @import "./search/scratchOff.scss";
 @import "./search/revealed_date_detail";
-@import "./myJournal/randelog"; 
+@import "./myJournal/randelog";
 @import "./myJournal/editRande";
-@import "./myjournal/myjournal";
+@import "./myJournal/myjournal";
 @import "./myJournal/subpagelayout";
 @import "./auth/registration";
 @import "./about-us/about-us";
@@ -24,8 +24,8 @@ h1{
 
 
 html {
-    box-sizing: border-box; 
-    height: 100%;
+    box-sizing: border-box;
+    //height: 100%;
     margin: 0;
 }
 
@@ -37,6 +37,7 @@ body {
     height: 100%;
     background: $randorande9;
     font-family: 'Josefin Sans', sans-serif; 
+    
 
         #randorande-app {
             display: flex;

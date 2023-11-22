@@ -1,107 +1,334 @@
-.journal-container {
-  font-family: Arial, sans-serif;
-  color: rgb(16, 3, 3);
-  background-color: rgb(241, 234, 234);
-  padding: 20px;
-  text-align: center;
-
-  h1 {
-    margin-bottom: 20px;
-   
-  }
-
-   a {
-    text-decoration: none; 
-    color: inherit; 
-
+@mixin buttonStyle {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    background: $randorande6;
+    border: none;
+    width: fit-content;
+    white-space: nowrap;
+    padding: 1rem 0.7rem 0.7rem 0.7rem;
+    border-radius: 4px;
+    @include shadow;
+    margin: 0.3rem 0;
+    cursor: pointer;
     &:hover {
-      text-decoration: none; 
-      color: inherit; 
+        background: $randorande8;
     }
-  }
+}
+
+@mixin flexCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.journal-container {
+  @include flexCol;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
+        padding: 1rem;
+        // width: 80vw;
+        width: fit-content;
+        max-width: 80%;
+        margin: 1rem auto;
+     
+
+    .randorande-data {
+          text-align: center;
+          
+
+        .left-section {
+          display: flex;
+          flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h2.data__rande-name {
+                color: $randorande2;
+                font-size: 2rem; 
+                margin: 0;
+
+                // Media query for desktop
+                @media (min-width: 768px) {
+                    font-size: 3rem;
+                }
+            }
+
+            h5.data__rande-date {
+              margin: 0;
+              margin: 0.6rem 0;
+            }
+
+            h5.date__rande-location {
+              margin: 0;
+              margin: 0.6rem 0;
+            }
+
+            h5 {
+                color: $randorande1; 
+            }
+
+            .modal {
+                
+
+                button {
+                    @include buttonStyle; 
+                }
+
+                .modal-overlay {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                }
+                .modal-content {
+                  max-width: 80%;
+                  text-align: center;
+                }
+                
+            }
+
+            .data__rande-photo {
+                
+                max-width: 38%; 
+                height: auto; 
+                margin-top: 1rem; 
+            }
+
+            .data__rande-photo-placeholder {
+                
+                // max-width: 50%; 
+                // height: auto; 
+                // margin-top: 1rem; 
+                
+                img {
+                  // width: 30%;
+                  // height: auto;
+                  // max-height: 20vh;
+                  width: 30vw;
+                  height: 10vh;
+                  margin: 0.7rem auto;
+                  margin-top: 2em;
+
+                  @media (min-width: 768px) {
+                    margin-top: 3em;
+                      }
+                }
+            }
+
+            .data__rande-description {
+                color: $randorande1;
+                
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: fit-content;
+                
+
+                      @media (min-width: 768px) {
+                          display: flex;
+                          flex-direction: row;
+                          justify-content: space-around; 
+                          width: 200px;
+                          height: 80px; 
+                          margin: auto;
+                          margin-top: 1.5em;
+                          gap: 20px;
+                          width: fit-content;
+
+      }
+
+                .button-link, button {
+                    @include buttonStyle; 
+                    text-decoration: none;
+                    color: $randorande1;
+                }
+                 input[type="file"] {
+                    display: none;
+                  }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .journal-container {
+//   font-family: Arial, sans-serif;
+//   color: rgb(16, 3, 3);
+//   padding: 20px;
+//   text-align: center;
+
+//   h1 {
+//     margin-bottom: 20px;
+   
+//   }
+
+//    a {
+//     text-decoration: none; 
+//     color: inherit; 
+
+//     &:hover {
+//       text-decoration: none; 
+//       color: inherit; 
+//     }
+//   }
+//     button {
+//         color: black;
+//         background-color: white;
+//         border: 1px solid black;
+//         padding: 5px 10px;
+//         cursor: pointer;
+//       }
   
 
-  .randorande-data {
-    border: 2px solid grey;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
+//   .randorande-data {
+//     border: 2px solid grey;
+//     padding: 20px;
+//     margin-top: 25px;
+//     text-align: center;
 
-    .left-section {
-      .data__rande-name,
-      .data__rande-date,
-      .date__rande-location,
-      .data__rande-description {
-        color: darkgrey;
-      }
+//     .left-section {
+//       .data__rande-name,
+//       .data__rande-date,
+//       .date__rande-location{
 
-      .data__rande-photo {
-        width: 50vw;
+//         color: darkgrey;
+//       }
+//       .data__rande-description{
+//         margin-top: 1em auto;
+//         @media (min-width: 768px) {
+//           margin-top: 12em;
+//         }
+//       }
+
+//       .data__rande-photo {
+//         width: 50vw;
         
-      }
+//       }
 
-      .data__rande-photo-placeholder {
-        background-color: darkgrey;
-        width: 30vw;
-        height: 15vh;
-        margin: 10px auto;
-        
-      }
+//       .data__rande-photo-placeholder {
+//         width: 30vw;
+//         height: 10vh;
+//         margin: 10px auto;
+//         margin-top: 2em;
+//         @media (min-width: 768px) {
+//         margin-top: 3em;
+//       }
+//     }
 
-      .button-link {
-        display: block;
-        width: 80px;
-        margin: 10px auto;
-        padding: 10px;
-        background-color: grey;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-      }
+//       .buttons {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       gap: 10px;
+//       width: fit-content;
+      
+
+//       @media (min-width: 768px) {
+//         display: flex;
+//     flex-direction: row;
+//     justify-content: space-around; 
+//     width: 200px;
+//     height: 80px; 
+//     margin: auto;
+//     margin-top: 1.5em;
+//     gap: 20px;
+//     width: fit-content;
+
+//       }
+
+//       .button-link, button {
+//         color: black;
+//         text-decoration: none;
+//         cursor: pointer;
+//         display: inline-block;
+//         padding: 5px 10px;
+//         border: 1px solid black;
+//         background-color: white;
+//         transition: background-color 0.3s, color 0.3s;
+       
+
+//         &:hover {
+//           background-color: black;
+//           color: white;
+//         }
+
+//         input[type="file"] {
+//           display: none;
+//         }
+//       }
+//     }
        
 
       
-    }
+//     }
 
     
-  }
-}
+//   }
 
-@media (min-width: 768px) {
-  .data__rande-photo-placeholder {
-        background-color: darkgrey;
-        width: 30vw !important;
-        height: 38vh !important;
-        margin: 10px auto;
-        
-      }
 
-  .buttons {
-    display: flex;
-    justify-content: space-around; 
-    width: 200px;
-    height: 80px; 
-    margin: auto;
-    margin-top: 50px;
-    gap: 20px;
 
-   .button-link {
-  display: flex;
-  align-items: center; // This will center the text vertically
-  justify-content: center; // This will center the text horizontally
-  height: 20px;
-  padding: 10px;
-  background-color: grey;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-}
-  }
+
+  
+
+
+
+// }
+
+
  
 
 
 
-} 
+ 
  
 

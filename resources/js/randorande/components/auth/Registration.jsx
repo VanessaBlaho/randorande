@@ -14,8 +14,6 @@ const registrationStyle = {
     minHeight: "100vh", // Ensure the container covers the entire viewport height
 };
 
-
-
     const [values, setValues] = useState({
         first_name: "",
         last_name: "",
@@ -43,7 +41,7 @@ const registrationStyle = {
             const response = await axios.post("/register", values);
             // get the (already JSON-parsed) response data
             // const response_data = response.data; // use later for console.log()
-            setUser(null);
+            setUser("logged");
             // ADD NAVIGATE TO MY JOURNAL HERE
             navigate("/my-journal");
         } catch (error) {
@@ -282,7 +280,7 @@ const registrationStyle = {
                         </div>
                         {errors.age_confirmation ? (
                             <>
-                                <div className="errors">
+                                <div className="errors__age">
                                     {errors.age_confirmation.map((error, i) => (
                                         <div key={i} className="error">
                                             {error}

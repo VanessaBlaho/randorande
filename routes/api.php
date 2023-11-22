@@ -31,8 +31,9 @@ Route::get('/my-journal', [JournalController::class, 'show']);
 
 //show entry with rande name endpoint
 Route::get('/entries/{entry_id}/show', [EntryController::class, 'show']);
-//edit entry with rande name endpoint
-Route::get('/entries/{entry_id}/edit', [EntryController::class, 'edit']);
 //update entry in journal
 Route::post('/entries/{entry_id}/store', [EntryController::class, 'store']);
+//create entry from revealed date
 Route::post('/entries/create', [EntryController::class, 'create']);
+//image upload for entry
+Route::post('/entries/upload-photo', [EntryController::class, 'uploadPhoto']);
