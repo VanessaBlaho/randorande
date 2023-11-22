@@ -72,6 +72,7 @@ const RandeLog = () => {
                     const apiEntryData = response.data;
                     console.log(apiEntryData);
                     setEntryData(apiEntryData);
+                    setUploadedImageUrl("/images/" + apiEntryData.image_path);
                     //console.log("Entry Data:", apiEntryData);
                 } else {
                     console.error("Failed to fetch journal entry");

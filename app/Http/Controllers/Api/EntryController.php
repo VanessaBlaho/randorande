@@ -55,7 +55,7 @@ class EntryController extends Controller
 
         // Ensure the user can only access their own entries
         $entry = $user->journal->entries()
-            ->select('entries.*', 'randes.name as rande_name', 'randes.description as rande_description')
+            ->select('entries.*', 'randes.name as rande_name', 'randes.description as rande_description', 'entries.image_path')
             ->join('randes', 'entries.rande_id', '=', 'randes.id')
             ->find($entry_id);
 
