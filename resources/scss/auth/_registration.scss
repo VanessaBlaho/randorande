@@ -6,8 +6,7 @@
 .register_headline {
     text-align: center;
     padding: 0;
-    margin: 0;
-    margin-top: 0.5rem;
+    margin: 1rem 0 0.5rem 0;
 }
 
 .login_reminder {
@@ -18,14 +17,14 @@
 }
 
 .labels_and_inputs__container {
-    border: 1px solid black;
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 1rem;
     margin-bottom: 1rem;
-    background: rgba($randorande1, 0.7);
+    background: rgba(0, 0, 0, 0.3);
     color: $randorande7;
     width: fit-content;
     box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent;
+    max-width: 80%;
 }
 
 .register_instructions {
@@ -46,17 +45,14 @@
     box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent;
 }
 
-.register_btn { 
-    margin: auto;
-    text-align: center;
-    padding: 0.2rem 0.3rem;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent;
-    &:hover {
-        background: black;
-        color: white;
-    }
+.register_btn {
+    @include buttonStyle;
+    padding: 0.8rem 0.7rem 0.55rem 0.7rem;
+}
+
+.input_row {
+    display: flex;
+    align-items: center;
 }
 
 .input_row__label {
@@ -66,7 +62,15 @@
 
 .input_row__input {
     width: 50%;
-    border-radius: 2px;
+    border-radius: 4px;
+    border: 1px solid black;
+    background: $randorande9;
+    max-height: 20px;
+    &:focus {
+      outline: none;
+      background: white;
+      color: $randorande2; 
+    }
 }
 
 .register_form {
@@ -76,10 +80,6 @@
     margin: auto 0;
 }
 
-.input_row {
-    display: flex;
-}
-
 .over_18_row {
     width: 40%;
     margin: 0 auto;
@@ -87,6 +87,7 @@
 
 .input_row__label_age-checker {
     text-align: right;
+    white-space: nowrap;
 }
 
 .input_row__input_age-checker {
@@ -97,6 +98,13 @@
 .errors {
     color: red;
     font-weight: bold;
-    margin-top: -1rem;
+    margin-top: -0.9rem;
+    text-align: center;
+}
+
+.errors__age {
+    color: red;
+    font-weight: bold;
+    margin-bottom: -0.9rem;
     text-align: center;
 }

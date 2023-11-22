@@ -310,9 +310,17 @@ export default function ScratchOff() {
         });
     };
 
+    const scratchStyle = {
+        backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+    };
+
     // render component
     return (
-        <div className="scratchOff">
+        <div className="scratchOff" style={scratchStyle}>
             <h1 className="results_h1">Your Date Idea Results</h1>
             <p className="scratch_instructions">
                 Check the hints and select 1 date to scratch

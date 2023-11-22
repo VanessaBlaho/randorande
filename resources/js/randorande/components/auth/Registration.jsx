@@ -282,7 +282,7 @@ const registrationStyle = {
                         </div>
                         {errors.age_confirmation ? (
                             <>
-                                <div className="errors">
+                                <div className="errors__age">
                                     {errors.age_confirmation.map((error, i) => (
                                         <div key={i} className="error">
                                             {error}
