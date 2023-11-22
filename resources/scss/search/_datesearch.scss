@@ -24,6 +24,7 @@ $grey: #888;
     .datesearch__subheadline {
         padding: 0;
         margin: 0 auto;
+        margin-top: 1rem;
         width: 70%;
         color: $randorande2;
     }
@@ -36,7 +37,7 @@ $grey: #888;
     .filter__headline {
         padding: 0;
         margin: 0 0 0.5rem 0;
-        color: $randorande5;
+        color: $randorande1;
         font-size: 18px;
     }
 
@@ -47,8 +48,11 @@ $grey: #888;
         margin: 0 auto;
         border: 1px solid $randorande2;
         padding: 20px;
+        padding-bottom: 30px;
         margin-top: 20px;
         margin-bottom: 2rem;
+        border-radius: 4px;
+        background: rgba(70, 140, 164, 0.3);
         border-radius: 4px;
         // Style for dropdowns
         .filter__budget-dropdown,
@@ -94,7 +98,7 @@ $grey: #888;
 
         .filter__instructions {
             margin: 0 auto;
-            color: $randorande5;
+            color: $randorande1;
             font-size: 18px;
             font-weight: bolder;
         }

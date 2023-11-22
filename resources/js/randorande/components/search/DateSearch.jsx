@@ -3,18 +3,30 @@ import { Link } from "react-router-dom";
 import { useFiltersContext } from "../../FiltersContext"; //change to FiltersContext
 
 const DateSearch = () => {
+    const scratchStyle = {
+        backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+    };
+
     const { state, dispatch } = useFiltersContext();
     const isButtonDisabled = !state.budgetFilter || !state.seasonFilter || !state.localityFilter;
 
     return (
         <>
-            <div className="datesearch">
+            <div className="datesearch" style={scratchStyle}>
                 {/* <h1 className="datesearch__headline">Rendezvous</h1> */}
-                <h3 className="datesearch__subheadline">Your next date idea is just moments away!</h3>
+                <h3 className="datesearch__subheadline">
+                    Your next date idea is just moments away!
+                </h3>
                 <div className="filters">
                     {/* Budget dropdown */}
                     <div className="filter__budget-dropdown">
-                        <h3 className="filter__headline">Tell us what you're in the mood for:</h3>
+                        <h3 className="filter__headline">
+                            Tell us what you're in the mood for:
+                        </h3>
                         <label htmlFor="budgetFilter">Budget</label>
                         <select
                             id="budgetFilter"
@@ -79,7 +91,12 @@ const DateSearch = () => {
                             Please select one option from each search feature.
                         </p>
                     ) : (
-                        <Link className="search_rande_btn" to="/date-search/results">RENDEZVOUS</Link>
+                        <Link
+                            className="search_rande_btn"
+                            to="/date-search/results"
+                        >
+                            RENDEZVOUS
+                        </Link>
                     )}
                 </div>
             </div>
