@@ -1,13 +1,12 @@
 .journal-parent {
     @include flexCol;
-    height: 35rem;
+    //   height: 35rem;
     margin-top: 1rem;
-    margin-bottom: 2rem;
 
     .journal-child {
         @include flexCol;
         justify-content: space-around;
-        // height: 100%;
+        height: 100%;
         width: fit-content;
         max-width: 80%;
         background-color: rgba(255, 255, 255, 0.5);
@@ -29,7 +28,7 @@
                 padding: 0.5rem;
 
                 @media (min-width: 281px) {
-                    align-items: center;
+                    align-items: flex-end;
                 }
 
                 &__username {
@@ -71,15 +70,20 @@
                         font-size: 1rem;
 
                         &:hover {
+                            // unfortunately making the size bigger on hover like this doesn't look good
+                            // font-size: 1.2rem;
                             color: $randorande4;
                             cursor: pointer;
                         }
 
                         &:visited {
+                            font-size: 1rem;
                             color: $randorande3;
                             cursor: pointer;
 
                             &:hover {
+                                // unfortunately making the size bigger on hover like this doesn't look good
+                                // font-size: 1.2rem;
                                 color: $randorande4;
                             }
                         }
@@ -162,6 +166,8 @@
                             font-size: 1.2rem;
 
                             &:hover {
+                                // unfortunately making the size bigger on hover like this doesn't look good
+                                // font-size: 1.2rem;
                                 color: $randorande4;
                             }
 
@@ -170,6 +176,8 @@
                                 cursor: pointer;
 
                                 &:hover {
+                                    // unfortunately making the size bigger on hover like this doesn't look good
+                                    // font-size: 1.2rem;
                                     color: $randorande4;
                                 }
                             }
