@@ -35,6 +35,10 @@ export default function EditRandeLog() {
                 entry
             );
             setMessage(response.data["message"]);
+            // below displays "journal entry updated" for 2 seconds
+            setTimeout(() => {
+                setMessage(null);
+            }, 1500);
         } catch (error) {
             console.log(error);
         }
@@ -61,7 +65,15 @@ export default function EditRandeLog() {
                             {entry.rande_name}
                         </h1>
 
-                        {message ? <span>{message}</span> : ""}
+                        <div className="journal_saved_message_div">
+                            {message ? (
+                                <span className="journal_saved_message">
+                                    {message}
+                                </span>
+                            ) : (
+                                ""
+                            )}
+                        </div>
 
                         <div className="edit-form">
                             <form
@@ -100,7 +112,7 @@ export default function EditRandeLog() {
                                     type="submit"
                                     className="edit-form__button"
                                 >
-                                    Save
+                                    SAVE
                                 </button>
                             </form>
                         </div>

@@ -37,11 +37,7 @@ export default function Footer() {
                     ) : (
                         <>
                             <li>
-                                <Link
-                                    to="/date-search"
-                                >
-                                    Date Search
-                                </Link>
+                                <Link to="/date-search">Date Search</Link>
                             </li>
                             <li>
                                 <Link to="/my-journal">My Journal</Link>
@@ -80,7 +76,7 @@ export default function Footer() {
                             </a>
                         </li>
                         <li className="social-media__circle">
-                            <a href="#">
+                            <a href="https://github.com/VanessaBlaho/randorande">
                                 <img
                                     className="social-media__image"
                                     src="/images/footer-icons/github.svg"
