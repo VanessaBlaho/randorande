@@ -133,7 +133,7 @@ class RandesSeeder extends Seeder
     ],
     [   
         'id' => 10,
-        'name' => 'Got out for dessert',
+        'name' => 'Go out for dessert',
         'description' => 'Go to your favorite café or confectionery and treat yourself to a slice of heaven. If you\'re watching your figure, get one dessert and share it! There\'s nothing more romantic than asking the waiter to bring two forks.',
         'image_path' => '/images/randes/10_dessert.png',
         'winter' => true,

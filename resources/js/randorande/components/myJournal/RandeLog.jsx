@@ -19,7 +19,7 @@ const RandeLog = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
-    
+    const [uploadError, setUploadError] = useState(null);
 
 
     const handleFileChange = (event) => {
@@ -47,12 +47,14 @@ const RandeLog = () => {
             if (response.status === 200) {
                 console.log("Photo uploaded successfully");
                 console.log(response.data.photo_path);
-                setUploadedImageUrl('/images/'+response.data.photo_path); // Assuming the server returns the URL of the uploaded image
+                setUploadedImageUrl('/images/'+response.data.photo_path); 
+                setUploadError(null);
             } else {
                 console.error("Failed to upload photo");
             }
         } catch (error) {
             console.error("Error uploading photo:", error);
+            setUploadError("Error uploading photo. Please try another image.");
         }
     };
 
@@ -70,8 +72,14 @@ const RandeLog = () => {
                 );
                 if (response.status === 200) {
                     const apiEntryData = response.data;
-                    console.log(apiEntryData);
+                    // console.log(apiEntryData);
                     setEntryData(apiEntryData);
+
+
+                    if (apiEntryData.image_path && apiEntryData.image_path.trim() !== "") {
+                        setUploadedImageUrl("/images/" + apiEntryData.image_path);
+                    }
+                    // setUploadedImageUrl("/images/" + apiEntryData.image_path);
                     //console.log("Entry Data:", apiEntryData);
                 } else {
                     console.error("Failed to fetch journal entry");
@@ -138,6 +146,7 @@ const RandeLog = () => {
                         {entryData.entry_text ??
                             ` Date Description: Please click on the edit button to log your date in your journal.`}
                     </p>
+                    {uploadError && <p>{uploadError}</p>}
                     <div className="buttons">
                         <Link
                             to={"/my-journal/edit/" + entryData.id}
@@ -154,6 +163,7 @@ const RandeLog = () => {
                                 style={{ display: "none" }}
                             />
                         </label>
+
                         <button onClick={handleUpload} className="button-link">
                             UPLOAD
                         </button>
