@@ -12,7 +12,7 @@ export default function AboutUs() {
 
     return (
         <>
-            <div className="about-us_container" style={aboutUsStyle}>
+            <div className="about-us_container_style" style={aboutUsStyle}>
                 <div className="container">
                     <div className="about-us__headline__container">
                         <h1 className="about-us__headline">
