@@ -100,7 +100,7 @@ const RandeLog = () => {
                         {entryData.rande_name ?? "Date Name"}
                     </h2>
                     <h5 className="data__rande-date">
-                        {entryData.date ?? "MM/DD/YYYY"}
+                        {entryData.date ?? "YYYY/MM/DD"}
                     </h5>
                     <h5 className="date__rande-location">
                         {entryData.location ?? "Location"}
