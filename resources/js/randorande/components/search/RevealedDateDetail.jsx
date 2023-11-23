@@ -39,9 +39,9 @@ export function RevealedDateDetail() {
 
             const response = await axios.post('/api/entries/create', {
                 rande_id: rande_id,
-                date: 'date',
-                location: 'Some location',
-                entry_text: 'Your entry text here',
+                date: '',
+                location: '',
+                entry_text: '',
             });
 
             setMessage(response.data["message"]);
