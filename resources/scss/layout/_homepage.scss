@@ -36,6 +36,8 @@
     width: 100%;
     font-family: "Josefin Sans", sans-serif;
 
+    
+
     .logo {
         display: block;
         margin: 0 auto;
@@ -45,6 +47,15 @@
 
     .modal_btn {
         @include buttonStyle;
+    }
+
+    &.modal-open {
+        .modal_btn {
+            display: none;
+            @media (max-width: 767px) {
+                display: block;
+            }
+        }
     }
 
     .homepage__instructions-btn-trigger {
