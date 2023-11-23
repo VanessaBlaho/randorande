@@ -74,7 +74,6 @@ export function RevealedDateDetail() {
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
                             <button onClick ={addToJournal}>
-                                ///this was loading after being added to my journal so refresh was needed. Better to use navigate.
                                 {/* <Link to="/my-journal">ADD TO MY JOURNAL</Link> */}
                                 ADD TO MY JOURNAL
                             </button>
