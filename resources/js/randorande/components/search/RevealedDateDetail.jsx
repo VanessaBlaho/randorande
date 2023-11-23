@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function RevealedDateDetail() {
     const revealedDateDetail = {
@@ -17,6 +16,7 @@ export function RevealedDateDetail() {
     const { rande_id } = useParams();
     const [rande, setRande] = useState(null);
     const [message, setMessage] = useState(null);
+    const navigate =useNavigate();
 
     const fetchRandeDetail = async () => {
         try {
@@ -45,6 +45,9 @@ export function RevealedDateDetail() {
             });
 
             setMessage(response.data["message"]);
+
+            navigate ("/my-journal");
+
         } catch (error) {
             console.log(error);
         }
@@ -52,7 +55,7 @@ export function RevealedDateDetail() {
 
     useEffect(() => {
         fetchRandeDetail();
-    }, [rande_id]);
+    }, [rande_id,navigate]);
 
     return (
         <div className="revealed-date-detail" style={revealedDateDetail}>
@@ -71,7 +74,9 @@ export function RevealedDateDetail() {
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
                             <button onClick ={addToJournal}>
-                                <Link to="/my-journal">ADD TO MY JOURNAL</Link>
+                                ///this was loading after being added to my journal so refresh was needed. Better to use navigate.
+                                {/* <Link to="/my-journal">ADD TO MY JOURNAL</Link> */}
+                                ADD TO MY JOURNAL
                             </button>
                             {message ? <span>{message}</span> : ""}
                         </div>
