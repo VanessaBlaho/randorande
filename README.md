@@ -8,3 +8,17 @@ RandoRande is a unique date ideas app designed to spark creativity in your relat
 <li>Scratch </li>
 <li>My Journal</li>
 </ul>
+<br>
+<br>
+<h2>Tech Stack</h2>
+<br> <b>Back-end:</b> 
+<br>MySQL (XAMPP, Docker, Maria DB)
+<br>Laravel 10 - PHP / Blade Entry File
+<br><b>Front-end:</b> 
+<br>React.js - JavaScript
+<br>Vite
+<br>Sass - SCSS
+<br>Canva PRO
+<br> <b>Development stage:</b>
+<br>Minimal Viable Product
+
