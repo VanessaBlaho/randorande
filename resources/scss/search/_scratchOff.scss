@@ -241,38 +241,65 @@
     }
 
     .scratchOff_container__child_scratch-card {
-        width: 18rem;
+        width: 20rem;
         /* fixed width for the scratch card */
-        height: 18rem;
+        height: 20rem;
+        /* fixed height for the scratch card */
+    }
+}
+
+@media (max-width: 810px) {
+    .scratchOff_container__child_scratch-card {
+        width: 20rem;
+        /* fixed width for the scratch card */
+        height: 20rem;
+        /* fixed height for the scratch card */
+    }
+}
+
+@media (max-width: 630px) {
+    .scratchOff_container__child_scratch-card {
+        width: 16rem;
+        /* fixed width for the scratch card */
+        height: 16rem;
         /* fixed height for the scratch card */
     }
 }
 
 @media (max-width: 560px) {
     .scratchOff_container__child_scratch-card {
-        width: 10rem;
+        width: 16rem;
         /* fixed width for the scratch card */
-        height: 10rem;
+        height: 16rem;
         /* fixed height for the scratch card */
     }
     .scratchOff_container__parent {
-        width: fit-content;
+        width: 80%;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 391px) {
+    .scratchOff_container__child_scratch-card {
+        width: 12rem;
+        /* fixed width for the scratch card */
+        height: 12rem;
+        /* fixed height for the scratch card */
     }
 }
 
     @media (max-width: 367px) {
     .scratchOff_container__child_scratch-card {
-        width: 6rem;
+        width: 10rem;
         /* fixed width for the scratch card */
-        height: 6rem;
+        height: 10rem;
         /* fixed height for the scratch card */  
 }
 }
 
 @media (max-width: 367px) {
     .scratchOff_container__child-hint-container h5 {
-        font-size: 9px;
+        font-size: 12px;
 }
 }
 
