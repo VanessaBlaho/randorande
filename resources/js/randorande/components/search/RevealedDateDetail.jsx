@@ -1,14 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function RevealedDateDetail() {
+    const revealedDateDetail = {
+        backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+    };
+
     // search-related variables
     const { rande_id } = useParams();
     const [rande, setRande] = useState(null);
     const [message, setMessage] = useState(null);
+    const navigate =useNavigate();
 
     const fetchRandeDetail = async () => {
         try {
@@ -31,12 +39,15 @@ export function RevealedDateDetail() {
 
             const response = await axios.post('/api/entries/create', {
                 rande_id: rande_id,
-                date: 'date',
-                location: 'Some location',
-                entry_text: 'Your entry text here',
+                date: '',
+                location: '',
+                entry_text: '',
             });
 
             setMessage(response.data["message"]);
+
+            navigate ("/my-journal");
+
         } catch (error) {
             console.log(error);
         }
@@ -44,12 +55,14 @@ export function RevealedDateDetail() {
 
     useEffect(() => {
         fetchRandeDetail();
-    }, [rande_id]);
+    }, [rande_id,navigate]);
 
     return (
+        <div className="revealed-date-detail" style={revealedDateDetail}>
         <div className="date-detail">
             {rande ? (
                 <>
+                <div className ="date-detail-container">
                     <div className="date-detail-name">
                         <h3>{rande.name}</h3>
                     </div>
@@ -61,15 +74,18 @@ export function RevealedDateDetail() {
                         <div className="date-detail-description">
                             <p> {rande.description}</p>
                             <button onClick ={addToJournal}>
-                                <Link to="/my-journal">Add to My Journal</Link>
+                                {/* <Link to="/my-journal">ADD TO MY JOURNAL</Link> */}
+                                ADD TO MY JOURNAL
                             </button>
                             {message ? <span>{message}</span> : ""}
                         </div>
                     </div>
+                </div>
                 </>
             ) : (
                 <div className="edit-loader">&#9203;</div>
             )}
+        </div>
         </div>
     );
 }

@@ -78,7 +78,7 @@ export default function Homepage() {
                         <button
                             className="modal_btn"
                             onClick={handleButtonClick}
-                            style={{ display: isModalOpen ? "none" : "block" }}
+                            // style={{ display: isModalOpen ? "none" : "block" }}
                         >
                             HOW DOES IT WORK?
                         </button>

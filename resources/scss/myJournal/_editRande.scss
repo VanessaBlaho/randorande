@@ -8,11 +8,33 @@
     }
 }
 
+@mixin buttonStyle {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    background: $randorande6;
+    border: none;
+    width: fit-content;
+    white-space: nowrap;
+    padding: 1rem 0.7rem 0.7rem 0.7rem;
+    border-radius: 4px;
+    @include shadow;
+    margin: 0.3rem 0;
+    cursor: pointer;
+    &:hover {
+        background: $randorande8;
+    }
+}
 
 .edit-page-main-container {
     @include flexCol;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
     width: 100vw;
     height: 37rem;
+    
+    .journal_saved_message_div {
+        height: 2rem;
+    }
 
     .edit-loader {
         font-size: 2rem;
@@ -25,8 +47,9 @@
         height: 90%;
         width: 90%;
         padding: 1rem 0;
-        border: solid 2px black;
-
+        background-color: rgba(255, 255, 255, 0.500);
+        color: $randorande1;
+        
         &__back-btn {
 
             a {
@@ -36,9 +59,10 @@
         }
 
         &__title {
-            font-weight: 200;
-
+            font-size: 2rem;
+            // margin-top: -9rem;
             margin-left: 1rem;
+            color: $randorande2;
         }
 
         .edit-form {
@@ -70,14 +94,9 @@
             }
 
             &__button {
-                align-self: center;
-                color: blue;
-                font-size: 1rem;
+                @include buttonStyle;
             }
-
         }
-
-
     }
 
     @media (min-width: 768px) {
@@ -86,7 +105,7 @@
             height: 70%;
             width: 60%;
             padding: 1rem 0;
-            border: solid 2px black;
+            
 
             &__back-btn {
 
@@ -97,9 +116,10 @@
             }
 
             &__title {
-                font-weight: 200;
-
+                // font-weight: 200;
+                font-size: 3rem;
                 margin-left: 1rem;
+                color: $randorande2;
             }
 
             .edit-form {
@@ -137,6 +157,8 @@
                     align-self: center;
                     background-color: none;
                     font-size: 1rem;
+                    @include buttonStyle;
+
                 }
 
 

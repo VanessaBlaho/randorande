@@ -4,6 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFiltersContext } from "../../FiltersContext";
 
 export default function ScratchOff() {
+     const scratchStyle = {
+         backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
+         backgroundSize: "cover",
+         backgroundPosition: "center",
+         backgroundRepeat: "no-repeat",
+         minHeight: "100vh",
+     };
+
     // below uses the filters context to fetch from API
     const { state, dispatch } = useFiltersContext();
     // below is variable for reroute navigation
@@ -93,9 +101,6 @@ export default function ScratchOff() {
         });
         setCanvasesReady(true);
     };
-
-
-    
 
     const loadImage = () => {
         const img = new Image();
@@ -308,14 +313,6 @@ export default function ScratchOff() {
                 area.style.pointerEvents = "none";
             }
         });
-    };
-
-    const scratchStyle = {
-        backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
     };
 
     // render component
