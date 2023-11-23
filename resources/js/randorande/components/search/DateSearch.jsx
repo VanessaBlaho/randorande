@@ -12,13 +12,14 @@ const DateSearch = () => {
     };
 
     const { state, dispatch } = useFiltersContext();
-    const isButtonDisabled = !state.budgetFilter || !state.seasonFilter || !state.localityFilter;
+    const isButtonDisabled =
+        !state.budgetFilter || !state.seasonFilter || !state.localityFilter;
 
     return (
         <>
             <div className="datesearch" style={scratchStyle}>
                 {/* <h1 className="datesearch__headline">Rendezvous</h1> */}
-                <h3 className="datesearch__subheadline">
+                <h3 className="datesearch__headline">
                     Your next date idea is just moments away!
                 </h3>
                 <div className="filters">
