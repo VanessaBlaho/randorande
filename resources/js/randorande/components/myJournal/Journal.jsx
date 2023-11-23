@@ -52,9 +52,13 @@ export default function Journal(props) {
                                 </div>
                             </div>
                             <div className="randes-box">
+<<<<<<< Updated upstream
                                 {!entries ? (
                                     <div className="edit-loader">&#9203;</div>
                                 ) : entries.length > 0 ? (
+=======
+                                {entries.length > 0 ? (
+>>>>>>> Stashed changes
                                     <ul className="randes-list">
                                         {entries.map((entry) => (
                                             <li

@@ -1,17 +1,25 @@
 .journal-parent {
     @include flexCol;
+<<<<<<< Updated upstream
     //   height: 35rem;
     margin-top: 1.5rem;
+=======
+    height: 35rem;
+    margin-top: 1rem;
+>>>>>>> Stashed changes
 
     .journal-child {
         @include flexCol;
         justify-content: space-around;
         height: 100%;
+<<<<<<< Updated upstream
         width: fit-content;
         max-width: 80%;
         background-color: rgba(255, 255, 255, 0.5);
         color: $randorande1;
         padding: 1rem;
+=======
+>>>>>>> Stashed changes
 
         .user-detail-box {
             @include flexCol;
@@ -23,6 +31,7 @@
 
             .user-detail-list {
                 @include flexCol;
+<<<<<<< Updated upstream
                 align-items: flex-start;
                 height: 70%;
                 padding: 0.5rem;
@@ -40,6 +49,21 @@
                 &__info {
                     font-size: 1rem;
                     margin: 0.3rem auto;
+=======
+                height: 70%;
+                padding: 1rem;
+
+
+                &__username {
+                    padding: 0.3rem;
+                    margin: 0.4rem;
+                }
+
+                &__info {
+
+                    font-size: 1.2rem;
+                    margin: 0.3rem;
+>>>>>>> Stashed changes
                 }
             }
         }
@@ -48,6 +72,7 @@
             @include flexCol;
             height: 80%;
             width: 80%;
+<<<<<<< Updated upstream
             padding: 0.5rem 0;
 
             .randes-list {
@@ -92,6 +117,36 @@
                         }
                     }
                 } // Add this closing brace for &__item
+=======
+
+            .randes-list {
+                @include flexCol;
+                justify-content: flex-start;
+                list-style: none;
+                text-align: justify;
+                height: 100%;
+                width: 95%;
+                padding-left: 0;
+
+                &__item {
+                    a {
+                        text-decoration: none;
+                        cursor: pointer;
+                        font-size: 1.2rem;
+
+
+                        :hover {
+                            font-size: 2rem;
+                            cursor: pointer;
+                        }
+
+                        :visited {
+                            color: black;
+                            cursor: pointer;
+                        }
+                    }
+                }
+>>>>>>> Stashed changes
             }
         }
     }
@@ -103,6 +158,7 @@
         .journal-child {
             display: flex;
             flex-direction: row;
+<<<<<<< Updated upstream
             justify-content: center;
             align-items: flex-start;
             justify-content: space-around;
@@ -110,14 +166,29 @@
             padding-right: 0;
             height: 90%;
             max-width: 80%;
+=======
+            justify-content: flex-start;
+            align-items: flex-start;
+            justify-content: space-around;
+            padding-top: 2rem;
+            height: 90%;
+            width: 80%;
+            border: solid 1px black;
+>>>>>>> Stashed changes
 
             .user-detail-box {
                 @include flexCol;
                 width: 40%;
+<<<<<<< Updated upstream
                 padding: 1rem;
 
                 &__image {
                     width: 50%;
+=======
+
+                &__image {
+                    width: 20%;
+>>>>>>> Stashed changes
                     padding: 0.5rem;
                 }
 
@@ -125,6 +196,11 @@
                     @include flexCol;
                     height: 65%;
                     padding: 0 1rem 1rem 1rem;
+<<<<<<< Updated upstream
+=======
+                    background-color: antiquewhite;
+
+>>>>>>> Stashed changes
 
                     &__username {
                         padding: 0.3rem;
@@ -132,8 +208,13 @@
                     }
 
                     &__info {
+<<<<<<< Updated upstream
                         white-space: nowrap;
                         font-size: 1rem;
+=======
+
+                        font-size: 1.2rem;
+>>>>>>> Stashed changes
                         margin: 0.3rem;
                     }
                 }
@@ -141,15 +222,22 @@
 
             .randes-box {
                 @include flexCol;
+<<<<<<< Updated upstream
                 margin: 0 auto;
                 // height: 90%;
                 width: 55%;
                 padding: 1rem 0;
                 color: $randorande2;
+=======
+                background-color: aquamarine;
+                height: 95%;
+                width: 55%;
+>>>>>>> Stashed changes
 
                 .randes-list {
                     @include flexCol;
                     justify-content: flex-start;
+<<<<<<< Updated upstream
                     align-items: flex-start;
                     height: 100%;
                     width: 90%;
@@ -184,6 +272,37 @@
                                     // font-size: 1.2rem;
                                     color: $randorande3;
                                 }
+=======
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: flex-start;
+                    list-style: none;
+                    text-align: justify;
+                    background-color: yellow;
+                    height: 100%;
+                    width: 100%;
+                    padding-left: 0;
+
+                    &__item {
+
+
+                        a {
+                            text-decoration: none;
+                            color: black;
+                            cursor: pointer;
+                            font-size: 1.5rem;
+                            background-color: pink;
+
+
+                            :hover {
+                                font-size: 2rem;
+                            }
+
+                            :visited {
+                                color: black;
+                                cursor: pointer;
+>>>>>>> Stashed changes
                             }
                         }
                     }
@@ -191,4 +310,8 @@
             }
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
