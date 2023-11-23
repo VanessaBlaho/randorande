@@ -59,9 +59,12 @@
                 height: 100%;
                 width: 90%;
                 padding-left: 0;
+                color: $randorande2;
+                overflow: auto;
 
                 &__item {
                     padding: 0.4rem 0;
+                    
 
                     a {
                         text-decoration: none;
@@ -72,19 +75,19 @@
                         &:hover {
                             // unfortunately making the size bigger on hover like this doesn't look good
                             // font-size: 1.2rem;
-                            color: $randorande4;
+                            color: $randorande2;
                             cursor: pointer;
                         }
 
                         &:visited {
                             font-size: 1rem;
-                            color: $randorande3;
+                            color: $randorande2;
                             cursor: pointer;
 
                             &:hover {
                                 // unfortunately making the size bigger on hover like this doesn't look good
                                 // font-size: 1.2rem;
-                                color: $randorande4;
+                                color: $randorande2;
                             }
                         }
                     }
@@ -142,6 +145,7 @@
                 // height: 90%;
                 width: 55%;
                 padding: 1rem 0;
+                color: $randorande2;
 
                 .randes-list {
                     @include flexCol;
@@ -161,24 +165,24 @@
 
                         a {
                             text-decoration: none;
-                            color: $randorande1;
+                            color: $randorande2;
                             cursor: pointer;
                             font-size: 1.2rem;
 
                             &:hover {
                                 // unfortunately making the size bigger on hover like this doesn't look good
                                 // font-size: 1.2rem;
-                                color: $randorande4;
+                                color: $randorande2;
                             }
 
                             &:visited {
-                                color: $randorande3;
+                                color: $randorande2;
                                 cursor: pointer;
 
                                 &:hover {
                                     // unfortunately making the size bigger on hover like this doesn't look good
                                     // font-size: 1.2rem;
-                                    color: $randorande4;
+                                    color: $randorande3;
                                 }
                             }
                         }
