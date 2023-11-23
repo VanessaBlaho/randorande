@@ -25,13 +25,16 @@
     }
 }
 
-
 .edit-page-main-container {
     @include flexCol;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
     width: 100vw;
     height: 37rem;
     
-  
+    .journal_saved_message_div {
+        height: 2rem;
+    }
 
     .edit-loader {
         font-size: 2rem;
@@ -47,8 +50,6 @@
         background-color: rgba(255, 255, 255, 0.500);
         color: $randorande1;
         
-        
-
         &__back-btn {
 
             a {
@@ -95,10 +96,7 @@
             &__button {
                 @include buttonStyle;
             }
-
         }
-
-
     }
 
     @media (min-width: 768px) {
