@@ -41,7 +41,7 @@ export default function Homepage() {
     };
 
     const homepageStyle = {
-        backgroundImage: "url('/images/homepage/rr_bg.jpg')",
+        backgroundImage: "url('/images/rr_bg2.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
