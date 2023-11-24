@@ -7,7 +7,7 @@ import axios from "axios";
 export default function Journal(props) {
     const { user } = useContext(UserContext);
 
-    const [entries, setEntries] = useState([]);
+    const [entries, setEntries] = useState(null);
 
     const fetchEntries = async () => {
         try {
@@ -52,7 +52,9 @@ export default function Journal(props) {
                                 </div>
                             </div>
                             <div className="randes-box">
-                                {entries.length > 0 ? (
+                                {!entries ? (
+                                    <div className="edit-loader">&#9203;</div>
+                                ) : entries.length > 0 ? (
                                     <ul className="randes-list">
                                         {entries.map((entry) => (
                                             <li

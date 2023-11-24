@@ -1,63 +1,91 @@
-@mixin circle {
-    border-radius: 9999px;
+.about-us_container_style {
+    @include flexCol;
+    justify-content: flex-start;
+    width: 100%;
+    color: $randorande1;
+
+    // @media (min-width: 768px) {
+    //     height: 100%;
+    //     margin: 0;
+    // }
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.276);
+    width: 90%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0.5rem;
+
+    // @media (min-width: 768px) {
+    //     margin-top: 3rem;
+    // }
 }
 
 .about-us__headline__container {
     width: fit-content;
     margin: 0 auto;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
+
     .about-us__headline {
         text-align: center;
         padding: 0;
         margin: 0;
+        font-size: 2rem;
     }
 }
 
 .team__container {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     flex-wrap: wrap;
     align-self: center;
     margin: 0 auto;
     margin-bottom: 2rem;
-    background: darkblue;
-    width: 60%; /* Adjust the width as needed */
+    //background: darkblue;
+    width: 80%;
+    /* Adjust the width as needed */
+    height: 75%;
 }
 
 .team-member__container {
     display: flex;
     flex-direction: column;
-    background: lightgray;
+    background: $randorande1;
     width: 100%;
+    height: 22%;
 }
+
 .crisafi,
 .kokoreva,
 .blaho {
-    border-top: solid darkblue 5px;
-    border-right: solid darkblue 5px;
-    border-bottom: none;
-    border-left: solid darkblue 5px;
+    // border-top: solid darkblue 5px;
+    // border-right: solid darkblue 5px;
+    // border-bottom: none;
+    // border-left: solid darkblue 5px;
 }
 
 .daniels {
-    border-top: solid darkblue 5px;
-    border-right: solid darkblue 5px;
-    border-bottom: solid darkblue 5px;
-    border-left: solid darkblue 5px;
+    // border-top: solid darkblue 5px;
+    // border-right: solid darkblue 5px;
+    // border-bottom: solid darkblue 5px;
+    // border-left: solid darkblue 5px;
 }
 
 .team-member__img {
     width: 100%;
-    @include circle;
-    &:hover {
-        border-radius: 0;
-    }
+    height: 100%;
+    // @include circle;
+    // &:hover {
+    //     border-radius: 0;
+    // }
 }
 
 .team-member__name {
     text-align: center;
-    background: pink;
+    background-color: $randorande4;
     padding: 0.5rem 0rem 0.5rem 0;
     margin: 0;
     // white-space: nowrap;
@@ -65,26 +93,35 @@
 }
 
 .about_us__text {
-    text-align: 0;
-    margin: 0 auto;
-    margin-bottom: 2rem;
-    width: 60%;
+    @include flexCol;
+    margin: 1rem;
+    margin-bottom: 1rem;
+    width: 90%;
+
+    p {
+        width: 90%;
+        margin: 0;
+        text-align: center;
+    }
 }
 
 .link_to_search__container {
-    margin: 0 auto;
+    // margin: 0 auto;
     text-align: center;
+    margin-top: 0.5%;
 }
 
 .link_to_search {
     text-decoration: none;
-    color: darkblue;
+    color: $randorande1;
+
     &:hover {
         text-decoration: underline;
     }
 }
 
 @media (min-width: 683px) {
+
     .crisafi,
     .kokoreva,
     .blaho,
@@ -97,27 +134,60 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-evenly; /* Add this line */
+        justify-content: space-evenly;
+        /* Add this line */
         align-self: center;
         margin: 0 auto;
         // margin-bottom: 2rem;
-        background: darkblue;
+        // background: darkblue;
         width: 60%;
-        border: darkblue solid 1.5px;
+        // border: darkblue solid 1.5px;
     }
 
     .team-member__container {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        background: lightgray;
-        width: 50%; /* Adjust this width as needed */
-        margin: 0; /* Add margin between items if desired */
-        border: 3px solid darkblue;
+        // background: blue;
+        width: 50%;
+        /* Adjust this width as needed */
+        margin: 0;
+        /* Add margin between items if desired */
+        // border: 3px solid darkblue;
     }
 }
 
-@media (min-width: 1044px) {
+@media (min-width: 867px) {
+    .about-us_container_style {
+        @include flexCol;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+        color: $randorande1;
+        margin: 0;
+    }
+
+    .container {
+        background-color: rgba(255, 255, 255, 0.276);
+        max-width: 80%;
+        margin: 1rem;
+        margin-top: 3rem;
+    }
+
+    .about-us__headline__container {
+        width: fit-content;
+        margin: 0 auto;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+
+        .about-us__headline {
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            font-size: 3rem;
+        }
+    }
+
     .crisafi,
     .kokoreva,
     .blaho,
@@ -129,15 +199,28 @@
     .team__container {
         flex-direction: row;
         flex-wrap: none;
-        width: 65%;
-        margin-bottom: 0;
+        justify-content: space-around;
+        width: 100%;
+        height: 100%;
+        margin-top: 2%;
+        margin-bottom: 2%;
     }
 
     .team-member__container {
-        width: 25%;
+        width: 20%;
     }
 
     .about_us__text {
-        width: 65%;
+        width: 70%;
+        color: $randorande1;
+        margin: auto;
     }
+
+    .link_to_search__container {
+        // margin: 0 auto;
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
 }

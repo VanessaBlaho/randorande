@@ -17,7 +17,10 @@
 @import "./auth/login";
 @import "./faq/faq";
 
-
+h1{
+    color:$randorande2;
+    font-size: 3rem;
+}
 
 
 html {
@@ -32,6 +35,8 @@ body {
     min-height: 100vh;
     margin: 0;
     height: 100%;
+    background: $randorande9;
+    font-family: 'Josefin Sans', sans-serif; 
     
 
         #randorande-app {

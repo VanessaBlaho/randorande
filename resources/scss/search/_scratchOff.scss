@@ -54,27 +54,55 @@
 
 .results_h1 {
     text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 0;
+    margin: 3rem auto 1rem auto;
+    // max-width: 90%;
+    color: $randorande1;
+    font-size: 2rem;
+
+    @media (min-width: 768px) {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+    }
 }
 
 .scratch_instructions {
     text-align: center;
-    margin-top: 0;
+    margin: 0 1rem 1rem 0;
+    color: $randorande2;
+    font-size: 1.1rem;
+
+    @media (min-width: 768px) {
+        font-size: 1.1rem;
+        margin-top: 0;
+        color: $randorande2;
+    }
 }
 
 // below div contains all 3 scratch-offs
 .scratchOff_container__parent {
     @include flexColScratch; // mobile friendly, switch to row in bigger screen
-    // background: $randorande7;
-    // @include shadow;
     align-items: center;
     justify-content: space-around; // Adjust this value to control the spacing
     margin: 0 3rem; // Center the container horizontally
     margin-bottom: 5rem;
-    // border: 1px solid black;
     padding: 1rem 1rem 0 1rem;
     border-radius: 4px;
+    background-color: rgba(70, 140, 164, 0.3);
+    border: 1px solid $randorande2;
+
+    @media (min-width: 768px) {
+
+        @include flexRowScratch;
+        max-width: 900px;
+        margin: 0 auto;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        padding: 3rem;
+        background: rgba(70, 140, 164, 0.3);
+        border: 1px solid $randorande2;
+
+    }
 }
 
 // below div contains 1 scratch-off
@@ -83,14 +111,17 @@
 
     margin: 0.625rem;
     // background: $randorande4;
-    @include shadow;
-    border: 2px solid $randorande2;
-    border-radius: 4px 4px 20px 64px;
-    background: rgba(70, 140, 164, 0.3);
+    //@include shadow;
+    border: 2px solid $randorande1;
+    border-radius: 4px;
+    padding: 10px;
+    //border-radius: 4px 4px 20px 64px;
+    //background: rgba(70, 140, 164, 0.3);
     cursor: pointer;
     --webkit-transition-property: all;
     --webkit-transition-duration: 0.3s;
     --webkit-transition-timing-function: ease;
+
     &:hover {
         transform: scale(1.02);
         outline: 0;
@@ -100,27 +131,32 @@
 // below div contains just the scratch card with scratch area and reveal image
 .scratchOff_container__child_scratch-card {
     position: relative;
-    display: inline-block; /* ensure the scratch card only takes as much space as needed */
-    width: 12rem; /* fixed width for the scratch card */
-    height: 12rem; /* fixed height for the scratch card */
+    display: inline-block;
+    /* ensure the scratch card only takes as much space as needed */
+    width: 12rem;
+    /* fixed width for the scratch card */
+    height: 12rem;
+    /* fixed height for the scratch card */
     // margin: 0.625rem; /* margin to separate the cards */
-    
-    border-radius: 4px 4px 0px 0px;
+
+    border-radius: 0.3rem;
     margin-bottom: 0;
 }
 
 .scratch_card__mask {
     @include scratchCardContentPosition;
     z-index: 1;
-    width: 100%; /* make the canvas cover the entire scratch card */
+    width: 100%;
+    /* make the canvas cover the entire scratch card */
     height: 100%;
-    border-radius: 4px 4px 0px 0px;
-    border-bottom: 2px solid $randorande2;
+    border-radius: 0.3rem;
+    //border-bottom: 2px solid $randorande2;
     @include shadow;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+
     &:hover {
         cursor: url("/images/cursors/coin-in-hand.png") 10 10, crosshair;
     }
@@ -128,10 +164,11 @@
 
 .scratch_card__reveal-rande-img {
     @include scratchCardContentPosition;
-    width: inherit; /* make the image cover the entire scratch card */
+    width: inherit;
+    /* make the image cover the entire scratch card */
     height: auto;
-    border-radius: 4px;
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 0.3rem;
+    //border-radius: 4px 4px 0px 0px;
 }
 
 .scratchOff_container__child-hint-container {
@@ -140,12 +177,14 @@
     justify-content: center;
     background: none;
     margin-top: 0;
-    height: fit-content;
+    height: 2.5rem;
     min-height: 2.1rem;
-    padding-top: 0.6rem;
+    padding-top: 0rem;
 
     text-align: center;
+
     h5 {
+        font-size: 16px;
         padding: 0;
         margin: 0;
         color: $randorande7;
@@ -154,8 +193,9 @@
 }
 
 .scratchOff_container__child-hint {
+    font-size: 1rem;
     color: $randorande1;
-    font-weight: bold;
+    font-weight: 400;
     white-space: nowrap; // might not need this
 }
 
@@ -169,23 +209,16 @@
     justify-content: center;
     align-items: center;
     height: 2.5rem;
+
 }
 
 .save_rande_btn {
     @include buttonStyle;
     padding: 0;
-    padding: 0.6rem 0.3rem 0.5rem 0.3rem;
+    padding: 0.7rem 0.4rem 0.5rem 0.4rem;
     margin: 0;
     margin-bottom: 0.5rem;
-}
-
-@media (min-width: 768px) {
-    .scratchOff_container__parent {
-        @include flexRowScratch;
-        max-width: 900px;
-        margin: 0 auto;
-        margin-bottom: 5rem;
-    }
+    text-transform: uppercase;
 }
 
 .edit-loader {
@@ -198,20 +231,49 @@
 @media (max-width: 967px) {
     .scratchOff_container__parent {
         @include flexColScratch;
+        margin: 0 3rem;
         background: none;
         border: none;
         box-shadow: none;
+        margin-top: 2rem;
+        background-color: rgba(70, 140, 164, 0.3);
+        border: 1px solid $randorande2;
     }
 
     .scratchOff_container__child_scratch-card {
-        width: 18rem; /* fixed width for the scratch card */
-        height: 18rem; /* fixed height for the scratch card */
+        width: 18rem;
+        /* fixed width for the scratch card */
+        height: 18rem;
+        /* fixed height for the scratch card */
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 560px) {
     .scratchOff_container__child_scratch-card {
-        width: 12rem; /* fixed width for the scratch card */
-        height: 12rem; /* fixed height for the scratch card */
+        width: 10rem;
+        /* fixed width for the scratch card */
+        height: 10rem;
+        /* fixed height for the scratch card */
+    }
+    .scratchOff_container__parent {
+        width: fit-content;
+        margin: 0 auto;
     }
 }
+
+    @media (max-width: 367px) {
+    .scratchOff_container__child_scratch-card {
+        width: 6rem;
+        /* fixed width for the scratch card */
+        height: 6rem;
+        /* fixed height for the scratch card */  
+}
+}
+
+@media (max-width: 367px) {
+    .scratchOff_container__child-hint-container h5 {
+        font-size: 9px;
+}
+}
+
+

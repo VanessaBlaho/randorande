@@ -6,7 +6,8 @@
 .register_headline {
     text-align: center;
     padding: 0;
-    margin: 1rem 0 0.5rem 0;
+    margin: 3rem 0 0.5rem 0;
+    color: $randorande1;
 }
 
 .login_reminder {
@@ -23,7 +24,7 @@
     background: rgba(0, 0, 0, 0.3);
     color: $randorande7;
     width: fit-content;
-    box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent;
+    box-shadow: 0 10px 13px -7px rgba(0, 0, 0, .4), 0 0 5px 2px transparent;
     max-width: 80%;
 }
 
@@ -42,7 +43,7 @@
     text-decoration: none;
     // background: rgb(242, 241, 241);
     color: black;
-    box-shadow: 0 10px 13px -7px rgba(0,0,0,.4), 0 0 5px 2px transparent;
+    box-shadow: 0 10px 13px -7px rgba(0, 0, 0, .4), 0 0 5px 2px transparent;
 }
 
 .register_btn {
@@ -66,10 +67,11 @@
     border: 1px solid black;
     background: $randorande9;
     max-height: 20px;
+
     &:focus {
-      outline: none;
-      background: white;
-      color: $randorande2; 
+        outline: none;
+        background: white;
+        color: $randorande2;
     }
 }
 

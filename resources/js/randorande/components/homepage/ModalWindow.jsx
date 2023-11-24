@@ -23,7 +23,7 @@ const ModalWindow = ({ isOpen, closeModal }) => {
             boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", // add a subtle box shadow
             color: "#000",
             border: "none",
-            inset: "36px",
+            inset: "90px",
             fontFamily: '"Josefin Sans", sans-serif',
         },
     };
