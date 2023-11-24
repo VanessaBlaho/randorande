@@ -45,7 +45,6 @@ export default function Homepage() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        /* Additional background properties as needed */
         minHeight: "100vh", // Ensure the container covers the entire viewport height
     };
 
