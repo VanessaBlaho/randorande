@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login(props) {
 
     const loginStyle = {
-        backgroundImage: "url('/images/homepage/rr_bg.jpg')",
+        backgroundImage: "url('/images/rr_bg2.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

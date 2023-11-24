@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Faq = () => {
     const faqStyle = {
-        backgroundImage: "url('/images/cloud-background.jpg')",
+        backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

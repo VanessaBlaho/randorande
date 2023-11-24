@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NotFound() {
     const notFoundStyle = {
-        backgroundImage: "url('/images/cloud-background.jpg')",
+        backgroundImage: "url('/images/homepage/sunset_noPeople.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
