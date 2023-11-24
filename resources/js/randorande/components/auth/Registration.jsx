@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 export default function Register(props) {
 
 const registrationStyle = {
-    backgroundImage: "url('/images/homepage/rr_bg.png')",
+    backgroundImage: "url('/images/homepage/rr_bg.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
