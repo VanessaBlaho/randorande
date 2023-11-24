@@ -108,10 +108,10 @@ const RandeLog = () => {
                         {entryData.rande_name ?? "Date Name"}
                     </h2>
                     <h5 className="data__rande-date">
-                        {entryData.date ?? "YYYY-MM-DD"}
+                        {entryData.date ?? "When"}
                     </h5>
                     <h5 className="date__rande-location">
-                        {entryData.location ?? "Location"}
+                        {entryData.location ?? "Where"}
                     </h5>
                     <div className="modal">
                         <button onClick={openModal}>RANDE INFO</button>
